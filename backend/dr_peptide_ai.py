@@ -1,6 +1,7 @@
 """
 Dr. Peptide AI - Functional Medicine Expert Chatbot
 Specialized AI assistant for peptide therapy and functional medicine
+Updated to use LlmChat integration
 """
 
 import os
