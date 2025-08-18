@@ -1226,7 +1226,7 @@ Please provide specific, actionable recommendations while emphasizing the import
             # Create lab interpretation prompt
             lab_prompt = self._create_lab_interpretation_prompt(lab_data, patient_context)
             
-            messages = [UserMessage(content=lab_prompt)]
+            messages = [UserMessage(text=lab_prompt)]
             
             system_content = self.system_prompt + "\n\nFocus on functional medicine lab interpretation with optimal ranges, not just reference ranges."
             
