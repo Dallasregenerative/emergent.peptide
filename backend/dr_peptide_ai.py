@@ -1330,7 +1330,7 @@ Please provide:
 Keep the explanation clear and educational for both practitioners and patients.
 """
 
-            messages = [UserMessage(content=rationale_prompt)]
+            messages = [UserMessage(text=rationale_prompt)]
             
             response = await self.llm_client.chat_async(
                 messages=messages,
