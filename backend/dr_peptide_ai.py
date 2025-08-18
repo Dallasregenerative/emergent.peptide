@@ -442,8 +442,7 @@ Focus on safety first, personalization based on patient factors, and evidence-ba
                     enhanced_context += self.get_protocol_summary(protocol)
                     enhanced_context += "\n" + "="*30 + "\n"
 
-            messages = [
-                {"role": "system", "content": f"""You are Dr. Peptide, a board-certified functional medicine physician specializing in peptide therapy with 20+ years clinical experience. You must generate hospital-grade clinical protocols that meet medical center standards for documentation and precision.
+            system_content = f"""You are Dr. Peptide, a board-certified functional medicine physician specializing in peptide therapy with 20+ years clinical experience. You must generate hospital-grade clinical protocols that meet medical center standards for documentation and precision.
 
 MANDATORY CLINICAL STANDARDS:
 - Provide exact dosing with weight-based calculations
@@ -480,18 +479,18 @@ Your protocols must demonstrate the clinical depth and precision expected from a
 
 {enhanced_context}
 
-Generate protocols that match the clinical detail and precision found in peer-reviewed medical literature and clinical practice guidelines at top-tier medical institutions."""},
-                {"role": "user", "content": protocol_prompt}
-            ]
+Generate protocols that match the clinical detail and precision found in peer-reviewed medical literature and clinical practice guidelines at top-tier medical institutions."""
 
-            response = await self.openai_client.chat.completions.create(
-                model="gpt-4-turbo-preview",  # Higher token limit model
+            messages = [UserMessage(content=protocol_prompt)]
+
+            response = await self.llm_client.chat_async(
                 messages=messages,
+                system_prompt=system_content,
                 temperature=0.1,  # Very low temperature for maximum clinical precision
                 max_tokens=4000,  # Increased token limit for comprehensive protocols
             )
 
-            ai_response = response.choices[0].message.content
+            ai_response = response.content
             
             # Try to parse as JSON, fallback to text analysis
             try:
