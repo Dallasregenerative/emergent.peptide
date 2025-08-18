@@ -1327,14 +1327,11 @@ Keep the explanation clear and educational for both practitioners and patients.
 
             messages = [UserMessage(text=rationale_prompt)]
             
-            response = await self.llm_client.chat_async(
-                messages=messages,
-                system_prompt=self.system_prompt,
-                temperature=0.4,
-                max_tokens=1500
-            )
+            comprehensive_prompt = f"{self.system_prompt}\n\nRATIONALE REQUEST:\n{rationale_prompt}"
             
-            rationale = response.content
+            response = await self.llm_client.send_message(UserMessage(text=comprehensive_prompt))
+            
+            rationale = response
             
             return {
                 "success": True,
