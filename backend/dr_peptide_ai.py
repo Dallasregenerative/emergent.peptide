@@ -778,19 +778,16 @@ Generate protocols that match the clinical detail and precision found in peer-re
             # Create detailed analysis prompt
             analysis_prompt = self._create_case_analysis_prompt(patient_data)
             
-            messages = [
-                {"role": "system", "content": self.system_prompt},
-                {"role": "user", "content": analysis_prompt}
-            ]
+            messages = [UserMessage(content=analysis_prompt)]
             
-            response = await self.openai_client.chat.completions.create(
-                model="gpt-4",
+            response = await self.llm_client.chat_async(
                 messages=messages,
+                system_prompt=self.system_prompt,
                 temperature=0.3,  # Lower temperature for more consistent medical analysis
                 max_tokens=3000
             )
             
-            analysis = response.choices[0].message.content
+            analysis = response.content
             
             # Safely extract patient name
             patient_name = "Unknown"
