@@ -7,21 +7,16 @@ import os
 import json
 import logging
 import re
-from openai import AsyncOpenAI
 from typing import List, Dict, Any, Optional
 from datetime import datetime
+from emergentintegrations.llm.chat import LlmChat, UserMessage
 
 # Import enhanced clinical data
 from enhanced_clinical_database import ENHANCED_CLINICAL_PEPTIDES
 
 class DrPeptideAI:
     def __init__(self):
-        self.openai_client = AsyncOpenAI(api_key=os.environ.get('OPENAI_API_KEY'))
-        self.system_prompt = self._create_system_prompt()
-        
-class DrPeptideAI:
-    def __init__(self):
-        self.openai_client = AsyncOpenAI(api_key=os.environ.get('OPENAI_API_KEY'))
+        self.llm_client = LlmChat()
         self.enhanced_protocols = ENHANCED_CLINICAL_PEPTIDES
         self.system_prompt = self._create_enhanced_system_prompt()
         
