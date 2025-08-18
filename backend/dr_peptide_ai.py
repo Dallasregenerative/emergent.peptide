@@ -1228,14 +1228,11 @@ Please provide specific, actionable recommendations while emphasizing the import
             
             system_content = self.system_prompt + "\n\nFocus on functional medicine lab interpretation with optimal ranges, not just reference ranges."
             
-            response = await self.llm_client.chat_async(
-                messages=messages,
-                system_prompt=system_content,
-                temperature=0.2,  # Very low temperature for lab interpretation
-                max_tokens=2000
-            )
+            comprehensive_prompt = f"{system_content}\n\nLAB ANALYSIS REQUEST:\n{lab_prompt}"
             
-            interpretation = response.content
+            response = await self.llm_client.send_message(UserMessage(text=comprehensive_prompt))
+            
+            interpretation = response
             
             return {
                 "success": True,
