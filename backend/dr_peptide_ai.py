@@ -787,14 +787,11 @@ Generate protocols that match the clinical detail and precision found in peer-re
             
             messages = [UserMessage(text=analysis_prompt)]
             
-            response = await self.llm_client.chat_async(
-                messages=messages,
-                system_prompt=self.system_prompt,
-                temperature=0.3,  # Lower temperature for more consistent medical analysis
-                max_tokens=3000
-            )
+            comprehensive_prompt = f"{self.system_prompt}\n\nANALYSIS REQUEST:\n{analysis_prompt}"
             
-            analysis = response.content
+            response = await self.llm_client.send_message(UserMessage(text=comprehensive_prompt))
+            
+            analysis = response
             
             # Safely extract patient name
             patient_name = "Unknown"
