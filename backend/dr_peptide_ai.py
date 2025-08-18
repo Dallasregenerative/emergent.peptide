@@ -228,22 +228,26 @@ Generate precise clinical protocols matching major medical center documentation 
             # Add current message
             messages.append(UserMessage(text=message))
             
-            # Get AI response with enhanced parameters
-            response = await self.llm_client.chat_async(
-                messages=messages,
-                system_prompt=system_content,
-                temperature=0.6,  # Slightly lower for more consistent medical advice
-                max_tokens=2000,  # Increased for more comprehensive responses
-            )
+            # Get AI response with enhanced parameters  
+            # For LlmChat, we need to send one comprehensive message since it doesn't handle conversation history the same way
+            comprehensive_message = f"{system_content}\n\nCONVERSATION HISTORY:\n"
             
-            ai_response = response.content
+            # Add conversation context
+            for msg in conversation_history[-3:]:  # Keep last 3 messages for context
+                role = msg.get("role", "user")
+                content = msg.get("content", "")
+                comprehensive_message += f"\n{role.upper()}: {content}"
+            
+            comprehensive_message += f"\n\nCURRENT MESSAGE: {message}"
+            
+            response = await self.llm_client.send_message(UserMessage(text=comprehensive_message))
             
             return {
                 "success": True,
-                "response": ai_response,
+                "response": response,
                 "enhanced_protocols_used": [p['name'] for p in relevant_protocols] if relevant_protocols else [],
                 "timestamp": datetime.utcnow().isoformat(),
-                "tokens_used": getattr(response, 'usage', {}).get('total_tokens', 0)
+                "tokens_used": 0  # LlmChat doesn't provide token usage
             }
             
         except Exception as e:
