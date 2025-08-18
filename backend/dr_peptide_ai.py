@@ -784,7 +784,7 @@ Generate protocols that match the clinical detail and precision found in peer-re
             # Create detailed analysis prompt
             analysis_prompt = self._create_case_analysis_prompt(patient_data)
             
-            messages = [UserMessage(content=analysis_prompt)]
+            messages = [UserMessage(text=analysis_prompt)]
             
             response = await self.llm_client.chat_async(
                 messages=messages,
