@@ -222,11 +222,11 @@ Generate precise clinical protocols matching major medical center documentation 
             # Add conversation history
             for msg in conversation_history[-8:]:  # Keep last 8 messages for context (reduced due to larger system prompt)
                 if msg.get("role") == "user":
-                    messages.append(UserMessage(content=msg.get("content", "")))
+                    messages.append(UserMessage(text=msg.get("content", "")))
                 # Note: LlmChat handles system messages differently, so we'll include them in the system prompt
             
             # Add current message
-            messages.append(UserMessage(content=message))
+            messages.append(UserMessage(text=message))
             
             # Get AI response with enhanced parameters
             response = await self.llm_client.chat_async(
