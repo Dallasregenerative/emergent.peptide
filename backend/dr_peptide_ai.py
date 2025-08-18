@@ -487,7 +487,7 @@ Your protocols must demonstrate the clinical depth and precision expected from a
 
 Generate protocols that match the clinical detail and precision found in peer-reviewed medical literature and clinical practice guidelines at top-tier medical institutions."""
 
-            messages = [UserMessage(content=protocol_prompt)]
+            messages = [UserMessage(text=protocol_prompt)]
 
             response = await self.llm_client.chat_async(
                 messages=messages,
