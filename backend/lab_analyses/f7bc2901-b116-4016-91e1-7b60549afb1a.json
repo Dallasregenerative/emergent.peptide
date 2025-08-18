@@ -1,0 +1,136 @@
+{
+  "analysis_id": "f7bc2901-b116-4016-91e1-7b60549afb1a",
+  "analyzed_at": "2025-08-17T23:53:21.141245+00:00",
+  "patient_info": {
+    "gender": "male",
+    "age": "45"
+  },
+  "lab_results": {
+    "glucose": {
+      "lab_name": "glucose",
+      "value": 150.0,
+      "unit": "mg/dL",
+      "status": "critical_high",
+      "risk_level": "critical",
+      "interpretation": "Diabetic range - requires medical attention",
+      "normal_range": [
+        70,
+        99
+      ],
+      "reference_info": {
+        "normal": [
+          70,
+          99
+        ],
+        "low_concern": null,
+        "high_concern": [
+          100,
+          125
+        ]
+      }
+    },
+    "hemoglobin_a1c": {
+      "lab_name": "hemoglobin_a1c",
+      "value": 6.8,
+      "unit": "%",
+      "status": "critical_high",
+      "risk_level": "critical",
+      "interpretation": "Diabetic - medical management required",
+      "normal_range": [
+        4.0,
+        5.6
+      ],
+      "reference_info": {
+        "normal": [
+          4.0,
+          5.6
+        ],
+        "low_concern": null,
+        "high_concern": [
+          5.7,
+          6.4
+        ]
+      }
+    },
+    "total_cholesterol": {
+      "lab_name": "total_cholesterol",
+      "value": 280.0,
+      "unit": "mg/dL",
+      "status": "critical_high",
+      "risk_level": "critical",
+      "interpretation": "High cholesterol - medical evaluation needed",
+      "normal_range": [
+        0,
+        199
+      ],
+      "reference_info": {
+        "normal": [
+          0,
+          199
+        ],
+        "low_concern": null,
+        "high_concern": [
+          200,
+          239
+        ]
+      }
+    },
+    "crp": {
+      "lab_name": "crp",
+      "value": 5.0,
+      "unit": "mg/L",
+      "status": "high",
+      "risk_level": "low",
+      "interpretation": "Moderate inflammation - cardiovascular risk",
+      "normal_range": [
+        0,
+        3.0
+      ],
+      "reference_info": {
+        "normal": [
+          0,
+          3.0
+        ],
+        "low_concern": null,
+        "high_concern": [
+          3.1,
+          10.0
+        ]
+      }
+    }
+  },
+  "risk_factors": [
+    {
+      "lab": "glucose",
+      "issue": "Diabetic range - requires medical attention",
+      "risk_level": "critical"
+    },
+    {
+      "lab": "hemoglobin_a1c",
+      "issue": "Diabetic - medical management required",
+      "risk_level": "critical"
+    },
+    {
+      "lab": "total_cholesterol",
+      "issue": "High cholesterol - medical evaluation needed",
+      "risk_level": "critical"
+    }
+  ],
+  "recommendations": [],
+  "peptide_considerations": [
+    {
+      "peptide_class": "GLP-1 agonists",
+      "consideration": "Excellent candidates - may provide significant glucose improvement",
+      "monitoring": "Monitor glucose levels closely during initiation"
+    }
+  ],
+  "overall_risk": {
+    "overall_risk_level": "critical",
+    "risk_score": 75.0,
+    "critical_findings": 3,
+    "high_risk_findings": 0,
+    "moderate_risk_findings": 0,
+    "total_labs_analyzed": 4
+  },
+  "summary": "Critical findings identified in 3 lab value(s). Immediate medical attention recommended. Additional 0 findings require monitoring and intervention."
+}

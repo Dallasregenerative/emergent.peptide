@@ -1,0 +1,163 @@
+{
+  "analysis_id": "c5f5cea9-6176-4fa4-95e6-aae523fd46c6",
+  "analyzed_at": "2025-08-18T19:37:41.527291+00:00",
+  "patient_info": {
+    "gender": "male",
+    "age": "35"
+  },
+  "lab_results": {
+    "glucose": {
+      "lab_name": "glucose",
+      "value": 95.0,
+      "unit": "mg/dL",
+      "status": "normal",
+      "risk_level": "low",
+      "interpretation": "Optimal glucose metabolism",
+      "normal_range": [
+        70,
+        99
+      ],
+      "reference_info": {
+        "normal": [
+          70,
+          99
+        ],
+        "low_concern": null,
+        "high_concern": [
+          100,
+          125
+        ]
+      }
+    },
+    "hemoglobin_a1c": {
+      "lab_name": "hemoglobin_a1c",
+      "value": 5.8,
+      "unit": "%",
+      "status": "high",
+      "risk_level": "low",
+      "interpretation": "Prediabetic - lifestyle modifications recommended",
+      "normal_range": [
+        4.0,
+        5.6
+      ],
+      "reference_info": {
+        "normal": [
+          4.0,
+          5.6
+        ],
+        "low_concern": null,
+        "high_concern": [
+          5.7,
+          6.4
+        ]
+      }
+    },
+    "total_cholesterol": {
+      "lab_name": "total_cholesterol",
+      "value": 200.0,
+      "unit": "mg/dL",
+      "status": "high",
+      "risk_level": "low",
+      "interpretation": "Borderline high - dietary changes recommended",
+      "normal_range": [
+        0,
+        199
+      ],
+      "reference_info": {
+        "normal": [
+          0,
+          199
+        ],
+        "low_concern": null,
+        "high_concern": [
+          200,
+          239
+        ]
+      }
+    },
+    "ldl_cholesterol": {
+      "lab_name": "ldl_cholesterol",
+      "value": 120.0,
+      "unit": "mg/dL",
+      "status": "high",
+      "risk_level": "low",
+      "interpretation": "Above optimal - cardiovascular risk increased",
+      "normal_range": [
+        0,
+        99
+      ],
+      "reference_info": {
+        "normal": [
+          0,
+          99
+        ],
+        "low_concern": null,
+        "high_concern": [
+          100,
+          159
+        ]
+      }
+    },
+    "hdl_cholesterol": {
+      "lab_name": "hdl_cholesterol",
+      "value": 45.0,
+      "unit": "mg/dL",
+      "status": "normal",
+      "risk_level": "low",
+      "interpretation": "Protective HDL levels",
+      "normal_range": [
+        40,
+        200
+      ],
+      "reference_info": {
+        "normal": [
+          40,
+          200
+        ],
+        "low_concern": [
+          30,
+          39
+        ],
+        "high_concern": null
+      }
+    },
+    "tsh": {
+      "lab_name": "tsh",
+      "value": 2.5,
+      "unit": "mIU/L",
+      "status": "normal",
+      "risk_level": "low",
+      "interpretation": "Normal thyroid function",
+      "normal_range": [
+        0.4,
+        4.0
+      ],
+      "reference_info": {
+        "normal": [
+          0.4,
+          4.0
+        ],
+        "low_concern": [
+          0.1,
+          0.39
+        ],
+        "high_concern": [
+          4.1,
+          10.0
+        ]
+      }
+    }
+  },
+  "risk_factors": [],
+  "recommendations": [],
+  "peptide_considerations": [],
+  "overall_risk": {
+    "overall_risk_level": "low",
+    "risk_score": 0.0,
+    "critical_findings": 0,
+    "high_risk_findings": 0,
+    "moderate_risk_findings": 0,
+    "total_labs_analyzed": 6
+  },
+  "summary": "Lab results show no significant abnormalities. Continue current health optimization strategies."
+}

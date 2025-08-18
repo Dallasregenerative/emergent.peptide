@@ -1,0 +1,14 @@
+{
+  "protocol_number": "PPA-2025-36FFFF61",
+  "encrypted_dob": null,
+  "anonymized_at": "2025-08-17T21:30:07.563696+00:00",
+  "is_anonymized": true,
+  "original_patient_id": null,
+  "learning_metadata": {
+    "created_for_learning": "2025-08-17T21:30:07.563708+00:00",
+    "version": "1.0",
+    "learning_status": "active",
+    "reference_count": 0,
+    "last_referenced": null
+  }
+}

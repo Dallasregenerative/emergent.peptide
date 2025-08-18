@@ -1,0 +1,597 @@
+{
+  "investigation_timestamp": "2025-08-16T20:37:56.281558",
+  "data_sources": {
+    "system_features": [
+      "Dr. Peptide AI Chat",
+      "Enhanced Clinical Database",
+      "Multi-step Assessment Wizard",
+      "File Upload & Analysis",
+      "Functional Medicine Protocols"
+    ]
+  },
+  "api_endpoints": {
+    "homepage_stats": {
+      "protocols": 60,
+      "practitioners": 9,
+      "success_rate": 95,
+      "support_availability": "24/7",
+      "total_assessments": 181
+    },
+    "enhanced_library": {
+      "count": 59,
+      "sample_data": [
+        {
+          "id": "d3bf2969-1f1b-4369-ac5f-6f324ee073b0",
+          "name": "BPC-157",
+          "aliases": [
+            "Body Protection Compound-157",
+            "Pentadecapeptide BPC 157",
+            "PL 14736"
+          ],
+          "sequence": "GEPPPGKPADDAGLV",
+          "molecular_weight": 1419.53,
+          "category": "Healing & Regenerative",
+          "description": "Stable gastric pentadecapeptide with powerful healing and anti-inflammatory properties, derived from gastric protective protein BPC",
+          "mechanism_of_action": "Promotes angiogenesis, accelerates healing of various tissues including tendons, ligaments, muscle, bone, and GI tract. Modulates nitric oxide pathways, growth hormone-IGF-1 axis, and VEGF expression.",
+          "clinical_indications": [
+            "Tendon and ligament injuries",
+            "Muscle tears and strains",
+            "Gastric ulcers and inflammatory bowel conditions",
+            "Joint pain and arthritis",
+            "Wound healing and tissue repair",
+            "Post-surgical recovery",
+            "Neuroprotection and brain injury recovery"
+          ],
+          "complete_dosing_schedule": {
+            "standard_protocol": "200-300 mcg twice daily for 2-4 weeks",
+            "acute_injury": "400-500 mcg twice daily for 7-14 days, then 200-300 mcg daily",
+            "chronic_conditions": "200 mcg daily for 4-8 weeks with 2-week breaks",
+            "gastric_issues": "250 mcg twice daily for 2-4 weeks",
+            "maintenance": "100-200 mcg 3 times per week"
+          },
+          "administration_techniques": {
+            "injection_sites": [
+              "Abdomen",
+              "Thigh",
+              "Upper arm",
+              "Near injury site (local injection)"
+            ],
+            "injection_depth": "Subcutaneous (45-degree angle)",
+            "preparation": "Reconstitute with bacteriostatic water, store refrigerated up to 30 days",
+            "timing": "Morning and evening, can be taken with or without food",
+            "rotation": "Rotate injection sites every 3-4 injections to prevent irritation"
+          },
+          "safety_profile": {
+            "common_side_effects": [
+              {
+                "effect": "Mild injection site irritation",
+                "frequency": "10-15%"
+              },
+              {
+                "effect": "Temporary fatigue",
+                "frequency": "5-8%"
+              },
+              {
+                "effect": "Headache",
+                "frequency": "3-5%"
+              }
+            ],
+            "rare_side_effects": [
+              "Allergic reaction",
+              "Excessive tissue growth (with very high doses)"
+            ],
+            "drug_interactions": "Generally safe with most medications, monitor with anticoagulants"
+          },
+          "contraindications_and_precautions": {
+            "absolute_contraindications": [
+              "Active malignancy",
+              "Known hypersensitivity to BPC-157"
+            ],
+            "relative_contraindications": [
+              "Pregnancy and breastfeeding",
+              "Severe cardiovascular disease"
+            ],
+            "precautions": [
+              "Start with lower doses in sensitive patients",
+              "Monitor injection sites for excessive reaction",
+              "Discontinue if unusual tissue growth occurs"
+            ]
+          },
+          "expected_timelines": {
+            "initial_effects": "3-7 days for acute injuries",
+            "significant_improvement": "2-3 weeks for most conditions",
+            "maximum_benefits": "4-6 weeks for chronic issues",
+            "long_term_results": "Benefits may persist 2-4 weeks after discontinuation"
+          },
+          "monitoring_requirements": {
+            "baseline_assessment": [
+              "Complete blood count",
+              "Comprehensive metabolic panel",
+              "Inflammation markers (CRP, ESR)"
+            ],
+            "ongoing_monitoring": [
+              "Weekly assessment of target symptoms",
+              "Injection site examination",
+              "Overall wellness evaluation"
+            ],
+            "safety_monitoring": [
+              "Monthly CBC during extended use",
+              "Liver function if using >8 weeks"
+            ]
+          },
+          "scientific_references": [
+            {
+              "title": "BPC 157, a pentadecapeptide with documented healing properties",
+              "authors": "Sikiric P, Rucman R, Turkovic B, et al.",
+              "journal": "European Journal of Pharmacology",
+              "year": 2018,
+              "pubmed_id": "29432751",
+              "key_finding": "Demonstrates potent healing effects across multiple tissue types"
+            },
+            {
+              "title": "Stable gastric pentadecapeptide BPC 157: novel therapy in gastrointestinal tract",
+              "authors": "Sikiric P, Seiwerth S, Rucman R, et al.",
+              "journal": "Current Pharmaceutical Design",
+              "year": 2011,
+              "pubmed_id": "21443487",
+              "key_finding": "Effective in treating various GI disorders"
+            }
+          ],
+          "functional_medicine_approach": {
+            "root_cause_focus": "Addresses underlying inflammatory pathways and tissue dysfunction",
+            "integrative_protocols": "Combines well with anti-inflammatory diet, targeted nutrients (omega-3s, curcumin), and lifestyle modifications",
+            "biomarker_optimization": "Improves inflammatory markers, tissue repair indicators, and functional movement assessments",
+            "patient_empowerment": "Educate on proper injection technique, symptom tracking, and lifestyle factors that support healing"
+          },
+          "cost_considerations": {
+            "typical_cost": "$80-120 per month",
+            "insurance_coverage": "Not typically covered",
+            "cost_effectiveness": "High for injury recovery, moderate for preventive use"
+          },
+          "created_at": "2025-08-07T16:28:01.174000"
+        },
+        {
+          "id": "6c5f7d4a-b3b6-4be9-b61f-18c9b3fa766f",
+          "name": "TB-500",
+          "aliases": [
+            "Thymosin Beta-4",
+            "T\u03b24",
+            "TMSB4X"
+          ],
+          "sequence": "SDKPDMAEIEKFDKSKLKKTETQEKNPLPSKETIEQEKQAGES",
+          "molecular_weight": 4963.4,
+          "category": "Healing & Regenerative",
+          "description": "Naturally occurring peptide present in most cells, plays crucial role in wound healing, cell migration, and angiogenesis",
+          "mechanism_of_action": "Promotes cell migration, angiogenesis, and wound healing through actin regulation. Inhibits inflammatory cytokines and promotes tissue repair.",
+          "clinical_indications": [
+            "Muscle injuries and strains",
+            "Tendon and ligament damage",
+            "Wound healing acceleration",
+            "Hair loss (alopecia)",
+            "Cardiovascular protection",
+            "Post-surgical recovery",
+            "Chronic fatigue syndrome"
+          ],
+          "complete_dosing_schedule": {
+            "loading_phase": "5-10 mg twice weekly for 4-6 weeks",
+            "maintenance_phase": "2-5 mg once weekly",
+            "acute_injury": "10 mg twice weekly for 2-4 weeks",
+            "hair_restoration": "2-5 mg weekly for 12-16 weeks",
+            "athletic_recovery": "5 mg twice weekly during intense training"
+          },
+          "administration_techniques": {
+            "injection_sites": [
+              "Abdomen",
+              "Deltoid",
+              "Thigh",
+              "Injured area (local injection)"
+            ],
+            "injection_depth": "Subcutaneous or intramuscular",
+            "preparation": "Reconstitute with bacteriostatic water, stable for 30 days refrigerated",
+            "timing": "Can be administered any time of day",
+            "special_considerations": "Larger volume injection due to higher dose"
+          },
+          "safety_profile": {
+            "common_side_effects": [
+              {
+                "effect": "Injection site soreness",
+                "frequency": "15-20%"
+              },
+              {
+                "effect": "Temporary fatigue",
+                "frequency": "8-12%"
+              },
+              {
+                "effect": "Mild flu-like symptoms",
+                "frequency": "5-8%"
+              }
+            ],
+            "rare_side_effects": [
+              "Allergic reaction",
+              "Excessive scar tissue formation"
+            ],
+            "drug_interactions": "No known significant interactions"
+          },
+          "contraindications_and_precautions": {
+            "absolute_contraindications": [
+              "Active malignancy",
+              "Hypersensitivity to TB-500"
+            ],
+            "relative_contraindications": [
+              "Pregnancy and lactation",
+              "Severe immune dysfunction"
+            ],
+            "precautions": [
+              "Monitor for excessive tissue growth",
+              "Use sterile injection techniques",
+              "Store properly to maintain potency"
+            ]
+          },
+          "expected_timelines": {
+            "initial_effects": "1-2 weeks for acute injuries",
+            "significant_improvement": "3-4 weeks for most conditions",
+            "maximum_benefits": "6-8 weeks for chronic issues",
+            "long_term_results": "Effects may continue 4-6 weeks post-treatment"
+          },
+          "monitoring_requirements": {
+            "baseline_assessment": [
+              "Complete physical exam",
+              "Injury assessment",
+              "Blood work"
+            ],
+            "ongoing_monitoring": [
+              "Weekly progress evaluation",
+              "Range of motion testing",
+              "Pain scale assessment"
+            ],
+            "safety_monitoring": [
+              "Monthly check-ins during extended use",
+              "Watch for unusual tissue growth"
+            ]
+          },
+          "scientific_references": [
+            {
+              "title": "Thymosin \u03b24: a novel regulator of inflammation, angiogenesis, and tissue repair",
+              "authors": "Goldstein AL, Hannappel E, Kleinman HK",
+              "journal": "Annals of the New York Academy of Sciences",
+              "year": 2005,
+              "pubmed_id": "16110537",
+              "key_finding": "Demonstrates powerful tissue repair and anti-inflammatory properties"
+            }
+          ],
+          "functional_medicine_approach": {
+            "root_cause_focus": "Addresses cellular repair mechanisms and inflammatory dysfunction",
+            "integrative_protocols": "Synergistic with collagen support, vitamin C, zinc, and regenerative therapies",
+            "biomarker_optimization": "Improves tissue repair markers, reduces inflammatory cytokines",
+            "patient_empowerment": "Education on injury prevention, proper movement patterns, recovery optimization"
+          },
+          "cost_considerations": {},
+          "created_at": "2025-08-07T16:28:01.175000"
+        },
+        {
+          "id": "ab61a7b1-6a42-4df9-b6f6-b7607d95bc35",
+          "name": "GHK-Cu",
+          "aliases": [
+            "Copper Peptide",
+            "GHK-Copper",
+            "Copper Tripeptide-1"
+          ],
+          "sequence": "Gly-His-Lys-Cu",
+          "molecular_weight": 340.0,
+          "category": "Anti-Aging & Regenerative",
+          "description": "Naturally occurring copper-binding peptide with potent anti-aging, healing, and tissue remodeling properties",
+          "mechanism_of_action": "Stimulates collagen and elastin synthesis, promotes wound healing, acts as antioxidant and anti-inflammatory agent. Chelates copper for enhanced bioavailability.",
+          "clinical_indications": [
+            "Skin aging and wrinkles",
+            "Hair loss and thinning",
+            "Wound healing",
+            "Acne scarring",
+            "Sun damage repair",
+            "Post-procedure recovery",
+            "Tissue regeneration"
+          ],
+          "complete_dosing_schedule": {
+            "topical_application": "Apply 1-2% cream twice daily to affected areas",
+            "injection_protocol": "1-3 mg subcutaneously 2-3 times weekly",
+            "cosmetic_enhancement": "2 mg twice weekly for 8-12 weeks",
+            "hair_restoration": "2-3 mg weekly for 12-16 weeks",
+            "anti_aging": "1-2 mg twice weekly ongoing"
+          },
+          "administration_techniques": {
+            "topical_method": "Clean skin, apply thin layer, allow absorption",
+            "injection_sites": [
+              "Face/neck area",
+              "Scalp (for hair)",
+              "Target skin areas"
+            ],
+            "injection_depth": "Shallow subcutaneous or intradermal",
+            "preparation": "Pre-mixed solutions available, or reconstitute powder forms",
+            "timing": "Evening application preferred for topical use"
+          },
+          "safety_profile": {
+            "common_side_effects": [
+              {
+                "effect": "Mild skin irritation",
+                "frequency": "10-15%"
+              },
+              {
+                "effect": "Temporary blue-green discoloration",
+                "frequency": "5-8%"
+              },
+              {
+                "effect": "Initial skin sensitivity",
+                "frequency": "8-12%"
+              }
+            ],
+            "rare_side_effects": [
+              "Allergic contact dermatitis",
+              "Excessive copper accumulation (with very high doses)"
+            ],
+            "drug_interactions": "Avoid with other copper-containing supplements"
+          },
+          "contraindications_and_precautions": {
+            "absolute_contraindications": [
+              "Wilson's disease",
+              "Copper sensitivity/allergy"
+            ],
+            "relative_contraindications": [
+              "Active skin infections",
+              "Pregnancy (topical use generally safe)"
+            ],
+            "precautions": [
+              "Start with lower concentrations",
+              "Perform patch test before full application",
+              "Monitor copper levels with extended use"
+            ]
+          },
+          "expected_timelines": {
+            "initial_effects": "2-4 weeks for skin improvements",
+            "significant_improvement": "6-8 weeks for anti-aging effects",
+            "maximum_benefits": "12-16 weeks for full regenerative effects",
+            "maintenance_required": "Ongoing use needed to maintain benefits"
+          },
+          "monitoring_requirements": {
+            "baseline_assessment": [
+              "Skin condition evaluation",
+              "Hair density measurement",
+              "Copper levels"
+            ],
+            "ongoing_monitoring": [
+              "Monthly skin assessments",
+              "Photo documentation",
+              "Side effect monitoring"
+            ],
+            "safety_monitoring": [
+              "Copper levels every 3 months with injections",
+              "Liver function if long-term use"
+            ]
+          },
+          "scientific_references": [
+            {
+              "title": "The copper-binding peptide GHK-Cu in skin aging and wound healing",
+              "authors": "Pickart L, Vasquez-Soltero JM, Margolina A",
+              "journal": "Journal of Aging Research & Clinical Practice",
+              "year": 2015,
+              "key_finding": "Demonstrates significant anti-aging and wound healing properties"
+            }
+          ],
+          "functional_medicine_approach": {
+            "root_cause_focus": "Addresses cellular aging processes and oxidative damage",
+            "integrative_protocols": "Combines with antioxidant therapy, collagen support, and healthy aging protocols",
+            "biomarker_optimization": "Improves skin elasticity, collagen density, and cellular repair markers"
+          },
+          "cost_considerations": {},
+          "created_at": "2025-08-07T16:28:01.176000"
+        }
+      ]
+    },
+    "peptides_database": {
+      "count": 60,
+      "sample_data": [
+        {
+          "name": "Semaglutide",
+          "category": "Weight Management",
+          "indications": [
+            "Type 2 Diabetes Mellitus",
+            "Obesity Management"
+          ],
+          "mechanism_of_action": "GLP-1 receptor agonist that enhances glucose-dependent insulin secretion, suppresses glucagon release, delays gastric emptying, and promotes satiety through central nervous system pathways.",
+          "evidence_level": "Level 1A evidence with multiple RCTs showing 15-20% weight reduction and HbA1c reduction of 1.5-2.0%",
+          "regulatory_status": "FDA approved for T2DM and chronic weight management",
+          "complete_dosing_schedule": {
+            "standard_protocol": "0.25mg weekly \u00d7 4 weeks \u2192 0.5mg weekly \u00d7 4 weeks \u2192 1.0mg weekly (maintenance)",
+            "dosing_range": "0.25mg - 2.4mg weekly",
+            "frequency": "Once weekly",
+            "route": "Subcutaneous injection",
+            "reconstitution": "Pre-filled pen, no reconstitution required"
+          },
+          "administration_techniques": {
+            "technique": "Subcutaneous injection using 90-degree angle with provided pen device",
+            "sites": [
+              "Abdomen (preferred)",
+              "Thigh",
+              "Upper arm"
+            ],
+            "storage": "Refrigerate 36-46\u00b0F (2-8\u00b0C). Room temperature max 28 days.",
+            "preparation": "Remove from refrigerator 15-30 minutes before injection. Check for particles/discoloration.",
+            "timing": "Same day each week, any time of day, with or without food"
+          },
+          "safety_profile": {
+            "contraindications": [
+              "Personal/family history of medullary thyroid carcinoma",
+              "Multiple Endocrine Neoplasia syndrome type 2",
+              "Severe gastrointestinal disease",
+              "Type 1 diabetes (relative contraindication)"
+            ],
+            "side_effects": [
+              "Nausea (most common, typically transient)",
+              "Vomiting, diarrhea, constipation",
+              "Abdominal pain, headache",
+              "Fatigue, dizziness",
+              "Injection site reactions"
+            ],
+            "monitoring_required": [
+              "Body weight and BMI monthly",
+              "Blood glucose and HbA1c quarterly",
+              "Lipid panel every 6 months",
+              "Kidney function (eGFR, creatinine)",
+              "Amylase/lipase if abdominal symptoms"
+            ]
+          },
+          "expected_timelines": {
+            "onset": "Weight loss begins within 2-4 weeks",
+            "peak_effects": "Maximum weight loss at 60-68 weeks",
+            "duration": "Effects maintain with continued use",
+            "full_therapeutic_effect": "12-16 weeks for full therapeutic effect"
+          },
+          "scientific_references": [
+            "Wilding JPH, et al. Once-Weekly Semaglutide in Adults with Overweight or Obesity. NEJM. 2021;384(11):989-1002.",
+            "Davies M, et al. Semaglutide 2\u00b74 mg once a week in adults with overweight or obesity, and type 2 diabetes (STEP 2). Lancet. 2021;397(10278):971-984.",
+            "Rubino D, et al. Effect of Continued Weekly Subcutaneous Semaglutide vs Placebo on Weight Loss Maintenance. JAMA. 2021;325(14):1414-1425."
+          ]
+        },
+        {
+          "name": "Tirzepatide",
+          "category": "Weight Management",
+          "indications": [
+            "Type 2 Diabetes Mellitus",
+            "Obesity Management"
+          ],
+          "mechanism_of_action": "Dual GIP/GLP-1 receptor agonist providing superior glycemic control and weight loss through enhanced insulin sensitivity, delayed gastric emptying, and central appetite suppression.",
+          "evidence_level": "Level 1A evidence with RCTs showing up to 22.5% weight reduction and superior efficacy to semaglutide",
+          "regulatory_status": "FDA approved for T2DM and chronic weight management",
+          "complete_dosing_schedule": {
+            "standard_protocol": "2.5mg weekly \u00d7 4 weeks \u2192 5mg weekly \u00d7 4 weeks \u2192 7.5mg weekly \u2192 10mg-15mg weekly (maintenance)",
+            "dosing_range": "2.5mg - 15mg weekly",
+            "frequency": "Once weekly",
+            "route": "Subcutaneous injection",
+            "reconstitution": "Pre-filled pen, no reconstitution required"
+          },
+          "administration_techniques": {
+            "technique": "Subcutaneous injection with pre-filled pen device",
+            "sites": [
+              "Abdomen",
+              "Thigh",
+              "Upper arm"
+            ],
+            "storage": "Refrigerate 36-46\u00b0F (2-8\u00b0C)",
+            "preparation": "Allow to reach room temperature before injection",
+            "timing": "Same day each week, with or without food"
+          },
+          "safety_profile": {
+            "contraindications": [
+              "Personal/family history of medullary thyroid carcinoma",
+              "Multiple Endocrine Neoplasia syndrome type 2",
+              "Severe gastrointestinal disease"
+            ],
+            "side_effects": [
+              "Nausea, vomiting, diarrhea",
+              "Decreased appetite",
+              "Constipation",
+              "Abdominal pain",
+              "Injection site reactions"
+            ],
+            "monitoring_required": [
+              "Body weight monthly",
+              "HbA1c quarterly",
+              "Kidney function",
+              "Lipase if symptoms"
+            ]
+          },
+          "expected_timelines": {
+            "onset": "Weight loss within 2-4 weeks",
+            "peak_effects": "Maximum weight loss at 72 weeks",
+            "duration": "Sustained with continued use",
+            "full_therapeutic_effect": "16-20 weeks for maximum benefit"
+          },
+          "scientific_references": [
+            "Jastreboff AM, et al. Tirzepatide Once Weekly for the Treatment of Obesity. NEJM. 2022;387(3):205-216.",
+            "Frias JP, et al. Tirzepatide versus Semaglutide Once Weekly in Patients with Type 2 Diabetes. NEJM. 2021;385(6):503-515."
+          ]
+        },
+        {
+          "name": "AOD-9604",
+          "category": "Weight Management",
+          "indications": [
+            "Fat Loss",
+            "Body Composition Improvement"
+          ],
+          "mechanism_of_action": "Modified fragment of human growth hormone (hGH) that retains the fat-reducing effects without growth-promoting effects. Stimulates lipolysis and inhibits lipogenesis.",
+          "evidence_level": "Level 2B evidence showing significant fat loss, particularly in abdominal region, with minimal side effects",
+          "regulatory_status": "Human GRAS status in USA, investigational use",
+          "complete_dosing_schedule": {
+            "standard_protocol": "300-400mcg daily in morning, fasted state",
+            "dosing_range": "300-500mcg daily",
+            "frequency": "Once daily",
+            "route": "Subcutaneous injection",
+            "reconstitution": "Reconstitute with bacteriostatic water"
+          },
+          "administration_techniques": {
+            "technique": "Subcutaneous injection at 45-degree angle",
+            "sites": [
+              "Abdomen",
+              "Thigh"
+            ],
+            "storage": "Refrigerate after reconstitution, stable 30 days",
+            "preparation": "Gentle reconstitution, avoid vigorous shaking",
+            "timing": "Morning administration, 30 minutes before first meal"
+          },
+          "safety_profile": {
+            "contraindications": [
+              "Pregnancy, breastfeeding",
+              "Active cancer"
+            ],
+            "side_effects": [
+              "Generally well-tolerated",
+              "Some users report headache, fatigue",
+              "Injection site reactions"
+            ],
+            "monitoring_required": [
+              "Body composition changes",
+              "Weight loss progress",
+              "General health markers"
+            ]
+          },
+          "expected_timelines": {
+            "onset": "Initial fat loss effects within 2-3 weeks",
+            "peak_effects": "Maximum benefits at 12-16 weeks",
+            "duration": "Typically cycled 12-16 weeks with 4-week breaks",
+            "full_therapeutic_effect": "12-16 weeks for sustained results"
+          },
+          "scientific_references": [
+            "Heffernan MA, et al. The effects of human GH and its lipolytic fragment on lipid metabolism. Endocrinology. 2001;142(9):3887-97.",
+            "Ng FM, et al. Growth hormone fragment 176-191 stimulates lipolysis. Biochem Biophys Res Commun. 2000;279(1):77-81."
+          ]
+        }
+      ]
+    }
+  },
+  "count_analysis": {
+    "homepage_protocols": 60,
+    "enhanced_library": 59,
+    "peptides_database": 60,
+    "expected_peptides": 60,
+    "expected_protocols": 87
+  },
+  "findings": [
+    "Homepage API reports 60 protocols",
+    "\u26a0\ufe0f  DISCREPANCY: Expected 87 protocols, found 60",
+    "Enhanced library contains 59 PROTOCOL entries (has dosing schedules)",
+    "Enhanced library contains 59 PEPTIDE entries (has sequences)",
+    "Peptides database contains 60 entries with PROTOCOL information",
+    "\u2705 MATCH: Found expected 60 peptides in comprehensive database",
+    "\u2705 CONFIRMED: Peptides database has expected 60 peptides",
+    "\u274c DISCREPANCY: Homepage shows 60 protocols, expected 87",
+    "\u2705 CONFIRMED: Enhanced Library contains PROTOCOL data (dosing schedules, administration)",
+    "\ud83d\udd0d FINDING: Enhanced Library contains BOTH peptide data AND protocol data",
+    "\ud83d\udca1 HYPOTHESIS: Enhanced Library entries are comprehensive peptide protocols"
+  ],
+  "recommendations": [
+    "Need to find the correct data source for 87 protocols",
+    "Enhanced Library appears to be the protocol source, not just peptides",
+    "INVESTIGATE: Check if ENHANCED_CLINICAL_PEPTIDES should be expanded to 87 entries",
+    "INVESTIGATE: Check if there are additional protocol sources not being counted",
+    "INVESTIGATE: Verify if user's expectation of 87 protocols is correct",
+    "CONSIDER: Maybe protocols include combinations, variations, or different dosing protocols"
+  ]
+}

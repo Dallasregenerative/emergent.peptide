@@ -1,0 +1,89 @@
+{
+  "protocol_id": "a586d5c3-0aab-44d2-8f85-c44b5db475c4",
+  "recommended_peptides": [
+    "BPC-157",
+    "TB-500"
+  ],
+  "dosing_schedule": {
+    "BPC-157": "250mcg daily subcutaneous",
+    "TB-500": "2mg twice weekly subcutaneous"
+  },
+  "medical_conditions": [
+    "chronic pain",
+    "tissue repair"
+  ],
+  "symptoms": [
+    "joint pain",
+    "slow healing"
+  ],
+  "treatment_duration": "8 weeks",
+  "monitoring_requirements": [
+    "weekly pain assessment",
+    "monthly progress photos"
+  ],
+  "practitioner_notes": "Patient responding well to tissue repair protocol",
+  "protocol_number": "PPA-2025-1867E508",
+  "encrypted_dob": "gAAAAABookm3PBeDEinXEMdDWjqevYARSHwp82Oqjj4wWCylvarlvghyzI806WPSeJTlpoaqxdFs4Y5shRnnoBqk4JgnJpaukg==",
+  "anonymized_at": "2025-08-17T21:29:27.858037+00:00",
+  "is_anonymized": true,
+  "original_patient_id": null,
+  "practitioner_feedback": {
+    "effectiveness_rating": 4,
+    "safety_rating": 5,
+    "notes": "Excellent response to BPC-157, minimal side effects",
+    "feedback_date": "2025-08-17T21:29:27.858067+00:00",
+    "feedback_id": "cbe7a2a0-a580-4a81-b09b-625b9de86d6f"
+  },
+  "learning_metadata": {
+    "created_for_learning": "2025-08-17T21:29:27.858101+00:00",
+    "version": "1.0",
+    "learning_status": "active",
+    "reference_count": 3,
+    "last_referenced": "2025-08-17T21:29:27.985262+00:00"
+  },
+  "protocol_updates": [
+    {
+      "update_id": "24252799-585e-4acd-9d55-d6b74b594241",
+      "update_timestamp": "2025-08-17T21:29:27.928346+00:00",
+      "update_type": "efficacy_feedback",
+      "update_content": {
+        "type": "efficacy_feedback",
+        "content": {
+          "outcome": "excellent_response",
+          "timeline": "4_weeks",
+          "side_effects": "none_reported",
+          "patient_satisfaction": 5,
+          "practitioner_notes": "Patient achieved 80% pain reduction in 4 weeks"
+        },
+        "source": "practitioner"
+      },
+      "source": "practitioner"
+    },
+    {
+      "update_id": "7ee0d7fe-15dd-4ec6-8615-fda5ba5ce3e1",
+      "update_timestamp": "2025-08-17T21:29:27.985561+00:00",
+      "update_type": "feedback",
+      "update_content": {
+        "type": "feedback",
+        "feedback": {
+          "rating": 5,
+          "accuracy_assessment": "highly_accurate",
+          "identified_inaccuracies": [],
+          "suggested_improvements": [
+            {
+              "type": "general_improvement",
+              "description": "Consider adding patient education materials",
+              "priority": "low"
+            }
+          ],
+          "practitioner_id": "PRACT_002",
+          "additional_notes": "Excellent protocol, very effective for this patient population",
+          "feedback_timestamp": "2025-08-17T21:29:27.985068+00:00",
+          "feedback_version": "1.0"
+        },
+        "source": "practitioner"
+      },
+      "source": "practitioner"
+    }
+  ]
+}

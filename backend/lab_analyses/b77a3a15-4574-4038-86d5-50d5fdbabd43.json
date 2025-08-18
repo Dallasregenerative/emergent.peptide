@@ -1,0 +1,175 @@
+{
+  "analysis_id": "b77a3a15-4574-4038-86d5-50d5fdbabd43",
+  "analyzed_at": "2025-08-18T01:49:02.850672+00:00",
+  "patient_info": {
+    "gender": "male",
+    "age": "35"
+  },
+  "lab_results": {
+    "glucose": {
+      "lab_name": "glucose",
+      "value": 150.0,
+      "unit": "mg/dL",
+      "status": "critical_high",
+      "risk_level": "critical",
+      "interpretation": "Diabetic range - requires medical attention",
+      "normal_range": [
+        70,
+        99
+      ],
+      "reference_info": {
+        "normal": [
+          70,
+          99
+        ],
+        "low_concern": null,
+        "high_concern": [
+          100,
+          125
+        ]
+      }
+    },
+    "testosterone_total": {
+      "lab_name": "testosterone_total",
+      "value": 200.0,
+      "unit": "ng/dL",
+      "status": "low",
+      "risk_level": "low",
+      "interpretation": "Low testosterone - may benefit from optimization",
+      "normal_range": [
+        300,
+        1000
+      ],
+      "reference_info": {
+        "normal": [
+          300,
+          1000
+        ],
+        "low_concern": null,
+        "high_concern": null
+      }
+    },
+    "crp": {
+      "lab_name": "crp",
+      "value": 5.0,
+      "unit": "mg/L",
+      "status": "high",
+      "risk_level": "low",
+      "interpretation": "Moderate inflammation - cardiovascular risk",
+      "normal_range": [
+        0,
+        3.0
+      ],
+      "reference_info": {
+        "normal": [
+          0,
+          3.0
+        ],
+        "low_concern": null,
+        "high_concern": [
+          3.1,
+          10.0
+        ]
+      }
+    },
+    "vitamin_d": {
+      "lab_name": "vitamin_d",
+      "value": 15.0,
+      "unit": "ng/mL",
+      "status": "critical_low",
+      "risk_level": "critical",
+      "interpretation": "Vitamin D deficiency - supplementation needed",
+      "normal_range": [
+        30,
+        100
+      ],
+      "reference_info": {
+        "normal": [
+          30,
+          100
+        ],
+        "low_concern": [
+          20,
+          29
+        ],
+        "high_concern": null
+      }
+    },
+    "hemoglobin_a1c": {
+      "lab_name": "hemoglobin_a1c",
+      "value": 6.8,
+      "unit": "%",
+      "status": "critical_high",
+      "risk_level": "critical",
+      "interpretation": "Diabetic - medical management required",
+      "normal_range": [
+        4.0,
+        5.6
+      ],
+      "reference_info": {
+        "normal": [
+          4.0,
+          5.6
+        ],
+        "low_concern": null,
+        "high_concern": [
+          5.7,
+          6.4
+        ]
+      }
+    }
+  },
+  "risk_factors": [
+    {
+      "lab": "glucose",
+      "issue": "Diabetic range - requires medical attention",
+      "risk_level": "critical"
+    },
+    {
+      "lab": "vitamin_d",
+      "issue": "Vitamin D deficiency - supplementation needed",
+      "risk_level": "critical"
+    },
+    {
+      "lab": "hemoglobin_a1c",
+      "issue": "Diabetic - medical management required",
+      "risk_level": "critical"
+    }
+  ],
+  "recommendations": [
+    {
+      "category": "metabolic",
+      "priority": "critical",
+      "recommendation": "Consider metabolic peptides like semaglutide or tirzepatide for glucose optimization",
+      "rationale": "Elevated glucose indicates insulin resistance - GLP-1 agonists highly effective"
+    },
+    {
+      "category": "nutritional",
+      "priority": "high",
+      "recommendation": "Vitamin D3 supplementation (2000-5000 IU daily) recommended",
+      "rationale": "Vitamin D deficiency affects immune function and bone health"
+    },
+    {
+      "category": "metabolic",
+      "priority": "critical",
+      "recommendation": "Diabetes management protocol needed - consider GLP-1 agonists and lifestyle interventions",
+      "rationale": "Elevated HbA1c indicates poor glucose control over 2-3 months"
+    }
+  ],
+  "peptide_considerations": [
+    {
+      "peptide_class": "GLP-1 agonists",
+      "consideration": "Excellent candidates - may provide significant glucose improvement",
+      "monitoring": "Monitor glucose levels closely during initiation"
+    }
+  ],
+  "overall_risk": {
+    "overall_risk_level": "critical",
+    "risk_score": 60.0,
+    "critical_findings": 3,
+    "high_risk_findings": 0,
+    "moderate_risk_findings": 0,
+    "total_labs_analyzed": 5
+  },
+  "summary": "Critical findings identified in 3 lab value(s). Immediate medical attention recommended. Additional 0 findings require monitoring and intervention."
+}
