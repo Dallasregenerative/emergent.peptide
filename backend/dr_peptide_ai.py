@@ -1390,19 +1390,16 @@ Please provide a structured monitoring plan including:
 Format as a clear, actionable monitoring plan.
 """
 
-            messages = [
-                {"role": "system", "content": self.system_prompt},
-                {"role": "user", "content": monitoring_prompt}
-            ]
+            messages = [UserMessage(content=monitoring_prompt)]
             
-            response = await self.openai_client.chat.completions.create(
-                model="gpt-4",
+            response = await self.llm_client.chat_async(
                 messages=messages,
+                system_prompt=self.system_prompt,
                 temperature=0.3,
                 max_tokens=2000
             )
             
-            monitoring_plan = response.choices[0].message.content
+            monitoring_plan = response.content
             
             return {
                 "success": True,
