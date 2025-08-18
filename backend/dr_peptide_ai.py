@@ -1220,25 +1220,24 @@ Please provide specific, actionable recommendations while emphasizing the import
             # Create lab interpretation prompt
             lab_prompt = self._create_lab_interpretation_prompt(lab_data, patient_context)
             
-            messages = [
-                {"role": "system", "content": self.system_prompt + "\n\nFocus on functional medicine lab interpretation with optimal ranges, not just reference ranges."},
-                {"role": "user", "content": lab_prompt}
-            ]
+            messages = [UserMessage(content=lab_prompt)]
             
-            response = await self.openai_client.chat.completions.create(
-                model="gpt-4",
+            system_content = self.system_prompt + "\n\nFocus on functional medicine lab interpretation with optimal ranges, not just reference ranges."
+            
+            response = await self.llm_client.chat_async(
                 messages=messages,
+                system_prompt=system_content,
                 temperature=0.2,  # Very low temperature for lab interpretation
                 max_tokens=2000
             )
             
-            interpretation = response.choices[0].message.content
+            interpretation = response.content
             
             return {
                 "success": True,
                 "interpretation": interpretation,
                 "timestamp": datetime.utcnow().isoformat(),
-                "tokens_used": response.usage.total_tokens if response.usage else 0
+                "tokens_used": getattr(response, 'usage', {}).get('total_tokens', 0)
             }
             
         except Exception as e:
