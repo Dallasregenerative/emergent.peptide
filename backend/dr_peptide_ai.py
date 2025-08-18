@@ -207,42 +207,37 @@ Generate precise clinical protocols matching major medical center documentation 
                     enhanced_context += self.get_protocol_summary(protocol)
                     enhanced_context += "\n" + "="*50 + "\n"
                 
-            # Build messages for OpenAI
-            messages = [
-                {"role": "system", "content": self.system_prompt + enhanced_context}
-            ]
+            # Build messages for LlmChat
+            messages = []
+            
+            # Add system message
+            system_content = self.system_prompt + enhanced_context
             
             # Add conversation history
             for msg in conversation_history[-8:]:  # Keep last 8 messages for context (reduced due to larger system prompt)
-                messages.append({
-                    "role": msg.get("role", "user"),
-                    "content": msg.get("content", "")
-                })
+                if msg.get("role") == "user":
+                    messages.append(UserMessage(content=msg.get("content", "")))
+                # Note: LlmChat handles system messages differently, so we'll include them in the system prompt
             
             # Add current message
-            messages.append({
-                "role": "user",
-                "content": message
-            })
+            messages.append(UserMessage(content=message))
             
             # Get AI response with enhanced parameters
-            response = await self.openai_client.chat.completions.create(
-                model="gpt-4",
+            response = await self.llm_client.chat_async(
                 messages=messages,
+                system_prompt=system_content,
                 temperature=0.6,  # Slightly lower for more consistent medical advice
                 max_tokens=2000,  # Increased for more comprehensive responses
-                presence_penalty=0.1,
-                frequency_penalty=0.1
             )
             
-            ai_response = response.choices[0].message.content
+            ai_response = response.content
             
             return {
                 "success": True,
                 "response": ai_response,
                 "enhanced_protocols_used": [p['name'] for p in relevant_protocols] if relevant_protocols else [],
                 "timestamp": datetime.utcnow().isoformat(),
-                "tokens_used": response.usage.total_tokens if response.usage else 0
+                "tokens_used": getattr(response, 'usage', {}).get('total_tokens', 0)
             }
             
         except Exception as e:
