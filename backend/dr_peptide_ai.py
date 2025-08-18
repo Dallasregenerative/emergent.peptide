@@ -493,14 +493,11 @@ Generate protocols that match the clinical detail and precision found in peer-re
 
             messages = [UserMessage(text=protocol_prompt)]
 
-            response = await self.llm_client.chat_async(
-                messages=messages,
-                system_prompt=system_content,
-                temperature=0.1,  # Very low temperature for maximum clinical precision
-                max_tokens=4000,  # Increased token limit for comprehensive protocols
-            )
-
-            ai_response = response.content
+            comprehensive_prompt = f"{system_content}\n\nPROTOCOL REQUEST:\n{protocol_prompt}"
+            
+            response = await self.llm_client.send_message(UserMessage(text=comprehensive_prompt))
+            
+            ai_response = response
             
             # Try to parse as JSON, fallback to text analysis
             try:
