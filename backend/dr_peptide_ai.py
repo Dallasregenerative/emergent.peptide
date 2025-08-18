@@ -1324,19 +1324,16 @@ Please provide:
 Keep the explanation clear and educational for both practitioners and patients.
 """
 
-            messages = [
-                {"role": "system", "content": self.system_prompt},
-                {"role": "user", "content": rationale_prompt}
-            ]
+            messages = [UserMessage(content=rationale_prompt)]
             
-            response = await self.openai_client.chat.completions.create(
-                model="gpt-4",
+            response = await self.llm_client.chat_async(
                 messages=messages,
+                system_prompt=self.system_prompt,
                 temperature=0.4,
                 max_tokens=1500
             )
             
-            rationale = response.choices[0].message.content
+            rationale = response.content
             
             return {
                 "success": True,
