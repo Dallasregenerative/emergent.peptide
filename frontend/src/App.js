@@ -2688,9 +2688,45 @@ const PeptideProtocolsApp = () => {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
+              {/* Mechanism of Action */}
+              {generatedProtocol.mechanism_of_action && (
+                <div>
+                  <h3 className="font-semibold mb-4 flex items-center gap-2">
+                    <Zap className="h-5 w-5 text-blue-600" />
+                    Mechanism of Action
+                  </h3>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    {generatedProtocol.mechanism_of_action.primary_mechanisms && (
+                      <Card className="p-4">
+                        <h4 className="font-medium mb-2">Primary Mechanisms</h4>
+                        <ul className="text-sm text-gray-600 space-y-1">
+                          {generatedProtocol.mechanism_of_action.primary_mechanisms.map((mechanism, i) => (
+                            <li key={i}>• {mechanism}</li>
+                          ))}
+                        </ul>
+                      </Card>
+                    )}
+                    {generatedProtocol.mechanism_of_action.molecular_targets && (
+                      <Card className="p-4">
+                        <h4 className="font-medium mb-2">Molecular Targets</h4>
+                        <ul className="text-sm text-gray-600 space-y-1">
+                          {generatedProtocol.mechanism_of_action.molecular_targets.map((target, i) => (
+                            <li key={i}>• {target}</li>
+                          ))}
+                        </ul>
+                      </Card>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* Primary Peptides */}
               {generatedProtocol.primary_peptides && (
                 <div>
-                  <h3 className="font-semibold mb-4">Primary Peptides</h3>
+                  <h3 className="font-semibold mb-4 flex items-center gap-2">
+                    <Pill className="h-5 w-5 text-green-600" />
+                    Primary Peptides
+                  </h3>
                   <div className="grid gap-4">
                     {generatedProtocol.primary_peptides.map((peptide, index) => (
                       <Card key={index} className="p-4 bg-blue-50">
@@ -2710,6 +2746,201 @@ const PeptideProtocolsApp = () => {
                 </div>
               )}
 
+              {/* Detailed Dosing Protocols */}
+              {generatedProtocol.detailed_dosing_protocols && (
+                <div>
+                  <h3 className="font-semibold mb-4 flex items-center gap-2">
+                    <Calculator className="h-5 w-5 text-purple-600" />
+                    Detailed Dosing Protocols
+                  </h3>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    {generatedProtocol.detailed_dosing_protocols.standard_dosing && (
+                      <Card className="p-4">
+                        <h4 className="font-medium mb-2">Standard Dosing</h4>
+                        <div className="text-sm space-y-2">
+                          {Object.entries(generatedProtocol.detailed_dosing_protocols.standard_dosing).map(([peptide, dosing]) => (
+                            <div key={peptide} className="border-l-2 border-blue-300 pl-3">
+                              <div className="font-medium">{peptide}</div>
+                              <div className="text-gray-600">{typeof dosing === 'object' ? 
+                                `${dosing.dose} ${dosing.frequency} ${dosing.route}` : 
+                                dosing}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </Card>
+                    )}
+                    {generatedProtocol.detailed_dosing_protocols.injection_techniques && (
+                      <Card className="p-4">
+                        <h4 className="font-medium mb-2">Injection Techniques</h4>
+                        <div className="text-sm text-gray-600">
+                          {typeof generatedProtocol.detailed_dosing_protocols.injection_techniques === 'object' ?
+                            Object.entries(generatedProtocol.detailed_dosing_protocols.injection_techniques).map(([key, value]) => (
+                              <div key={key}><span className="font-medium">{key}:</span> {Array.isArray(value) ? value.join(', ') : value}</div>
+                            )) :
+                            generatedProtocol.detailed_dosing_protocols.injection_techniques
+                          }
+                        </div>
+                      </Card>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* Stacking Combinations */}
+              {generatedProtocol.stacking_combinations && (
+                <div>
+                  <h3 className="font-semibold mb-4 flex items-center gap-2">
+                    <Layers className="h-5 w-5 text-orange-600" />
+                    Stacking Combinations
+                  </h3>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    {generatedProtocol.stacking_combinations.recommended_stacks && (
+                      <Card className="p-4">
+                        <h4 className="font-medium mb-2">Recommended Stacks</h4>
+                        <ul className="text-sm text-gray-600 space-y-1">
+                          {generatedProtocol.stacking_combinations.recommended_stacks.map((stack, i) => (
+                            <li key={i}>• {stack}</li>
+                          ))}
+                        </ul>
+                      </Card>
+                    )}
+                    {generatedProtocol.stacking_combinations.synergistic_effects && (
+                      <Card className="p-4">
+                        <h4 className="font-medium mb-2">Synergistic Effects</h4>
+                        <ul className="text-sm text-gray-600 space-y-1">
+                          {generatedProtocol.stacking_combinations.synergistic_effects.map((effect, i) => (
+                            <li key={i}>• {effect}</li>
+                          ))}
+                        </ul>
+                      </Card>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* Comprehensive Contraindications */}
+              {generatedProtocol.comprehensive_contraindications && (
+                <div>
+                  <h3 className="font-semibold mb-4 flex items-center gap-2">
+                    <AlertTriangle className="h-5 w-5 text-red-600" />
+                    Contraindications & Safety
+                  </h3>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    {generatedProtocol.comprehensive_contraindications.absolute_contraindications && (
+                      <Card className="p-4 border-red-200">
+                        <h4 className="font-medium mb-2 text-red-800">Absolute Contraindications</h4>
+                        <ul className="text-sm text-gray-600 space-y-1">
+                          {generatedProtocol.comprehensive_contraindications.absolute_contraindications.map((contra, i) => (
+                            <li key={i}>• {contra}</li>
+                          ))}
+                        </ul>
+                      </Card>
+                    )}
+                    {generatedProtocol.comprehensive_contraindications.drug_interactions && (
+                      <Card className="p-4 border-yellow-200">
+                        <h4 className="font-medium mb-2 text-yellow-800">Drug Interactions</h4>
+                        <ul className="text-sm text-gray-600 space-y-1">
+                          {generatedProtocol.comprehensive_contraindications.drug_interactions.map((interaction, i) => (
+                            <li key={i}>• {interaction}</li>
+                          ))}
+                        </ul>
+                      </Card>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* Monitoring Requirements */}
+              {generatedProtocol.monitoring_requirements && (
+                <div>
+                  <h3 className="font-semibold mb-4 flex items-center gap-2">
+                    <Activity className="h-5 w-5 text-indigo-600" />
+                    Monitoring Requirements
+                  </h3>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    {generatedProtocol.monitoring_requirements.baseline_labs && (
+                      <Card className="p-4">
+                        <h4 className="font-medium mb-2">Baseline Labs</h4>
+                        <ul className="text-sm text-gray-600 space-y-1">
+                          {generatedProtocol.monitoring_requirements.baseline_labs.map((lab, i) => (
+                            <li key={i}>• {lab}</li>
+                          ))}
+                        </ul>
+                      </Card>
+                    )}
+                    {generatedProtocol.monitoring_requirements.monitoring_schedule && (
+                      <Card className="p-4">
+                        <h4 className="font-medium mb-2">Monitoring Schedule</h4>
+                        <div className="text-sm text-gray-600 space-y-2">
+                          {Object.entries(generatedProtocol.monitoring_requirements.monitoring_schedule).map(([timepoint, tests]) => (
+                            <div key={timepoint} className="border-l-2 border-indigo-300 pl-3">
+                              <div className="font-medium">{timepoint}</div>
+                              <div>{Array.isArray(tests) ? tests.join(', ') : tests}</div>
+                            </div>
+                          ))}
+                        </div>
+                      </Card>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* Evidence-Based Support */}
+              {generatedProtocol.evidence_based_support && (
+                <div>
+                  <h3 className="font-semibold mb-4 flex items-center gap-2">
+                    <BookOpen className="h-5 w-5 text-teal-600" />
+                    Evidence-Based Support
+                  </h3>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    {generatedProtocol.evidence_based_support.clinical_trials && (
+                      <Card className="p-4">
+                        <h4 className="font-medium mb-2">Clinical Trials</h4>
+                        <ul className="text-sm text-gray-600 space-y-1">
+                          {generatedProtocol.evidence_based_support.clinical_trials.map((trial, i) => (
+                            <li key={i}>• {trial}</li>
+                          ))}
+                        </ul>
+                      </Card>
+                    )}
+                    {generatedProtocol.evidence_based_support.pubmed_links && (
+                      <Card className="p-4">
+                        <h4 className="font-medium mb-2">PubMed References</h4>
+                        <ul className="text-sm text-gray-600 space-y-1">
+                          {generatedProtocol.evidence_based_support.pubmed_links.map((link, i) => (
+                            <li key={i}>• <a href={link} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{link}</a></li>
+                          ))}
+                        </ul>
+                      </Card>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* Outcome Statistics */}
+              {generatedProtocol.outcome_statistics && (
+                <div>
+                  <h3 className="font-semibold mb-4 flex items-center gap-2">
+                    <TrendingUp className="h-5 w-5 text-green-600" />
+                    Expected Outcomes & Statistics
+                  </h3>
+                  <div className="grid md:grid-cols-3 gap-4">
+                    {Object.entries(generatedProtocol.outcome_statistics).map(([metric, value]) => (
+                      <Card key={metric} className="p-4 text-center">
+                        <div className="text-2xl font-bold text-green-600 mb-1">
+                          {value === "Not available" ? "N/A" : value}
+                        </div>
+                        <div className="text-sm text-gray-600 capitalize">
+                          {metric.replace(/_/g, ' ')}
+                        </div>
+                      </Card>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Supporting Peptides */}
               {generatedProtocol.supporting_peptides && generatedProtocol.supporting_peptides.length > 0 && (
                 <div>
                   <h3 className="font-semibold mb-4">Supporting Peptides</h3>
@@ -2724,6 +2955,7 @@ const PeptideProtocolsApp = () => {
                 </div>
               )}
 
+              {/* Expected Timeline */}
               {generatedProtocol.expected_outcomes && (
                 <div>
                   <h3 className="font-semibold mb-4">Expected Timeline</h3>
@@ -2731,7 +2963,7 @@ const PeptideProtocolsApp = () => {
                     {Object.entries(generatedProtocol.expected_outcomes).map(([timeframe, outcome]) => (
                       <div key={timeframe} className="flex gap-4">
                         <Badge variant="outline">{timeframe}</Badge>
-                        <span className="text-sm text-gray-600">{outcome}</span>
+                        <span className="text-sm text-gray-600">{Array.isArray(outcome) ? outcome.join(', ') : outcome}</span>
                       </div>
                     ))}
                   </div>
