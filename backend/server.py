@@ -289,6 +289,7 @@ async def _create_enhanced_protocol_structure(ai_analysis: Dict[str, Any], asses
         "protocol_id": str(uuid.uuid4()),
         "patient_assessment_id": assessment.id,
         "created_at": datetime.utcnow().isoformat(),
+        "last_updated": datetime.utcnow().isoformat(),
         
         # Enhanced AI Analysis
         "ai_analysis": ai_analysis.get("analysis", ""),
@@ -296,6 +297,69 @@ async def _create_enhanced_protocol_structure(ai_analysis: Dict[str, Any], asses
         
         # Enhanced Protocol Components
         "enhanced_protocols": enhanced_protocols,
+        
+        # UNIFORM PROTOCOL SECTIONS (as per requirements)
+        "mechanism_of_action": {
+            "primary_mechanisms": ai_analysis.get("mechanisms", []),
+            "molecular_targets": ai_analysis.get("molecular_targets", []),
+            "physiological_effects": ai_analysis.get("physiological_effects", []),
+            "clinical_applications": ai_analysis.get("clinical_indications", [])
+        },
+        
+        "detailed_dosing_protocols": {
+            "standard_dosing": ai_analysis.get("standard_dosing", {}),
+            "personalized_dosing": ai_analysis.get("personalized_dosing", {}),
+            "administration_routes": ai_analysis.get("administration_routes", []),
+            "cycling_protocols": ai_analysis.get("cycling_protocols", {}),
+            "dose_adjustments": ai_analysis.get("dose_adjustments", []),
+            "injection_techniques": ai_analysis.get("injection_techniques", {})
+        },
+        
+        "stacking_combinations": {
+            "recommended_stacks": ai_analysis.get("peptide_stacks", []),
+            "synergistic_effects": ai_analysis.get("synergistic_effects", []),
+            "timing_protocols": ai_analysis.get("stacking_timing", {}),
+            "contraindicated_combinations": ai_analysis.get("avoid_combinations", [])
+        },
+        
+        "comprehensive_contraindications": {
+            "absolute_contraindications": ai_analysis.get("absolute_contraindications", []),
+            "relative_contraindications": ai_analysis.get("relative_contraindications", []),
+            "medication_interactions": ai_analysis.get("drug_interactions", []),
+            "lab_value_restrictions": ai_analysis.get("lab_contraindications", []),
+            "condition_specific": ai_analysis.get("condition_contraindications", [])
+        },
+        
+        "monitoring_requirements": {
+            "baseline_labs": ai_analysis.get("baseline_labs", []),
+            "follow_up_schedule": ai_analysis.get("monitoring_schedule", {}),
+            "safety_parameters": ai_analysis.get("safety_monitoring", []),
+            "efficacy_tracking": ai_analysis.get("efficacy_monitoring", []),
+            "adverse_event_monitoring": ai_analysis.get("adverse_event_monitoring", [])
+        },
+        
+        "evidence_based_support": {
+            "pubmed_references": ai_analysis.get("pubmed_links", []),
+            "clinical_trials": ai_analysis.get("clinical_studies", []),
+            "systematic_reviews": ai_analysis.get("systematic_reviews", []),
+            "evidence_grades": ai_analysis.get("evidence_levels", []),
+            "doi_links": ai_analysis.get("doi_references", [])
+        },
+        
+        "outcome_statistics": {
+            "success_rate": ai_analysis.get("success_rate", "Not available"),
+            "patient_satisfaction": ai_analysis.get("patient_satisfaction", "Not available"),
+            "time_to_response": ai_analysis.get("response_time", "Not available"),
+            "side_effect_rate": ai_analysis.get("side_effects_rate", "Not available"),
+            "discontinuation_rate": ai_analysis.get("discontinuation_rate", "Not available")
+        },
+        
+        "practitioner_feedback": {
+            "practitioner_votes": ai_analysis.get("practitioner_votes", {}),
+            "clinical_experience": ai_analysis.get("practitioner_experience", []),
+            "modification_suggestions": ai_analysis.get("practitioner_modifications", []),
+            "safety_reports": ai_analysis.get("practitioner_safety_reports", [])
+        },
         
         # Functional Medicine Analysis (Enhanced)
         "functional_medicine_analysis": {
@@ -321,13 +385,6 @@ async def _create_enhanced_protocol_structure(ai_analysis: Dict[str, Any], asses
             "cost_breakdown": ai_analysis.get("cost_breakdown", []),
             "insurance_considerations": ai_analysis.get("insurance_guidance", ""),
             "cost_optimization": ai_analysis.get("cost_saving_suggestions", [])
-        },
-        
-        # Evidence-Based Support
-        "scientific_support": {
-            "key_references": ai_analysis.get("scientific_references", []),
-            "evidence_levels": ai_analysis.get("evidence_assessment", []),
-            "clinical_studies": ai_analysis.get("supporting_studies", [])
         },
         
         # Enhanced Timeline & Outcomes
