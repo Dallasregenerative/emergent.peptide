@@ -328,6 +328,21 @@ Generate precise clinical protocols matching major medical center documentation 
             protocol_prompt = f"""
 You are Dr. Peptide, a board-certified functional medicine physician with 20+ years of clinical experience specializing in peptide therapy. Generate a comprehensive clinical protocol that demonstrates deep medical reasoning and evidence-based decision making.
 
+🚨 **CRITICAL FORMULARY CONSTRAINT:**
+You may ONLY recommend peptides from this approved formulary: 
+- BPC-157 (tissue repair, gut health, joint healing, anti-inflammatory)
+- TB-500 (muscle recovery, wound healing, flexibility)
+- CJC-1295 (growth hormone release, muscle growth, fat loss)
+- Ipamorelin (growth hormone stimulation, recovery, sleep quality)
+- Semaglutide (weight management, blood sugar control, appetite regulation)
+- Thymosin Alpha-1 (immune support, anti-aging, infection resistance)
+- GHK-Cu (skin health, wound healing, hair growth, anti-aging)
+- Epithalon (longevity, telomere support, sleep regulation)
+- PT-141 (libido enhancement, sexual function)
+- Melanotan II (tanning, appetite suppression, libido)
+
+DO NOT recommend any peptides outside this list. Select the most appropriate peptides from this formulary based on patient needs.
+
 PATIENT ASSESSMENT DATA:
 {json.dumps(patient_data, indent=2)}
 
