@@ -326,6 +326,7 @@ async def _create_enhanced_protocol_structure(ai_analysis: Dict[str, Any], asses
         "comprehensive_contraindications": {
             "absolute_contraindications": ai_analysis.get("absolute_contraindications", []),
             "relative_contraindications": ai_analysis.get("relative_contraindications", []),
+            "drug_interactions": ai_analysis.get("drug_interactions", []),
             "medication_interactions": ai_analysis.get("drug_interactions", []),
             "lab_value_restrictions": ai_analysis.get("lab_contraindications", []),
             "condition_specific": ai_analysis.get("condition_contraindications", [])
