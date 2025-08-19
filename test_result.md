@@ -285,9 +285,9 @@ backend:
 
   - task: "Enhanced Clinical Detail AI Protocol Generation"
     implemented: true
-    working: true
+    working: false
     file: "/app/backend/dr_peptide_ai.py"
-    stuck_count: 1
+    stuck_count: 2
     priority: "critical"
     needs_retesting: false
     status_history:
