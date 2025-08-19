@@ -346,7 +346,58 @@ DO NOT recommend any peptides outside this list. Select the most appropriate pep
 PATIENT ASSESSMENT DATA:
 {json.dumps(patient_data, indent=2)}
 
-🏥 **CLINICAL EXCELLENCE REQUIREMENTS:**
+**REQUIRED JSON RESPONSE STRUCTURE:**
+```json
+{{
+    "clinical_reasoning": "Comprehensive clinical analysis...",
+    "root_causes": ["Primary root cause 1", "Primary root cause 2"],
+    "recommended_peptides": ["BPC-157", "Thymosin Alpha-1"],
+    "primary_peptides": [
+        {{
+            "name": "BPC-157",
+            "clinical_indication": "Chronic fatigue syndrome with cellular repair focus",
+            "evidence_basis": "Sikiric et al. (2020): 65% improvement in tissue health",
+            "personalized_dosing": "250 mcg twice daily based on patient weight",
+            "frequency": "Twice daily: 8AM and 8PM",
+            "administration": "27G needle, subcutaneous injection, site rotation",
+            "monitoring": "Baseline CBC/CMP, Week 2 assessment, Week 8 review",
+            "expected_benefits": "50% improvement in energy levels by week 4",
+            "duration": "6-week initial course",
+            "cost": "BPC-157 5mg: $45, supplies: $8, monthly: $53"
+        }}
+    ],
+    "supporting_peptides": [
+        {{
+            "name": "Thymosin Alpha-1",
+            "indication": "Immune system support",
+            "dosing": "1.5mg twice weekly"
+        }}
+    ],
+    "safety_analysis": {{
+        "contraindications": ["None identified"],
+        "monitoring": ["Standard medical supervision"]
+    }},
+    "cost_analysis": {{
+        "monthly": "Estimated $50-80 monthly investment",
+        "annual": "Annual cost $600-900"
+    }},
+    "timeline_expectations": {{
+        "weeks_1_2": ["Protocol initiation", "Early cellular response"],
+        "weeks_3_6": ["Clinical improvement phase"],
+        "months_2_plus": ["Sustained therapeutic benefits"]
+    }},
+    "evidence_summary": "Protocol based on peer-reviewed research and clinical guidelines",
+    "patient_education": ["Protocol adherence guidelines", "Safety monitoring", "Expected outcomes"],
+    "success": true
+}}
+```
+
+**CRITICAL PEPTIDE SELECTION RULES:**
+1. ONLY select peptides from the approved formulary list above
+2. Do NOT recommend: Methylene Blue, Phosphatidylserine, Humanin, PEA, or any other peptides
+3. Choose 1-2 primary peptides that best match patient needs
+4. Include supporting peptides if clinically appropriate
+5. Provide detailed clinical reasoning for each selection
 
 **PATHOPHYSIOLOGY ANALYSIS:**
 - Analyze the root causes of patient's conditions at cellular/molecular level
