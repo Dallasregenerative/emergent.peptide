@@ -2667,8 +2667,18 @@ const PeptideProtocolsApp = () => {
 
         <Card>
           <CardHeader>
-            <CardTitle>Protocol Summary</CardTitle>
-            <CardDescription>Comprehensive functional medicine approach tailored for your health goals</CardDescription>
+            <CardTitle>
+              {generatedProtocol?.ai_analysis ? 
+                "Your Personalized Protocol" : 
+                "Protocol Generated"
+              }
+            </CardTitle>
+            <CardDescription>
+              {generatedProtocol?.clinical_reasoning || 
+               generatedProtocol?.ai_analysis ||
+               "Comprehensive functional medicine approach tailored for your health goals"
+              }
+            </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
               {generatedProtocol.primary_peptides && (
