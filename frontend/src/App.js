@@ -242,44 +242,74 @@ const PeptideProtocolsApp = () => {
   };
 
   const generateFunctionalProtocol = async () => {
-    console.log('🔍 Generate protocol called, assessmentId:', assessmentId);
-    console.log('🔍 Current generatedProtocol state:', generatedProtocol);
-    console.log('🔍 Current view:', currentView);
-    
     if (!assessmentId) {
-      alert('Please complete the assessment first. Assessment ID not found.');
-      console.error('❌ No assessment ID available');
+      alert('Please complete the assessment first');
       return;
     }
 
+    setLoading(true);
+    console.log('🔄 Starting protocol generation for assessment:', assessmentId);
+    
     try {
-      setLoading(true);
-      console.log('🚀 Calling protocol generation with ID:', assessmentId);
-      console.log('🚀 API URL:', `${API}/generate-functional-protocol/${assessmentId}`);
+      console.log('📤 Making API call to generate protocol...');
       
-      const response = await axios.post(`${API}/generate-functional-protocol/${assessmentId}`);
+      // Set longer timeout for protocol generation (3 minutes) and add progress feedback
+      const timeoutMs = 180000; // 3 minutes
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+      
+      // Show progress messages to user
+      let progressMessage = "Generating your personalized protocol...";
+      setProtocolProgress(progressMessage);
+      
+      const progressInterval = setInterval(() => {
+        const messages = [
+          "Analyzing your health assessment...",
+          "Selecting optimal peptide protocols...", 
+          "Calculating personalized dosing...",
+          "Generating clinical recommendations...",
+          "Finalizing your comprehensive protocol..."
+        ];
+        const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+        setProtocolProgress(randomMessage);
+      }, 10000); // Update every 10 seconds
+      
+      const response = await axios.post(`${API}/generate-functional-protocol/${assessmentId}`, {}, {
+        signal: controller.signal,
+        timeout: timeoutMs
+      });
+      
+      clearTimeout(timeoutId);
+      clearInterval(progressInterval);
+      
       console.log('✅ Protocol generation response received:', response.status);
-      console.log('✅ Response data keys:', Object.keys(response.data));
-      console.log('✅ Full response data:', response.data);
+      console.log('📊 Response data structure:', Object.keys(response.data));
       
       if (response.data && response.data.protocol) {
         console.log('✅ Setting generated protocol:', response.data.protocol);
         setGeneratedProtocol(response.data.protocol);
         console.log('✅ Setting view to protocol');
         setCurrentView('protocol');
+        setProtocolProgress(null);
         console.log('✅ State updates complete');
       } else {
         console.error('❌ No protocol in response data');
-        alert('Error: No protocol data received');
+        setProtocolProgress(null);
+        alert('Error: No protocol data received from server. Please try again.');
       }
-      
     } catch (error) {
       console.error('❌ Protocol generation error:', error);
-      console.error('❌ Error response:', error.response?.data);
-      alert(`Error generating protocol: ${error.response?.data?.detail || error.message}`);
+      setProtocolProgress(null);
+      
+      if (error.name === 'AbortError') {
+        alert('Protocol generation is taking longer than expected. Please try again or contact support if this persists.');
+      } else if (error.code === 'ECONNABORTED' || error.message.includes('timeout')) {
+        alert('Protocol generation timed out. Our servers are processing your request - please try again in a few minutes.');
+      } else {
+        alert(`Error generating protocol: ${error.response?.data?.detail || error.message}`);
+      }
     } finally {
       setLoading(false);
-      console.log('🔧 Loading set to false');
     }
   };
 
