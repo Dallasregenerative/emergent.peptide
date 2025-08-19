@@ -192,7 +192,7 @@ const PeptideProtocolsApp = () => {
       
       const response = await axios.post(`${API}/assessment/multi-step${assessmentId ? `?assessment_id=${assessmentId}` : ''}`, {
         step,
-        data
+        assessment_data: data
       });
       
       console.log('Assessment step save response:', response.data);
