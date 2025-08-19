@@ -560,8 +560,10 @@ Generate protocols that match the clinical detail and precision found in peer-re
 
             messages = [UserMessage(text=protocol_prompt)]
 
-            comprehensive_prompt = f"{system_content}\n\nPROTOCOL REQUEST:\n{protocol_prompt}"
+            # OPTIMIZED: Use single comprehensive AI call instead of multiple calls
+            comprehensive_prompt = f"{self.system_prompt}\n\n{protocol_prompt}"
             
+            self.logger.info("Making optimized single AI call for protocol generation...")
             response = await self.llm_client.send_message(UserMessage(text=comprehensive_prompt))
             
             ai_response = response
