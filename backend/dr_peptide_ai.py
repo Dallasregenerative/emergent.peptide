@@ -571,7 +571,18 @@ Generate protocols that match the clinical detail and precision found in peer-re
                 self.logger.info(f"Parsing AI response of length: {len(ai_response)}")
                 self.logger.info(f"AI response first 200 chars: {ai_response[:200]}")
                 
-                protocol_data = json.loads(ai_response)
+                # Clean up markdown code blocks that wrap JSON
+                cleaned_response = ai_response.strip()
+                if cleaned_response.startswith("```json"):
+                    cleaned_response = cleaned_response[7:]  # Remove ```json
+                if cleaned_response.startswith("```"):
+                    cleaned_response = cleaned_response[3:]   # Remove ```
+                if cleaned_response.endswith("```"):
+                    cleaned_response = cleaned_response[:-3]  # Remove trailing ```
+                
+                self.logger.info(f"Cleaned response first 200 chars: {cleaned_response[:200]}")
+                
+                protocol_data = json.loads(cleaned_response)
                 protocol_data["success"] = True
                 
                 self.logger.info(f"JSON parsing successful. Keys: {list(protocol_data.keys())}")
