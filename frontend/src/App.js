@@ -151,8 +151,13 @@ const PeptideProtocolsApp = () => {
     };
     setAssessment(updatedAssessment);
     
-    // Auto-save after each change
-    autoSave(updatedAssessment, currentStep, assessmentId);
+    // Debounced auto-save - only save after user stops typing
+    if (autoSaveTimeoutRef.current) {
+      clearTimeout(autoSaveTimeoutRef.current);
+    }
+    autoSaveTimeoutRef.current = setTimeout(() => {
+      autoSave(updatedAssessment, currentStep, assessmentId);
+    }, 1000); // Wait 1 second after user stops typing
   };
 
   const handleLifestyleFactorChange = (factor, value) => {
@@ -165,8 +170,13 @@ const PeptideProtocolsApp = () => {
     };
     setAssessment(updatedAssessment);
     
-    // Auto-save after lifestyle factor change
-    autoSave(updatedAssessment, currentStep, assessmentId);
+    // Debounced auto-save
+    if (autoSaveTimeoutRef.current) {
+      clearTimeout(autoSaveTimeoutRef.current);
+    }
+    autoSaveTimeoutRef.current = setTimeout(() => {
+      autoSave(updatedAssessment, currentStep, assessmentId);
+    }, 1000);
   };
 
   const addToListField = (field, value) => {
