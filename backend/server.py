@@ -339,6 +339,8 @@ async def _create_enhanced_protocol_structure(ai_analysis: Dict[str, Any], asses
         },
         
         "evidence_based_support": {
+            "pubmed_links": ai_analysis.get("pubmed_links", []),
+            "clinical_studies": ai_analysis.get("clinical_studies", []),
             "pubmed_references": ai_analysis.get("pubmed_links", []),
             "clinical_trials": ai_analysis.get("clinical_studies", []),
             "systematic_reviews": ai_analysis.get("systematic_reviews", []),
