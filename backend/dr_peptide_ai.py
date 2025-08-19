@@ -568,8 +568,16 @@ Generate protocols that match the clinical detail and precision found in peer-re
             
             # Try to parse as JSON, fallback to text analysis
             try:
+                self.logger.info(f"Parsing AI response of length: {len(ai_response)}")
+                self.logger.info(f"AI response first 200 chars: {ai_response[:200]}")
+                
                 protocol_data = json.loads(ai_response)
                 protocol_data["success"] = True
+                
+                self.logger.info(f"JSON parsing successful. Keys: {list(protocol_data.keys())}")
+                if 'primary_peptides' in protocol_data:
+                    peptide_names = [p.get('name', 'Unknown') for p in protocol_data['primary_peptides']]
+                    self.logger.info(f"Original AI recommended peptides: {peptide_names}")
                 
                 # ENFORCE FORMULARY COMPLIANCE: Replace non-approved peptides
                 approved_peptides = ["BPC-157", "TB-500", "CJC-1295", "Ipamorelin", "Semaglutide", "Thymosin Alpha-1", "GHK-Cu", "Epithalon", "PT-141", "Melanotan II"]
