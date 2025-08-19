@@ -12,7 +12,7 @@ import { Badge } from "./components/ui/badge";
 import { Separator } from "./components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs";
 import { Progress } from "./components/ui/progress";
-import { AlertCircle, Brain, FileText, User, Zap, Upload, Search, BookOpen, Download, CheckCircle, XCircle, Clock, MessageCircle, Stethoscope, FlaskConical, Activity, Shield, Users, Network, Award, TrendingUp, Eye, Lock, Star, AlertTriangle, Filter, Menu, X } from "lucide-react";
+import { AlertCircle, Brain, FileText, User, Zap, Upload, Search, BookOpen, Download, CheckCircle, XCircle, Clock, MessageCircle, Stethoscope, FlaskConical, Activity, Shield, Users, Network, Award, TrendingUp, Eye, Lock, Star, AlertTriangle, Filter, Menu, X, Calculator, Pill, Layers } from "lucide-react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart, Bar, PieChart, Pie, Cell, AreaChart, Area, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from 'recharts';
 import { format, parseISO, subDays, startOfWeek, endOfWeek } from 'date-fns';
 import { Alert, AlertDescription } from "./components/ui/alert";
