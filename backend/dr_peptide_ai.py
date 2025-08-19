@@ -25,7 +25,6 @@ class DrPeptideAI:
         )
         self.enhanced_protocols = ENHANCED_CLINICAL_PEPTIDES
         self.system_prompt = self._create_enhanced_system_prompt()
-        self.logger = logging.getLogger(__name__)
         
     def _get_enhanced_protocol_data(self) -> str:
         """Generate comprehensive protocol data from enhanced clinical database"""
@@ -329,76 +328,10 @@ Generate precise clinical protocols matching major medical center documentation 
             protocol_prompt = f"""
 You are Dr. Peptide, a board-certified functional medicine physician with 20+ years of clinical experience specializing in peptide therapy. Generate a comprehensive clinical protocol that demonstrates deep medical reasoning and evidence-based decision making.
 
-🚨 **CRITICAL FORMULARY CONSTRAINT:**
-You may ONLY recommend peptides from this approved formulary: 
-- BPC-157 (tissue repair, gut health, joint healing, anti-inflammatory)
-- TB-500 (muscle recovery, wound healing, flexibility)
-- CJC-1295 (growth hormone release, muscle growth, fat loss)
-- Ipamorelin (growth hormone stimulation, recovery, sleep quality)
-- Semaglutide (weight management, blood sugar control, appetite regulation)
-- Thymosin Alpha-1 (immune support, anti-aging, infection resistance)
-- GHK-Cu (skin health, wound healing, hair growth, anti-aging)
-- Epithalon (longevity, telomere support, sleep regulation)
-- PT-141 (libido enhancement, sexual function)
-- Melanotan II (tanning, appetite suppression, libido)
-
-DO NOT recommend any peptides outside this list. Select the most appropriate peptides from this formulary based on patient needs.
-
 PATIENT ASSESSMENT DATA:
 {json.dumps(patient_data, indent=2)}
 
-**REQUIRED JSON RESPONSE STRUCTURE:**
-```json
-{{
-    "clinical_reasoning": "Comprehensive clinical analysis...",
-    "root_causes": ["Primary root cause 1", "Primary root cause 2"],
-    "recommended_peptides": ["BPC-157", "Thymosin Alpha-1"],
-    "primary_peptides": [
-        {{
-            "name": "BPC-157",
-            "clinical_indication": "Chronic fatigue syndrome with cellular repair focus",
-            "evidence_basis": "Sikiric et al. (2020): 65% improvement in tissue health",
-            "personalized_dosing": "250 mcg twice daily based on patient weight",
-            "frequency": "Twice daily: 8AM and 8PM",
-            "administration": "27G needle, subcutaneous injection, site rotation",
-            "monitoring": "Baseline CBC/CMP, Week 2 assessment, Week 8 review",
-            "expected_benefits": "50% improvement in energy levels by week 4",
-            "duration": "6-week initial course",
-            "cost": "BPC-157 5mg: $45, supplies: $8, monthly: $53"
-        }}
-    ],
-    "supporting_peptides": [
-        {{
-            "name": "Thymosin Alpha-1",
-            "indication": "Immune system support",
-            "dosing": "1.5mg twice weekly"
-        }}
-    ],
-    "safety_analysis": {{
-        "contraindications": ["None identified"],
-        "monitoring": ["Standard medical supervision"]
-    }},
-    "cost_analysis": {{
-        "monthly": "Estimated $50-80 monthly investment",
-        "annual": "Annual cost $600-900"
-    }},
-    "timeline_expectations": {{
-        "weeks_1_2": ["Protocol initiation", "Early cellular response"],
-        "weeks_3_6": ["Clinical improvement phase"],
-        "months_2_plus": ["Sustained therapeutic benefits"]
-    }},
-    "evidence_summary": "Protocol based on peer-reviewed research and clinical guidelines",
-    "patient_education": ["Protocol adherence guidelines", "Safety monitoring", "Expected outcomes"],
-    "success": true
-}}
-```
-
-**CRITICAL PEPTIDE SELECTION RULES:**
-1. ONLY select peptides from the approved formulary list above
-2. Do NOT recommend: Methylene Blue, Phosphatidylserine, Humanin, PEA, or any other peptides
-3. Choose 1-2 primary peptides that best match patient needs
-4. Include supporting peptides if clinically appropriate
-5. Provide detailed clinical reasoning for each selection
+🏥 **CLINICAL EXCELLENCE REQUIREMENTS:**
 
 **PATHOPHYSIOLOGY ANALYSIS:**
 - Analyze the root causes of patient's conditions at cellular/molecular level
@@ -560,91 +493,16 @@ Generate protocols that match the clinical detail and precision found in peer-re
 
             messages = [UserMessage(text=protocol_prompt)]
 
-            # OPTIMIZED: Use single comprehensive AI call instead of multiple calls
-            comprehensive_prompt = f"{self.system_prompt}\n\n{protocol_prompt}"
+            comprehensive_prompt = f"{system_content}\n\nPROTOCOL REQUEST:\n{protocol_prompt}"
             
-            self.logger.info("Making optimized single AI call for protocol generation...")
             response = await self.llm_client.send_message(UserMessage(text=comprehensive_prompt))
             
             ai_response = response
             
             # Try to parse as JSON, fallback to text analysis
             try:
-                self.logger.info(f"Parsing AI response of length: {len(ai_response)}")
-                self.logger.info(f"AI response first 200 chars: {ai_response[:200]}")
-                
-                # Clean up markdown code blocks that wrap JSON
-                cleaned_response = ai_response.strip()
-                if cleaned_response.startswith("```json"):
-                    cleaned_response = cleaned_response[7:]  # Remove ```json
-                if cleaned_response.startswith("```"):
-                    cleaned_response = cleaned_response[3:]   # Remove ```
-                if cleaned_response.endswith("```"):
-                    cleaned_response = cleaned_response[:-3]  # Remove trailing ```
-                
-                self.logger.info(f"Cleaned response first 200 chars: {cleaned_response[:200]}")
-                
-                protocol_data = json.loads(cleaned_response)
+                protocol_data = json.loads(ai_response)
                 protocol_data["success"] = True
-                
-                self.logger.info(f"JSON parsing successful. Keys: {list(protocol_data.keys())}")
-                if 'primary_peptides' in protocol_data:
-                    peptide_names = [p.get('name', 'Unknown') for p in protocol_data['primary_peptides']]
-                    self.logger.info(f"Original AI recommended peptides: {peptide_names}")
-                
-                # ENFORCE FORMULARY COMPLIANCE: Replace non-approved peptides
-                approved_peptides = ["BPC-157", "TB-500", "CJC-1295", "Ipamorelin", "Semaglutide", "Thymosin Alpha-1", "GHK-Cu", "Epithalon", "PT-141", "Melanotan II"]
-                
-                # Condition-based peptide mapping for replacements
-                condition_peptides = {
-                    "fatigue": "BPC-157", "energy": "CJC-1295", "brain fog": "BPC-157",
-                    "recovery": "TB-500", "immune": "Thymosin Alpha-1", "weight": "Semaglutide",
-                    "anti-aging": "Epithalon", "skin": "GHK-Cu", "muscle": "CJC-1295"
-                }
-                
-                # Fix primary peptides
-                if 'primary_peptides' in protocol_data and isinstance(protocol_data['primary_peptides'], list):
-                    for i, peptide in enumerate(protocol_data['primary_peptides']):
-                        if isinstance(peptide, dict) and peptide.get("name") not in approved_peptides:
-                            # Find replacement based on patient conditions
-                            patient_concerns = [str(c).lower() for c in patient_data.get('primary_concerns', [])]
-                            replacement = "BPC-157"  # Default
-                            
-                            for concern in patient_concerns:
-                                for condition, peptide_name in condition_peptides.items():
-                                    if condition in concern:
-                                        replacement = peptide_name
-                                        break
-                                if replacement != "BPC-157":
-                                    break
-                            
-                            self.logger.info(f"Replacing non-formulary peptide '{peptide.get('name')}' with '{replacement}'")
-                            peptide["name"] = replacement
-                            peptide["clinical_indication"] = f"Evidence-based therapy for {', '.join(patient_data.get('primary_concerns', ['health optimization']))}"
-                
-                # Fix supporting peptides
-                if 'supporting_peptides' in protocol_data and isinstance(protocol_data['supporting_peptides'], list):
-                    for i, peptide in enumerate(protocol_data['supporting_peptides']):
-                        if isinstance(peptide, dict) and peptide.get("name") not in approved_peptides:
-                            replacement = "Thymosin Alpha-1"  # Default support peptide  
-                            self.logger.info(f"Replacing non-formulary supporting peptide '{peptide.get('name')}' with '{replacement}'")
-                            peptide["name"] = replacement
-                
-                # Ensure at least one primary peptide exists
-                if not protocol_data.get('primary_peptides') or len(protocol_data['primary_peptides']) == 0:
-                    self.logger.info("No primary peptides found, adding default BPC-157 protocol")
-                    protocol_data['primary_peptides'] = [{
-                        "name": "BPC-157",
-                        "clinical_indication": f"Comprehensive therapy for {', '.join(patient_data.get('primary_concerns', ['health optimization']))}",
-                        "evidence_basis": "Extensive clinical research supporting tissue repair and cellular function",
-                        "personalized_dosing": f"250-300 mcg twice daily, optimized for {patient_data.get('weight', 70)}kg patient",
-                        "frequency": "Twice daily: 8AM and 8PM on empty stomach",
-                        "administration": "Subcutaneous injection with 27G needle, site rotation protocol",
-                        "monitoring": "Baseline CBC/CMP, Week 2 clinical assessment, Week 8 comprehensive review",
-                        "expected_benefits": "≥50% improvement in primary concerns by week 4-6",
-                        "duration": "6-week initial course with reassessment point",
-                        "cost": "BPC-157 5mg: $45, supplies: $8, monthly: $53, annual: $636"
-                    }]
                 
                 # Perform comprehensive safety analysis on generated protocol
                 if 'primary_peptides' in protocol_data:
