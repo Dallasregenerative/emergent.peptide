@@ -334,6 +334,7 @@ async def _create_enhanced_protocol_structure(ai_analysis: Dict[str, Any], asses
         
         "monitoring_requirements": {
             "baseline_labs": ai_analysis.get("baseline_labs", []),
+            "monitoring_schedule": ai_analysis.get("monitoring_schedule", {}),
             "follow_up_schedule": ai_analysis.get("monitoring_schedule", {}),
             "safety_parameters": ai_analysis.get("safety_monitoring", []),
             "efficacy_tracking": ai_analysis.get("efficacy_monitoring", []),
