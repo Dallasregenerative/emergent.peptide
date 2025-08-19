@@ -1020,31 +1020,80 @@ UPLOADED FILES ANALYSIS:
 {chr(10).join([f"- {file.get('filename', 'Unknown')}: {file.get('analysis', {}).get('summary', 'No analysis')}" for file in uploaded_files]) if uploaded_files else "No files uploaded"}
 
 ANALYSIS REQUEST:
-As Dr. Peptide, provide a comprehensive functional medicine analysis including:
+As Dr. Peptide, provide a comprehensive functional medicine analysis in JSON format with the following uniform sections:
 
-1. ROOT CAUSE ANALYSIS: Identify potential underlying causes contributing to the patient's concerns
+1. ROOT CAUSE ANALYSIS: 
+   - root_causes: [List of identified underlying causes]
 
-2. PEPTIDE PROTOCOL RECOMMENDATIONS:
-   - Primary peptides with specific dosing protocols
-   - Supporting peptides if appropriate
+2. MECHANISM OF ACTION:
+   - mechanisms: [Primary mechanisms of recommended peptides]
+   - molecular_targets: [Specific molecular targets]
+   - physiological_effects: [Expected physiological changes]
+   - clinical_indications: [Clinical applications]
+
+3. DETAILED DOSING PROTOCOLS:
+   - standard_dosing: {{peptide_name: {{dose: "X mcg", frequency: "daily/twice daily", route: "subcutaneous"}}}}
+   - personalized_dosing: {{peptide_name: {{weight_based: "X mcg/kg", patient_specific: "details"}}}}
+   - administration_routes: [List of routes: subcutaneous, oral, etc.]
+   - cycling_protocols: {{on_days: X, off_days: Y, cycle_length: "Z weeks"}}
+   - injection_techniques: {{needle_size: "X gauge", injection_sites: [list]}}
+
+4. STACKING COMBINATIONS:
+   - peptide_stacks: [List of recommended combinations with rationale]
+   - synergistic_effects: [Expected synergistic benefits]
+   - stacking_timing: {{morning: [peptides], evening: [peptides]}}
+   - avoid_combinations: [Peptides that should not be combined]
+
+5. COMPREHENSIVE CONTRAINDICATIONS:
+   - absolute_contraindications: [Conditions where peptides are forbidden]
+   - relative_contraindications: [Conditions requiring caution]
+   - drug_interactions: [Specific medication interactions]
+   - lab_contraindications: [Lab values that contraindicate use]
+   - condition_contraindications: [Medical conditions requiring caution]
+
+6. MONITORING REQUIREMENTS:
+   - baseline_labs: [Required baseline laboratory tests]
+   - monitoring_schedule: {{week_2: [tests], month_1: [tests], month_3: [tests]}}
+   - safety_monitoring: [Safety parameters to track]
+   - efficacy_monitoring: [Efficacy measures to track]
+   - adverse_event_monitoring: [Side effects to monitor]
+
+7. EVIDENCE-BASED SUPPORT:
+   - pubmed_links: [PubMed IDs or links to relevant studies]
+   - clinical_studies: [Key clinical trials supporting use]
+   - systematic_reviews: [Relevant systematic reviews]
+   - evidence_levels: [Evidence grade for each recommendation]
+   - doi_references: [DOI links to key papers]
+
+8. OUTCOME STATISTICS:
+   - success_rate: "X% improvement expected"
+   - patient_satisfaction: "X% patient satisfaction rate"
+   - response_time: "Expected response within X weeks"
+   - side_effects_rate: "X% incidence of mild side effects"
+   - discontinuation_rate: "X% discontinuation rate"
+
+9. PEPTIDE PROTOCOL RECOMMENDATIONS:
+   - primary_peptides: [List with detailed protocol for each]
+   - supporting_peptides: [Secondary recommendations]
    - Duration and monitoring recommendations
    - Safety considerations and contraindications
 
-3. INTEGRATIVE APPROACH:
-   - Nutritional recommendations
-   - Lifestyle modifications
-   - Supplement protocols
-   - Monitoring biomarkers
+10. INTEGRATIVE APPROACH:
+    - integrative_recommendations: [Nutritional, lifestyle, supplement protocols]
+    - biomarker_targets: [Monitoring biomarkers]
 
-4. EXPECTED OUTCOMES & TIMELINE:
-   - Short-term improvements (2-4 weeks)
-   - Medium-term goals (8-12 weeks)
-   - Long-term optimization (3-6 months)
+11. EXPECTED OUTCOMES & TIMELINE:
+    - short_term_expectations: [2-4 week improvements]
+    - medium_term_expectations: [8-12 week goals]
+    - long_term_expectations: [3-6 month optimization]
+    - measurement_criteria: [Success metrics]
 
-5. SAFETY & MONITORING:
-   - Required lab monitoring
-   - Warning signs to watch for
-   - When to adjust protocols
+12. SAFETY & MONITORING:
+    - Required lab monitoring
+    - Warning signs to watch for
+    - When to adjust protocols
+
+CRITICAL: Respond with detailed, evidence-based information for each section. Include specific dosing, timing, monitoring schedules, and safety parameters. Reference actual studies when possible.
 
 Please provide specific, actionable recommendations while emphasizing the importance of medical supervision and proper monitoring.
 """
