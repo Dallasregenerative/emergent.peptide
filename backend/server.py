@@ -1111,6 +1111,12 @@ async def generate_functional_medicine_protocol_endpoint(assessment_id: str):
         # Return the uniform sections structure directly (contains all 7 required sections)
         protocol_id = protocol_data.get("protocol_id", str(uuid.uuid4()))
         
+        # Ensure proper serialization by converting datetime objects to strings
+        if "created_at" in protocol_data and isinstance(protocol_data["created_at"], datetime):
+            protocol_data["created_at"] = protocol_data["created_at"].isoformat()
+        if "last_updated" in protocol_data and isinstance(protocol_data["last_updated"], datetime):
+            protocol_data["last_updated"] = protocol_data["last_updated"].isoformat()
+        
         # Save to database with uniform sections structure
         await db.enhanced_protocols.insert_one(protocol_data)
         
