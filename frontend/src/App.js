@@ -54,6 +54,7 @@ const PeptideProtocolsApp = () => {
   const [chatLoading, setChatLoading] = useState(false);
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [accessCode, setAccessCode] = useState('');
+  const [protocolProgress, setProtocolProgress] = useState(null);
   const chatInputRef = useRef(null);
   const fullNameRef = useRef(null);
   const weightRef = useRef(null);
