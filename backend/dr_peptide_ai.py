@@ -25,6 +25,7 @@ class DrPeptideAI:
         )
         self.enhanced_protocols = ENHANCED_CLINICAL_PEPTIDES
         self.system_prompt = self._create_enhanced_system_prompt()
+        self.logger = logging.getLogger(__name__)
         
     def _get_enhanced_protocol_data(self) -> str:
         """Generate comprehensive protocol data from enhanced clinical database"""
