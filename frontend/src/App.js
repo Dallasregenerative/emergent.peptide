@@ -775,11 +775,9 @@ const PeptideProtocolsApp = () => {
                 <div className="space-y-2">
                   <Label htmlFor="patient_name">Full Name *</Label>
                   <Input
-                    ref={fullNameRef}
                     id="patient_name"
                     placeholder="Enter your full name"
                     autoComplete="off"
-                    key="patient_name_input"
                     onChange={(e) => handleAssessmentChange('patient_name', e.target.value)}
                     value={assessment.patient_name || ''}
                   />
@@ -821,13 +819,11 @@ const PeptideProtocolsApp = () => {
                 <div className="space-y-2">
                   <Label>Weight (lbs) *</Label>
                   <Input
-                    ref={weightRef}
                     type="number"
                     placeholder="Weight in pounds"
                     onChange={(e) => handleAssessmentChange('weight', e.target.value)}
                     value={assessment.weight || ''}
                     autoComplete="off"
-                    key="weight_input"
                   />
                 </div>
 
