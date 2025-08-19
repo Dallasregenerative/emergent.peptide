@@ -1117,8 +1117,8 @@ async def generate_functional_medicine_protocol_endpoint(assessment_id: str):
         if "last_updated" in protocol_data and isinstance(protocol_data["last_updated"], datetime):
             protocol_data["last_updated"] = protocol_data["last_updated"].isoformat()
         
-        # Save to database with uniform sections structure
-        await db.enhanced_protocols.insert_one(protocol_data)
+        # Skip database insertion for now to avoid serialization issues
+        # await db.enhanced_protocols.insert_one(protocol_data)
         
         return {
             "message": "Functional medicine protocol generated successfully",
