@@ -316,6 +316,7 @@ async def _create_enhanced_protocol_structure(ai_analysis: Dict[str, Any], asses
         },
         
         "stacking_combinations": {
+            "peptide_stacks": ai_analysis.get("peptide_stacks", []),
             "recommended_stacks": ai_analysis.get("peptide_stacks", []),
             "synergistic_effects": ai_analysis.get("synergistic_effects", []),
             "timing_protocols": ai_analysis.get("stacking_timing", {}),
