@@ -1108,16 +1108,16 @@ async def generate_functional_medicine_protocol_endpoint(assessment_id: str):
         # Generate comprehensive protocol using Dr. Peptide AI
         protocol_data = await generate_functional_medicine_protocol(assessment)
         
-        # Create enhanced protocol object
-        protocol = EnhancedPeptideProtocol(**protocol_data)
+        # Return the uniform sections structure directly (contains all 7 required sections)
+        protocol_id = protocol_data.get("protocol_id", str(uuid.uuid4()))
         
-        # Save to database
-        await db.enhanced_protocols.insert_one(protocol.dict())
+        # Save to database with uniform sections structure
+        await db.enhanced_protocols.insert_one(protocol_data)
         
         return {
             "message": "Functional medicine protocol generated successfully",
-            "protocol_id": protocol.id,
-            "protocol": protocol
+            "protocol_id": protocol_id,
+            "protocol": protocol_data
         }
         
     except Exception as e:
