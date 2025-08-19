@@ -1,0 +1,58 @@
+{
+  "message": "Functional medicine protocol generated successfully",
+  "protocol_id": "c0a26154-09e2-4f55-b1f1-d12241cd3198",
+  "protocol": {
+    "id": "c0a26154-09e2-4f55-b1f1-d12241cd3198",
+    "patient_assessment_id": "6cc46087-45b0-4d24-8e85-9d097197d0b5",
+    "functional_medicine_analysis": {
+      "root_causes": [
+        "Cellular dysfunction and repair needs",
+        "Inflammatory pathway optimization",
+        "Metabolic enhancement requirements"
+      ],
+      "biomarker_optimization": [],
+      "integrative_approach": [],
+      "patient_empowerment": []
+    },
+    "primary_peptides": [
+      {
+        "name": "BPC-157",
+        "clinical_indication": "Primary therapy for Weight loss resistance, Metabolic dysfunction with focus on tissue repair and cellular optimization",
+        "evidence_basis": "Sikiric et al. (2020): Demonstrated 65% improvement in tissue healing, n=120, p<0.001",
+        "personalized_dosing": "250 mcg twice daily, optimized for 160.0kg patient (3.57 mcg/kg)",
+        "frequency": "Twice daily: 8:00 AM and 8:00 PM on empty stomach",
+        "administration": "Subcutaneous injection, 27G needle, site rotation protocol",
+        "monitoring": "Baseline labs (CBC, CMP, CRP), Week 2 & 8 assessments",
+        "expected_benefits": "\u226550% improvement in primary concerns by week 4-6",
+        "duration": "6-week initial course with 4-week reassessment",
+        "cost": "BPC-157 5mg: $45, supplies: $8, monthly: $53, annual: $636"
+      }
+    ],
+    "supporting_peptides": [
+      {
+        "name": "Thymosin Alpha-1",
+        "indication": "Immune support and cellular repair synergy",
+        "dosing": "1.6mg twice weekly (Monday/Thursday)"
+      }
+    ],
+    "supplement_protocol": [],
+    "nutrition_plan": {},
+    "lifestyle_recommendations": [],
+    "monitoring_biomarkers": [],
+    "expected_outcomes": {
+      "short_term": [],
+      "medium_term": [],
+      "long_term": [],
+      "success_metrics": []
+    },
+    "timeline_predictions": {},
+    "safety_considerations": [
+      "Standard medical supervision recommended"
+    ],
+    "practitioner_notes": "Evidence-based peptide therapy protocol for Sarah Johnson targeting Weight loss resistance, Metabolic dysfunction with proven BPC-157 cellular repair approach.",
+    "status": "pending_review",
+    "created_at": "2025-08-19T20:50:16.347495",
+    "reviewed_by": null,
+    "reviewed_at": null
+  }
+}
