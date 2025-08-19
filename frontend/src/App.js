@@ -58,6 +58,7 @@ const PeptideProtocolsApp = () => {
   const chatInputRef = useRef(null);
   const fullNameRef = useRef(null);
   const weightRef = useRef(null);
+  const autoSaveTimeoutRef = useRef(null);
 
   // Feedback System State
   const [showFeedbackChat, setShowFeedbackChat] = useState(false);
