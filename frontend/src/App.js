@@ -146,17 +146,21 @@ const PeptideProtocolsApp = () => {
   };
 
   const handleAssessmentChange = (field, value) => {
-    const updatedAssessment = {
-      ...assessment,
+    // Update state immediately for UI responsiveness
+    setAssessment(prev => ({
+      ...prev,
       [field]: value
-    };
-    setAssessment(updatedAssessment);
+    }));
     
     // Debounced auto-save - only save after user stops typing
     if (autoSaveTimeoutRef.current) {
       clearTimeout(autoSaveTimeoutRef.current);
     }
     autoSaveTimeoutRef.current = setTimeout(() => {
+      const updatedAssessment = {
+        ...assessment,
+        [field]: value
+      };
       autoSave(updatedAssessment, currentStep, assessmentId);
     }, 1000); // Wait 1 second after user stops typing
   };
