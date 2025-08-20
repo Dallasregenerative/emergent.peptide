@@ -11,7 +11,7 @@ import sys
 
 def inspect_protocol_structure():
     """Create a test protocol and inspect its structure"""
-    base_url = "https://peptideai.preview.emergentagent.com"
+    base_url = "https://peptideai-debug.preview.emergentagent.com"
     api_url = f"{base_url}/api"
     
     print("🔍 PROTOCOL STRUCTURE INSPECTION")

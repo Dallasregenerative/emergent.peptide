@@ -7,7 +7,7 @@ import requests
 import json
 
 def debug_protocol_structure():
-    base_url = "https://peptideai.preview.emergentagent.com"
+    base_url = "https://peptideai-debug.preview.emergentagent.com"
     api_url = f"{base_url}/api"
     
     # Create assessment
