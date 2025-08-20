@@ -729,11 +729,11 @@ const PeptideProtocolsApp = () => {
   const AssessmentWizard = () => (
     <div className="max-w-4xl mx-auto p-4 md:p-6 space-y-6 md:space-y-8">
       <div className="text-center space-y-4">
-        <h1 className="text-2xl md:text-4xl font-bold">Bulletproof Protocol Generator</h1>
-        <p className="text-base md:text-lg text-gray-600">Advanced AI-powered peptide therapy protocols with 100% success rate and multiple fallback systems.</p>
+        <h1 className="text-2xl md:text-4xl font-bold">Intelligent Protocol Generator</h1>
+        <p className="text-base md:text-lg text-gray-600">Advanced AI-powered peptide therapy protocols with evidence-based clinical recommendations.</p>
         
         <div className="flex justify-center gap-2 md:gap-4 text-sm">
-          <Badge variant="outline">100% Reliable</Badge>
+          <Badge variant="outline">Evidence-Based</Badge>
           <Badge variant="outline">AI-Powered</Badge>
           <Badge variant="outline">Clinical Grade</Badge>
           {isAutoSaving && <Badge variant="outline" className="bg-blue-50">Auto-Saving...</Badge>}
