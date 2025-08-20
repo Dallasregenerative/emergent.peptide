@@ -241,6 +241,9 @@ backend:
       - working: true
         agent: "testing"
         comment: "✅ TESTED: Dr. Peptide AI service working excellently. Chat system provides comprehensive functional medicine responses. Lab interpretation working with functional medicine approach. Patient case analysis and protocol generation successful. All OpenAI integrations functional."
+      - working: true
+        agent: "testing"
+        comment: "🎯 BACKEND TESTING AFTER FRONTEND FIXES - DR. PEPTIDE AI CHAT SYSTEM (August 19, 2025): ✅ BASIC FUNCTIONALITY: Confirmed working - simple queries successful with comprehensive 3001-character responses containing all relevant keywords (BPC-157, gut health, dosing, inflammatory, tissue repair). ⚠️ COMPLEX QUERIES: Experiencing timeout issues on complex clinical scenarios (30s timeout exceeded), but backend logs show successful LiteLLM completions indicating client-side timeout issue rather than backend failure. ✅ AI INTEGRATION: OpenAI API integration working properly with gpt-4o model. RECOMMENDATION: Basic Dr. Peptide AI functionality confirmed operational, complex query timeout optimization needed for better user experience."
 
   - task: "File Analysis Service"
     implemented: true
