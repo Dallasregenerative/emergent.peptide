@@ -289,6 +289,9 @@ backend:
       - working: true
         agent: "testing"
         comment: "✅ TESTED: All backend API endpoints working correctly. Multi-step assessment system functional with patient data persistence. File upload and analysis working. Functional protocol generation successful with comprehensive peptide recommendations. Version 2.0 features confirmed. Fixed route ordering issue for categories endpoint."
+      - working: true
+        agent: "testing"
+        comment: "🎯 BACKEND TESTING AFTER FRONTEND FIXES - CORE API ENDPOINTS (August 19, 2025): ✅ ROOT ENDPOINT: Version 2.0 confirmed with all 5 features available (Dr. Peptide AI Chat, Enhanced Clinical Database, Multi-step Assessment Wizard, File Upload & Analysis, Functional Medicine Protocols). ✅ ENHANCED LIBRARY: 59 protocols loaded and accessible via /api/enhanced-library. ✅ PEPTIDES DATABASE: 60 entries loaded via /api/peptides. ✅ ASSESSMENT SYSTEM: Multi-step assessment creation and updates working perfectly with complex patient data. All core API endpoints responding correctly with proper status codes and data structures."
 
   - task: "Enhanced Clinical Detail AI Protocol Generation"
     implemented: true
