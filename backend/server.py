@@ -2145,7 +2145,7 @@ async def get_protocol_structured_data(protocol_id: str):
             "@type": "MedicalGuidelineRecommendation",
             "name": f"{protocol['name']} Protocol",
             "description": protocol.get('description', ''),
-            "url": f"https://protocol-debug.preview.emergentagent.com/protocol/{protocol['id']}",
+            "url": f"https://peptideai.preview.emergentagent.com/protocol/{protocol['id']}",
             "medicalSpecialty": "Functional Medicine",
             "guidelineSubject": {
                 "@type": "MedicalCondition",

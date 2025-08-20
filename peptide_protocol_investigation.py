@@ -26,7 +26,7 @@ import os
 from datetime import datetime
 
 # Backend URL from environment
-BACKEND_URL = "https://protocol-debug.preview.emergentagent.com/api"
+BACKEND_URL = "https://peptideai.preview.emergentagent.com/api"
 
 class PeptideProtocolInvestigation:
     def __init__(self):

@@ -9,7 +9,7 @@ import requests
 import json
 
 def inspect_dosing():
-    base_url = "https://protocol-debug.preview.emergentagent.com"
+    base_url = "https://peptideai.preview.emergentagent.com"
     api_url = f"{base_url}/api"
     
     # Create assessment
