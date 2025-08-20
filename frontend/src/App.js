@@ -1048,8 +1048,8 @@ const PeptideProtocolsApp = () => {
                   <Card>
                     <CardContent className="p-4">
                       <h3 className="font-semibold mb-2">Health Goals</h3>
-                      <p><strong>Primary Concerns:</strong> {assessment.primary_concerns.join(', ')}</p>
-                      <p><strong>Goals:</strong> {assessment.health_goals.join(', ')}</p>
+                      <p><strong>Primary Concerns:</strong> {Array.isArray(assessment.primary_concerns) ? assessment.primary_concerns.join(', ') : assessment.primary_concerns || 'None specified'}</p>
+                      <p><strong>Goals:</strong> {Array.isArray(assessment.health_goals) ? assessment.health_goals.join(', ') : assessment.health_goals || 'None specified'}</p>
                     </CardContent>
                   </Card>
                 </div>
