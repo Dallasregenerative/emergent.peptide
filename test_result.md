@@ -125,6 +125,10 @@ user_problem_statement: |
   
   FINAL STATUS: CORE USER JOURNEY RESTORED - USERS CAN NOW COMPLETE ASSESSMENTS AND GENERATE PROTOCOLS
 
+  REGRESSION ISSUES IDENTIFIED (AUGUST 19, 2025):
+  🚨 CURSOR INPUT BUG REGRESSED: Users must reposition cursor after each letter in patient information forms
+  🚨 INCORRECT TERMINOLOGY REGRESSED: "Bulletproof Protocol Generator" terminology returned, should be "Intelligent Protocol Generator"
+
 backend:
   - task: "Content Library Completion & Living Protocol Implementation"
     implemented: true
