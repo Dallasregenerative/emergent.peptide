@@ -145,7 +145,7 @@ const PeptideProtocolsApp = () => {
     }
   };
 
-  const handleAssessmentChange = (field, value) => {
+  const handleAssessmentChange = useCallback((field, value) => {
     // Update state immediately for UI responsiveness
     setAssessment(prev => ({
       ...prev,
@@ -157,13 +157,16 @@ const PeptideProtocolsApp = () => {
       clearTimeout(autoSaveTimeoutRef.current);
     }
     autoSaveTimeoutRef.current = setTimeout(() => {
-      const updatedAssessment = {
-        ...assessment,
-        [field]: value
-      };
-      autoSave(updatedAssessment, currentStep, assessmentId);
+      setAssessment(currentAssessment => {
+        const updatedAssessment = {
+          ...currentAssessment,
+          [field]: value
+        };
+        autoSave(updatedAssessment, currentStep, assessmentId);
+        return currentAssessment; // Don't update state again
+      });
     }, 1000); // Wait 1 second after user stops typing
-  };
+  }, [currentStep, assessmentId]);
 
   const handleLifestyleFactorChange = (factor, value) => {
     const updatedAssessment = {
