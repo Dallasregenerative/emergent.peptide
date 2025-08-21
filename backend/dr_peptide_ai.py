@@ -407,24 +407,15 @@ Provide detailed, evidence-based recommendations that are truly personalized for
             # Convert concerns and goals to lowercase for matching
             all_concerns = ' '.join([str(c).lower() for c in patient_concerns + patient_goals])
             
-            # WEIGHT LOSS OPTIMIZATION - Semaglutide/Tirzepatide for metabolic conditions
+            # WEIGHT LOSS OPTIMIZATION - Semaglutide for metabolic conditions
             if any(keyword in all_concerns for keyword in ['weight', 'fat', 'obese', 'metabolic', 'diabetes', 'glucose']):
-                if any(diabetes_marker in all_concerns for diabetes_marker in ['diabetes', 'glucose', 'insulin']):
-                    primary_peptide = 'Tirzepatide'  # Match dosing calculator case
-                    recommended_peptides = ['Tirzepatide', 'BPC-157']
-                    dosing_info = {
-                        'dose_mcg_kg': 0.25,  # Starting dose for Tirzepatide
-                        'frequency': 'once weekly',
-                        'route': 'subcutaneous'
-                    }
-                else:
-                    primary_peptide = 'Semaglutide'  # Match dosing calculator case
-                    recommended_peptides = ['Semaglutide', 'BPC-157']
-                    dosing_info = {
-                        'dose_mcg_kg': 0.25,  # Starting dose for Semaglutide
-                        'frequency': 'once weekly', 
-                        'route': 'subcutaneous'
-                    }
+                primary_peptide = 'Semaglutide'  # Use Semaglutide for all weight loss cases
+                recommended_peptides = ['Semaglutide', 'BPC-157']
+                dosing_info = {
+                    'dose_mcg_kg': 0.25,  # Starting dose for Semaglutide
+                    'frequency': 'once weekly', 
+                    'route': 'subcutaneous'
+                }
             
             # JOINT PAIN/INJURY RECOVERY - BPC-157 + TB-500 for musculoskeletal healing
             elif any(keyword in all_concerns for keyword in ['joint', 'pain', 'injury', 'arthritis', 'inflammation', 'recovery', 'muscle', 'tendon']):
