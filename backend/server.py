@@ -406,8 +406,8 @@ async def _create_enhanced_protocol_structure(ai_analysis: Dict[str, Any], asses
             "patient_empowerment": ai_analysis.get("education_focus", [])
         },
         
-        # Personalized Recommendations
-        "primary_peptides": ai_analysis.get("primary_peptides", []),
+        # Personalized Recommendations (Fixed: Map from AI analysis)
+        "primary_peptides": _extract_primary_peptides_from_ai_analysis(ai_analysis, assessment),
         "supporting_peptides": ai_analysis.get("supporting_peptides", []),
         
         # Enhanced Safety & Monitoring (Fixed: Convert to List[str])
