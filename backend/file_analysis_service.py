@@ -244,7 +244,7 @@ class FileAnalysisService:
             ]
             
             response = await self.openai_client.chat.completions.create(
-                model="gpt-4",
+                model="gpt-5",
                 messages=messages,
                 temperature=0.2,  # Low temperature for consistent medical analysis
                 max_tokens=2000
