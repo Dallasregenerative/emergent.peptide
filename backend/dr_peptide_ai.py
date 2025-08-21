@@ -372,7 +372,7 @@ Provide detailed, evidence-based recommendations that are truly personalized for
 """
 
             # Get AI-powered analysis
-            ai_response = await self.enhanced_chat(protocol_prompt, [])
+            ai_response = await self.chat_with_dr_peptide(protocol_prompt, [])
             
             if ai_response.get("success"):
                 ai_analysis = ai_response["response"]
