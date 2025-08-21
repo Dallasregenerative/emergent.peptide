@@ -384,10 +384,27 @@ async def _create_enhanced_protocol_structure(ai_analysis: Dict[str, Any], asses
         },
         
         "comprehensive_contraindications": {
-            "absolute_contraindications": ai_protocol.get("comprehensive_contraindications", {}).get("medication_interactions", []),
-            "relative_contraindications": ai_protocol.get("comprehensive_contraindications", {}).get("medical_history_considerations", []),
-            "drug_interactions": ai_protocol.get("comprehensive_contraindications", {}).get("medication_interactions", []),
-            "condition_considerations": ai_protocol.get("comprehensive_contraindications", {}).get("medical_history_considerations", []),
+            "absolute_contraindications": ai_protocol.get("comprehensive_contraindications", {}).get("medication_interactions", []) + [
+                "Active cancer without oncologist approval",
+                "Severe kidney disease (eGFR <30)",
+                "Pregnancy and breastfeeding (most peptides)",
+                "Known hypersensitivity to specific peptides"
+            ],
+            "relative_contraindications": ai_protocol.get("comprehensive_contraindications", {}).get("medical_history_considerations", []) + [
+                "Diabetes - monitor glucose levels closely",
+                "Cardiovascular disease - monitor blood pressure",
+                "Autoimmune conditions - assess case-by-case"
+            ],
+            "drug_interactions": ai_protocol.get("comprehensive_contraindications", {}).get("medication_interactions", []) + [
+                "Anticoagulants - monitor for bleeding risk",
+                "Diabetes medications - monitor glucose levels",
+                "Blood pressure medications - monitor BP"
+            ],
+            "condition_considerations": ai_protocol.get("comprehensive_contraindications", {}).get("medical_history_considerations", []) + [
+                "Liver dysfunction - consider dose reduction",
+                "Kidney dysfunction - adjust dosing frequency",
+                "Thyroid disorders - monitor thyroid function"
+            ],
             "patient_specific_warnings": ai_protocol.get("comprehensive_contraindications", {}).get("patient_specific_warnings", [])
         },
         
