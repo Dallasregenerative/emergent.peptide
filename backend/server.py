@@ -345,9 +345,25 @@ async def _create_enhanced_protocol_structure(ai_analysis: Dict[str, Any], asses
             "standard_dosing": ai_protocol.get("detailed_dosing_protocols", {}).get("primary_peptide", {}),
             "personalized_dosing": ai_analysis.get("personalized_dosing", []),
             "administration_routes": [ai_protocol.get("detailed_dosing_protocols", {}).get("administration", {})],
-            "cycling_protocols": {"frequency": ai_protocol.get("detailed_dosing_protocols", {}).get("primary_peptide", {}).get("frequency", "")},
-            "dose_adjustments": [],
-            "injection_techniques": ai_protocol.get("detailed_dosing_protocols", {}).get("administration", {})
+            "cycling_protocols": {
+                "frequency": ai_protocol.get("detailed_dosing_protocols", {}).get("primary_peptide", {}).get("frequency", ""),
+                "cycle_length": "8-12 weeks",
+                "rest_period": "2-4 weeks",
+                "long_term_protocol": "Consult practitioner for extended use"
+            },
+            "dose_adjustments": [
+                "Start with lowest effective dose",
+                "Titrate based on response and tolerability", 
+                "Monitor for side effects during adjustment",
+                "Consider weight changes for dosing"
+            ],
+            "injection_techniques": {
+                "needle_size": ai_protocol.get("detailed_dosing_protocols", {}).get("administration", {}).get("needle_size", "27-30 gauge"),
+                "injection_sites": ai_protocol.get("detailed_dosing_protocols", {}).get("administration", {}).get("injection_sites", ["abdomen", "thigh"]),
+                "rotation_schedule": "Rotate injection sites to prevent lipodystrophy",
+                "preparation": "Allow peptide to reach room temperature before injection",
+                "technique": "Subcutaneous injection at 45-90 degree angle"
+            }
         },
         
         "stacking_combinations": {
