@@ -275,6 +275,38 @@ def _create_safety_considerations_list(ai_analysis: Dict[str, Any]) -> List[str]
     
     return safety_items
 
+def _extract_primary_peptides_from_ai_analysis(ai_analysis: Dict[str, Any], assessment: PatientAssessment) -> List[Dict[str, Any]]:
+    """Extract primary peptides from AI analysis and format them properly"""
+    primary_peptides_list = []
+    
+    # First, try to get from recommended_peptides
+    recommended_peptides = ai_analysis.get("recommended_peptides", [])
+    if isinstance(recommended_peptides, list):
+        for peptide_name in recommended_peptides:
+            if isinstance(peptide_name, str):
+                primary_peptides_list.append({
+                    "name": peptide_name,
+                    "indication": f"Selected for {', '.join(assessment.primary_concerns)}",
+                    "evidence_basis": ai_analysis.get("clinical_reasoning", "Evidence-based selection"),
+                    "personalized": True
+                })
+    
+    # If no recommended peptides, check personalized dosing
+    if not primary_peptides_list and ai_analysis.get("personalized_dosing"):
+        personalized_dosing = ai_analysis.get("personalized_dosing", [])
+        for dosing_info in personalized_dosing:
+            if isinstance(dosing_info, dict) and dosing_info.get("peptide_name"):
+                primary_peptides_list.append({
+                    "name": dosing_info["peptide_name"],
+                    "indication": f"Personalized therapy for {', '.join(assessment.primary_concerns)}",
+                    "dosage": f"{dosing_info.get('calculated_dose', 'TBD')} {dosing_info.get('unit', 'mcg')}",
+                    "frequency": dosing_info.get("frequency", "as prescribed"),
+                    "route": dosing_info.get("route", "subcutaneous"),
+                    "personalized": True
+                })
+    
+    return primary_peptides_list
+
 async def _create_enhanced_protocol_structure(ai_analysis: Dict[str, Any], assessment: PatientAssessment) -> Dict[str, Any]:
     """Create enhanced protocol structure with clinical database integration"""
     
