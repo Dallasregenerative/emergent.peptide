@@ -491,7 +491,7 @@ Return JSON with this structure:
         openai_client = AsyncOpenAI(api_key=os.environ['OPENAI_API_KEY'])
         
         response = await openai_client.chat.completions.create(
-            model="gpt-4",
+            model="gpt-5",
             messages=[
                 {"role": "system", "content": "Parse functional medicine analysis into structured JSON format."},
                 {"role": "user", "content": parsing_prompt}
