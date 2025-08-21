@@ -529,7 +529,274 @@ class ProgressTrackingService:
         # Sort events by date
         events.sort(key=lambda x: x["date"])
         
-        return events
+    def track_progress(self, patient_id: str, metric_updates: Dict, notes: str = "") -> Dict:
+        """Track patient progress - main method for progress updates"""
+        try:
+            # Find existing tracking record or create new one
+            tracking_id = None
+            for tid, progress in self.patient_progress.items():
+                if progress.patient_id == patient_id:
+                    tracking_id = tid
+                    break
+            
+            if not tracking_id:
+                # Create new tracking if none exists
+                tracking_id = self.create_patient_tracking(
+                    patient_id=patient_id,
+                    protocol_id=metric_updates.get("protocol_id", "unknown"),
+                    initial_metrics=metric_updates
+                )
+                return {
+                    "success": True,
+                    "tracking_id": tracking_id,
+                    "message": "New progress tracking created",
+                    "metrics_updated": len(metric_updates)
+                }
+            else:
+                # Add progress entry to existing tracking
+                success = self.add_progress_entry(tracking_id, metric_updates, notes)
+                return {
+                    "success": success,
+                    "tracking_id": tracking_id,
+                    "message": "Progress updated successfully" if success else "Progress update failed",
+                    "metrics_updated": len(metric_updates)
+                }
+                
+        except Exception as e:
+            return {
+                "success": False,
+                "error": str(e),
+                "tracking_id": None
+            }
+    
+    def get_progress_data(self, patient_id: str) -> Dict:
+        """Get comprehensive progress data for a patient"""
+        try:
+            # Find tracking record for patient
+            tracking_id = None
+            for tid, progress in self.patient_progress.items():
+                if progress.patient_id == patient_id:
+                    tracking_id = tid
+                    break
+            
+            if not tracking_id:
+                return {
+                    "success": False,
+                    "error": "No progress tracking found for patient",
+                    "patient_id": patient_id
+                }
+            
+            # Get dashboard data
+            dashboard_data = self.get_progress_dashboard_data(tracking_id)
+            
+            return {
+                "success": True,
+                "patient_id": patient_id,
+                "tracking_id": tracking_id,
+                "progress_data": dashboard_data
+            }
+            
+        except Exception as e:
+            return {
+                "success": False,
+                "error": str(e),
+                "patient_id": patient_id
+            }
+    
+    def generate_analytics(self, patient_id: str, time_period: str = "30d") -> Dict:
+        """Generate comprehensive analytics for patient progress"""
+        try:
+            # Find tracking record
+            tracking_id = None
+            for tid, progress in self.patient_progress.items():
+                if progress.patient_id == patient_id:
+                    tracking_id = tid
+                    break
+            
+            if not tracking_id:
+                return {
+                    "success": False,
+                    "error": "No progress tracking found for patient"
+                }
+            
+            patient_progress = self.patient_progress[tracking_id]
+            
+            # Calculate time period filter
+            if time_period == "7d":
+                cutoff_date = datetime.now() - timedelta(days=7)
+            elif time_period == "30d":
+                cutoff_date = datetime.now() - timedelta(days=30)
+            elif time_period == "90d":
+                cutoff_date = datetime.now() - timedelta(days=90)
+            else:
+                cutoff_date = datetime.now() - timedelta(days=30)
+            
+            # Filter metrics by time period
+            recent_metrics = [
+                m for m in patient_progress.metrics 
+                if datetime.fromisoformat(m.date) >= cutoff_date
+            ]
+            
+            # Calculate analytics
+            analytics = {
+                "patient_id": patient_id,
+                "time_period": time_period,
+                "analytics_generated": datetime.now().isoformat(),
+                
+                # Progress summary
+                "progress_summary": self._calculate_progress_scores(tracking_id),
+                
+                # Metric trends
+                "metric_trends": self._calculate_metric_trends(recent_metrics),
+                
+                # Milestone progress
+                "milestone_progress": {
+                    "achieved": len(patient_progress.milestones),
+                    "milestones": patient_progress.milestones,
+                    "next_milestone": self._get_upcoming_milestones(tracking_id)
+                },
+                
+                # Data quality
+                "data_quality": {
+                    "total_entries": len(recent_metrics),
+                    "unique_metrics": len(set(m.metric_name for m in recent_metrics)),
+                    "data_consistency": self._calculate_data_consistency(recent_metrics)
+                }
+            }
+            
+            return {
+                "success": True,
+                "analytics": analytics
+            }
+            
+        except Exception as e:
+            return {
+                "success": False,
+                "error": str(e)
+            }
+    
+    def track_milestone(self, patient_id: str, milestone_data: Dict) -> Dict:
+        """Track specific milestone achievement"""
+        try:
+            # Find tracking record
+            tracking_id = None
+            for tid, progress in self.patient_progress.items():
+                if progress.patient_id == patient_id:
+                    tracking_id = tid
+                    break
+            
+            if not tracking_id:
+                return {
+                    "success": False,
+                    "error": "No progress tracking found for patient"
+                }
+            
+            patient_progress = self.patient_progress[tracking_id]
+            
+            # Create milestone record
+            milestone = {
+                "name": milestone_data.get("name", "Custom Milestone"),
+                "description": milestone_data.get("description", "Milestone achieved"),
+                "achieved_date": datetime.now().isoformat(),
+                "milestone_type": milestone_data.get("type", "custom"),
+                "celebration": milestone_data.get("celebration", True),
+                "value": milestone_data.get("value"),
+                "notes": milestone_data.get("notes", "")
+            }
+            
+            # Add to milestones
+            patient_progress.milestones.append(milestone)
+            
+            # Add note about milestone
+            patient_progress.notes.append({
+                "date": datetime.now().isoformat(),
+                "note": f"Milestone achieved: {milestone['name']} - {milestone['description']}",
+                "type": "milestone_achievement"
+            })
+            
+            return {
+                "success": True,
+                "milestone_id": str(len(patient_progress.milestones)),
+                "milestone": milestone,
+                "message": f"Milestone '{milestone['name']}' tracked successfully"
+            }
+            
+        except Exception as e:
+            return {
+                "success": False,
+                "error": str(e)
+            }
+    
+    def _calculate_metric_trends(self, metrics: List[ProgressMetric]) -> Dict:
+        """Calculate trends for each metric"""
+        trends = {}
+        
+        # Group metrics by name
+        metrics_by_name = {}
+        for metric in metrics:
+            if metric.metric_name not in metrics_by_name:
+                metrics_by_name[metric.metric_name] = []
+            metrics_by_name[metric.metric_name].append(metric)
+        
+        # Calculate trend for each metric
+        for metric_name, metric_list in metrics_by_name.items():
+            if len(metric_list) < 2:
+                trends[metric_name] = {
+                    "trend": "insufficient_data",
+                    "change": 0,
+                    "data_points": len(metric_list)
+                }
+                continue
+            
+            # Sort by date
+            sorted_metrics = sorted(metric_list, key=lambda x: x.date)
+            first_value = sorted_metrics[0].value
+            last_value = sorted_metrics[-1].value
+            
+            # Calculate change
+            change = last_value - first_value
+            percent_change = (change / first_value * 100) if first_value != 0 else 0
+            
+            # Determine trend direction
+            if abs(percent_change) < 5:
+                trend = "stable"
+            elif percent_change > 0:
+                trend = "improving" if metric_name != "joint_pain" else "declining"  # joint_pain lower is better
+            else:
+                trend = "declining" if metric_name != "joint_pain" else "improving"
+            
+            trends[metric_name] = {
+                "trend": trend,
+                "change": round(change, 2),
+                "percent_change": round(percent_change, 2),
+                "data_points": len(metric_list),
+                "first_value": first_value,
+                "last_value": last_value
+            }
+        
+        return trends
+    
+    def _calculate_data_consistency(self, metrics: List[ProgressMetric]) -> float:
+        """Calculate data consistency score (0-100)"""
+        if not metrics:
+            return 0
+        
+        # Check for regular data entry patterns
+        dates = [datetime.fromisoformat(m.date) for m in metrics]
+        dates.sort()
+        
+        if len(dates) < 2:
+            return 50  # Neutral score for single entry
+        
+        # Calculate average interval between entries
+        intervals = [(dates[i+1] - dates[i]).days for i in range(len(dates)-1)]
+        avg_interval = sum(intervals) / len(intervals)
+        
+        # Score based on regularity (weekly = 7 days is ideal)
+        ideal_interval = 7
+        consistency_score = max(0, 100 - abs(avg_interval - ideal_interval) * 10)
+        
+        return min(100, consistency_score)
 
 # Global progress tracking service
 progress_service = ProgressTrackingService()
