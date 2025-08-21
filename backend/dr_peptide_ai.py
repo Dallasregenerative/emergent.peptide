@@ -578,11 +578,11 @@ Provide detailed, evidence-based recommendations that are truly personalized for
     def _get_mechanism_for_peptide(self, peptide: str, concerns: list) -> list:
         """Get mechanism of action for specific peptide"""
         mechanisms = {
-            'SEMAGLUTIDE': ['GLP-1 receptor activation', 'Appetite suppression', 'Insulin sensitivity enhancement'],
-            'TIRZEPATIDE': ['GLP-1 and GIP receptor dual activation', 'Superior weight loss efficacy', 'Glycemic control'],
+            'Semaglutide': ['GLP-1 receptor activation', 'Appetite suppression', 'Insulin sensitivity enhancement'],
+            'Tirzepatide': ['GLP-1 and GIP receptor dual activation', 'Superior weight loss efficacy', 'Glycemic control'],
             'BPC-157': ['VEGF pathway activation', 'Tissue repair acceleration', 'Anti-inflammatory effects'],
             'TB-500': ['Actin regulation', 'Cell migration enhancement', 'Tissue regeneration'],
-            'SELANK': ['Anxiolytic effects', 'Cognitive enhancement', 'Nootropic properties'],
+            'Selank': ['Anxiolytic effects', 'Cognitive enhancement', 'Nootropic properties'],
             'CJC-1295': ['Growth hormone release', 'IGF-1 elevation', 'Anti-aging effects'],
         }
         return mechanisms.get(peptide, ['General peptide therapy effects'])
@@ -590,22 +590,22 @@ Provide detailed, evidence-based recommendations that are truly personalized for
     def _get_pathways_for_peptide(self, peptide: str) -> list:
         """Get molecular pathways for peptide"""
         pathways = {
-            'SEMAGLUTIDE': ['GLP-1 receptor signaling', 'cAMP/PKA pathway', 'Glucose homeostasis'],
-            'TIRZEPATIDE': ['Dual incretin receptor signaling', 'Enhanced metabolic regulation'],
+            'Semaglutide': ['GLP-1 receptor signaling', 'cAMP/PKA pathway', 'Glucose homeostasis'],
+            'Tirzepatide': ['Dual incretin receptor signaling', 'Enhanced metabolic regulation'],
             'BPC-157': ['VEGF/angiogenesis pathway', 'NF-κB modulation', 'Growth factor signaling'],
             'TB-500': ['Actin polymerization', 'Wound healing cascade', 'Anti-inflammatory pathways'],
-            'SELANK': ['GABA receptor modulation', 'Neurotransmitter balance', 'Stress response regulation'],
+            'Selank': ['GABA receptor modulation', 'Neurotransmitter balance', 'Stress response regulation'],
             'CJC-1295': ['GHRH receptor activation', 'Growth hormone axis', 'IGF-1 cascade'],
         }
         return pathways.get(peptide, ['Standard peptide pathways'])
     
     def _get_synergy_for_peptides(self, peptides: list, concerns: list) -> list:
         """Get synergistic benefits for peptide combinations"""
-        if 'SEMAGLUTIDE' in peptides and 'BPC-157' in peptides:
+        if 'Semaglutide' in peptides and 'BPC-157' in peptides:
             return ['Enhanced metabolic optimization', 'Improved gut health during weight loss', 'Reduced inflammation']
         elif 'BPC-157' in peptides and 'TB-500' in peptides:
             return ['Superior tissue healing', 'Accelerated recovery', 'Enhanced anti-inflammatory effects']
-        elif 'CJC-1295' in peptides and 'IPAMORELIN' in peptides:
+        elif 'CJC-1295' in peptides and 'Ipamorelin' in peptides:
             return ['Optimized growth hormone release', 'Better sleep quality', 'Enhanced recovery']
         return ['Complementary peptide effects for optimal outcomes']
     
@@ -614,12 +614,12 @@ Provide detailed, evidence-based recommendations that are truly personalized for
         warnings = []
         age = int(patient_data.get('age', 35))
         
-        if peptide in ['SEMAGLUTIDE', 'TIRZEPATIDE']:
+        if peptide in ['Semaglutide', 'Tirzepatide']:
             warnings.append('Monitor for nausea and GI side effects during titration')
             warnings.append('Regular glucose monitoring required')
         elif peptide == 'BPC-157':
             warnings.append('Rotate injection sites to prevent tissue irritation')
-        elif peptide == 'SELANK':
+        elif peptide == 'Selank':
             warnings.append('Nasal irritation possible - use proper administration technique')
         
         if age > 60:
@@ -631,11 +631,11 @@ Provide detailed, evidence-based recommendations that are truly personalized for
         """Get recommended baseline labs for peptide"""
         standard_labs = ['CBC', 'CMP', 'CRP']
         
-        if peptide in ['SEMAGLUTIDE', 'TIRZEPATIDE']:
+        if peptide in ['Semaglutide', 'Tirzepatide']:
             return standard_labs + ['HbA1c', 'Lipid panel', 'Pancreatic enzymes']
         elif peptide == 'BPC-157':
             return standard_labs + ['ESR', 'Vitamin D']
-        elif peptide in ['CJC-1295', 'IPAMORELIN']:
+        elif peptide in ['CJC-1295', 'Ipamorelin']:
             return standard_labs + ['IGF-1', 'Growth hormone']
         
         return standard_labs
@@ -643,8 +643,8 @@ Provide detailed, evidence-based recommendations that are truly personalized for
     def _get_clinical_studies(self, peptide: str) -> list:
         """Get clinical studies for peptide"""
         studies = {
-            'SEMAGLUTIDE': ['STEP trials showing 15% weight loss', 'Cardiovascular outcome trials'],
-            'TIRZEPATIDE': ['SURPASS trials - superior efficacy vs semaglutide', 'SURMOUNT weight loss studies'],
+            'Semaglutide': ['STEP trials showing 15% weight loss', 'Cardiovascular outcome trials'],
+            'Tirzepatide': ['SURPASS trials - superior efficacy vs semaglutide', 'SURMOUNT weight loss studies'],
             'BPC-157': ['Tissue healing studies in animal models', 'Gastric protection research'],
             'TB-500': ['Wound healing acceleration studies', 'Cardiac protection research'],
         }
@@ -652,21 +652,21 @@ Provide detailed, evidence-based recommendations that are truly personalized for
     
     def _get_efficacy_data(self, peptide: str, concerns: list) -> str:
         """Get efficacy data for peptide and patient concerns"""
-        if peptide in ['SEMAGLUTIDE', 'TIRZEPATIDE'] and any('weight' in str(c).lower() for c in concerns):
+        if peptide in ['Semaglutide', 'Tirzepatide'] and any('weight' in str(c).lower() for c in concerns):
             return "Clinical trials show 12-15% body weight reduction over 68 weeks"
         elif peptide == 'BPC-157' and any(word in str(concerns).lower() for word in ['pain', 'injury', 'joint']):
             return "65-85% improvement in tissue healing and pain reduction"
-        elif peptide == 'SELANK' and any('cognitive' in str(c).lower() for c in concerns):
+        elif peptide == 'Selank' and any('cognitive' in str(c).lower() for c in concerns):
             return "Significant cognitive enhancement in 70-80% of subjects"
         return "Positive outcomes expected in 75-85% of similar cases"
     
     def _get_success_probability(self, peptide: str, concerns: list) -> str:
         """Get success probability for peptide therapy"""
-        if peptide in ['SEMAGLUTIDE', 'TIRZEPATIDE']:
+        if peptide in ['Semaglutide', 'Tirzepatide']:
             return "90-95% success rate for weight management goals"
         elif peptide == 'BPC-157':
             return "85-90% success rate for healing and repair"
-        elif peptide == 'SELANK':
+        elif peptide == 'Selank':
             return "80-85% success rate for cognitive enhancement"
         return "80-90% success rate for health optimization"
 
