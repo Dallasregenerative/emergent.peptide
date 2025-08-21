@@ -10,7 +10,7 @@ from typing import Dict, List
 
 class SitemapGenerator:
     def __init__(self):
-        self.base_url = "https://peptideai-debug.preview.emergentagent.com"
+        self.base_url = "https://peptide-protocols-4.preview.emergentagent.com"
         self.last_modified = datetime.utcnow().strftime('%Y-%m-%d')
         
     def generate_sitemap(self) -> str:

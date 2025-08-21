@@ -7,7 +7,7 @@ import requests
 import json
 
 def test_protocol_generation_structure():
-    base_url = "https://peptideai-debug.preview.emergentagent.com"
+    base_url = "https://peptide-protocols-4.preview.emergentagent.com"
     api_url = f"{base_url}/api"
     
     # Create assessment
