@@ -328,10 +328,61 @@ Generate precise clinical protocols matching major medical center documentation 
         try:
             self.logger.info("Generating comprehensive AI-powered protocol...")
             
-            # For now, use the enhanced fallback protocol which includes all uniform sections
-            # This provides immediate comprehensive protocol generation while avoiding AI parsing complexity
-            self.logger.info("Using enhanced fallback protocol with comprehensive uniform sections...")
-            return self._create_enhanced_fallback_protocol(patient_data)
+            # Create comprehensive patient prompt for AI analysis
+            patient_concerns = patient_data.get('primary_concerns', ['general health'])
+            patient_goals = patient_data.get('health_goals', ['improve wellness'])
+            patient_weight = float(patient_data.get('weight', 70))
+            patient_age = int(patient_data.get('age', 35))
+            patient_name = patient_data.get('patient_name', 'Patient')
+            patient_gender = patient_data.get('gender', 'not specified')
+            
+            # Build comprehensive medical context
+            medical_context = f"""
+PATIENT PROFILE:
+- Name: {patient_name}
+- Age: {patient_age} years old
+- Gender: {patient_gender}
+- Weight: {patient_weight} kg
+- Primary Concerns: {', '.join(patient_concerns)}
+- Health Goals: {', '.join(patient_goals)}
+- Current Medications: {', '.join(patient_data.get('current_medications', []))}
+- Medical History: {', '.join(patient_data.get('medical_history', []))}
+- Allergies: {', '.join(patient_data.get('allergies', []))}
+- Lifestyle Factors: {patient_data.get('lifestyle_factors', {})}
+"""
+
+            # Generate AI-powered personalized protocol
+            protocol_prompt = f"""
+As Dr. Peptide, a board-certified peptide therapy specialist, analyze this patient and create a comprehensive, personalized peptide protocol.
+
+{medical_context}
+
+Generate a detailed protocol that addresses this specific patient's concerns and goals. Include:
+
+1. PERSONALIZED PEPTIDE SELECTION: Choose peptides specifically for their concerns
+2. WEIGHT-BASED DOSING: Calculate exact doses based on {patient_weight}kg weight
+3. ADMINISTRATION DETAILS: Specific injection techniques, timing, cycling
+4. SAFETY ANALYSIS: Patient-specific contraindications and monitoring
+5. EXPECTED OUTCOMES: Timeline predictions based on their goals
+6. COST ANALYSIS: Realistic monthly/yearly cost estimates
+
+Focus on their specific concerns: {', '.join(patient_concerns)}
+Address their specific goals: {', '.join(patient_goals)}
+
+Provide detailed, evidence-based recommendations that are truly personalized for this individual patient.
+"""
+
+            # Get AI-powered analysis
+            ai_response = await self.enhanced_chat(protocol_prompt, [])
+            
+            if ai_response.get("success"):
+                ai_analysis = ai_response["response"]
+                
+                # Parse AI response and create structured protocol
+                return self._create_personalized_protocol_from_ai(ai_analysis, patient_data)
+            else:
+                self.logger.warning("AI analysis failed, using enhanced fallback")
+                return self._create_enhanced_fallback_protocol(patient_data)
             
         except Exception as e:
             self.logger.error(f"Comprehensive protocol generation failed: {e}")
