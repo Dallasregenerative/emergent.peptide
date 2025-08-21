@@ -410,16 +410,16 @@ Provide detailed, evidence-based recommendations that are truly personalized for
             # WEIGHT LOSS OPTIMIZATION - Semaglutide/Tirzepatide for metabolic conditions
             if any(keyword in all_concerns for keyword in ['weight', 'fat', 'obese', 'metabolic', 'diabetes', 'glucose']):
                 if any(diabetes_marker in all_concerns for diabetes_marker in ['diabetes', 'glucose', 'insulin']):
-                    primary_peptide = 'TIRZEPATIDE'
-                    recommended_peptides = ['TIRZEPATIDE', 'BPC-157']
+                    primary_peptide = 'Tirzepatide'  # Match dosing calculator case
+                    recommended_peptides = ['Tirzepatide', 'BPC-157']
                     dosing_info = {
                         'dose_mcg_kg': 0.25,  # Starting dose for Tirzepatide
                         'frequency': 'once weekly',
                         'route': 'subcutaneous'
                     }
                 else:
-                    primary_peptide = 'SEMAGLUTIDE'
-                    recommended_peptides = ['SEMAGLUTIDE', 'BPC-157']
+                    primary_peptide = 'Semaglutide'  # Match dosing calculator case
+                    recommended_peptides = ['Semaglutide', 'BPC-157']
                     dosing_info = {
                         'dose_mcg_kg': 0.25,  # Starting dose for Semaglutide
                         'frequency': 'once weekly', 
@@ -428,8 +428,8 @@ Provide detailed, evidence-based recommendations that are truly personalized for
             
             # JOINT PAIN/INJURY RECOVERY - BPC-157 + TB-500 for musculoskeletal healing
             elif any(keyword in all_concerns for keyword in ['joint', 'pain', 'injury', 'arthritis', 'inflammation', 'recovery', 'muscle', 'tendon']):
-                primary_peptide = 'BPC-157'
-                recommended_peptides = ['BPC-157', 'TB-500', 'GHK-CU']
+                primary_peptide = 'BPC-157'  # Already correct case
+                recommended_peptides = ['BPC-157', 'TB-500', 'GHK-Cu']
                 dosing_info = {
                     'dose_mcg_kg': 3.5,  # Evidence-based dosing for tissue repair
                     'frequency': 'twice daily',
@@ -438,8 +438,8 @@ Provide detailed, evidence-based recommendations that are truly personalized for
             
             # COGNITIVE ENHANCEMENT - Selank/Cerebrolysin for brain health
             elif any(keyword in all_concerns for keyword in ['memory', 'brain', 'cognitive', 'focus', 'concentration']):
-                primary_peptide = 'SELANK'
-                recommended_peptides = ['SELANK', 'CEREBROLYSIN', 'BPC-157']
+                primary_peptide = 'Selank'  # Match expected case
+                recommended_peptides = ['Selank', 'Cerebrolysin', 'BPC-157']
                 dosing_info = {
                     'dose_mcg_kg': 0.3,  # Selank dosing
                     'frequency': 'twice daily',
@@ -448,8 +448,8 @@ Provide detailed, evidence-based recommendations that are truly personalized for
             
             # ANTI-AGING/LONGEVITY - Growth hormone peptides
             elif any(keyword in all_concerns for keyword in ['aging', 'longevity', 'energy', 'sleep', 'hormone']):
-                primary_peptide = 'CJC-1295'
-                recommended_peptides = ['CJC-1295', 'IPAMORELIN', 'EPITALON']
+                primary_peptide = 'CJC-1295'  # Match dosing calculator case
+                recommended_peptides = ['CJC-1295', 'Ipamorelin', 'Epithalon']
                 dosing_info = {
                     'dose_mcg_kg': 2.0,  # Growth hormone peptide dosing
                     'frequency': 'once daily at bedtime',
