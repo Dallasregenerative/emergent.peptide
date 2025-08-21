@@ -21,8 +21,7 @@ class DrPeptideAI:
         self.llm_client = LlmChat(
             api_key=self.emergent_api_key,
             session_id="dr_peptide_session",
-            system_message="You are Dr. Peptide, a functional medicine expert specializing in peptide therapy.",
-            model="gpt-5"
+            system_message="You are Dr. Peptide, a functional medicine expert specializing in peptide therapy."
         )
         self.enhanced_protocols = ENHANCED_CLINICAL_PEPTIDES
         self.system_prompt = self._create_enhanced_system_prompt()
