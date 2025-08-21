@@ -538,7 +538,7 @@ Focus on creating a cohesive, comprehensive treatment strategy.
             ]
             
             response = await self.openai_client.chat.completions.create(
-                model="gpt-4",
+                model="gpt-5",
                 messages=messages,
                 temperature=0.3,
                 max_tokens=2500
