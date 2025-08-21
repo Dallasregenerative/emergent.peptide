@@ -409,11 +409,28 @@ async def _create_enhanced_protocol_structure(ai_analysis: Dict[str, Any], asses
         },
         
         "monitoring_requirements": {
-            "baseline_labs": ai_protocol.get("monitoring_requirements", {}).get("baseline_labs", []),
-            "monitoring_schedule": ai_protocol.get("monitoring_requirements", {}).get("follow_up_schedule", ""),
-            "success_metrics": ai_protocol.get("monitoring_requirements", {}).get("success_metrics", []),
-            "follow_up_intervals": ["2 weeks", "4 weeks", "12 weeks"],
-            "lab_frequency": "Every 3 months"
+            "baseline_labs": ai_protocol.get("monitoring_requirements", {}).get("baseline_labs", []) + [
+                "CBC with differential",
+                "Comprehensive metabolic panel", 
+                "Lipid panel",
+                "HbA1c (if diabetic or metabolic concerns)",
+                "Thyroid function (TSH, T3, T4)"
+            ],
+            "monitoring_schedule": ai_protocol.get("monitoring_requirements", {}).get("follow_up_schedule", "") or "Week 2, 4, 8, 12, then quarterly",
+            "success_metrics": ai_protocol.get("monitoring_requirements", {}).get("success_metrics", []) + [
+                "Symptomatic improvement in primary concerns",
+                "Biomarker optimization toward ideal ranges",
+                "Side effect monitoring and management",
+                "Quality of life assessment"
+            ],
+            "follow_up_intervals": [
+                "Week 2: Initial response and tolerance check",
+                "Week 4: Efficacy assessment and dose optimization", 
+                "Week 8: Mid-term progress evaluation",
+                "Week 12: Comprehensive outcome assessment",
+                "Quarterly: Long-term monitoring and optimization"
+            ],
+            "lab_frequency": "Baseline, 4 weeks, 12 weeks, then every 3-6 months"
         },
         
         "evidence_based_support": {
