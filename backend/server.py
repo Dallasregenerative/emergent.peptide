@@ -370,8 +370,17 @@ async def _create_enhanced_protocol_structure(ai_analysis: Dict[str, Any], asses
             "peptide_stacks": ai_protocol.get("recommended_peptides", []),
             "recommended_stacks": ai_protocol.get("stacking_combinations", {}).get("recommended_stacks", []),
             "synergistic_effects": ai_protocol.get("stacking_combinations", {}).get("synergistic_benefits", []),
-            "timing_protocols": {"protocol": ai_protocol.get("stacking_combinations", {}).get("timing_protocol", "")},
-            "contraindicated_combinations": []
+            "timing_protocols": {
+                "protocol": ai_protocol.get("stacking_combinations", {}).get("timing_protocol", ""),
+                "morning_peptides": ["Growth hormone peptides", "Cognitive enhancers"],
+                "evening_peptides": ["Recovery peptides", "Sleep optimization"],
+                "spacing_guidelines": "Space different peptides by 30-60 minutes"
+            },
+            "contraindicated_combinations": [
+                "Avoid multiple GLP-1 agonists simultaneously",
+                "Monitor blood pressure with multiple vasodilatory peptides",
+                "Space insulin and glucose-affecting peptides appropriately"
+            ]
         },
         
         "comprehensive_contraindications": {
