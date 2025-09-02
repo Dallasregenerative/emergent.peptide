@@ -1964,9 +1964,11 @@ async def track_milestone(patient_id: str, request: Dict):
         )
         
         return {
-            "success": True,
-            "message": "Milestone tracked successfully",
+            "success": result.get("success", False),
+            "message": result.get("message", "Milestone processing completed"),
             "milestone_id": result.get("milestone_id"),
+            "milestone": result.get("milestone"),
+            "error": result.get("error"),
             "timestamp": datetime.utcnow()
         }
         
