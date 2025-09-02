@@ -1559,6 +1559,13 @@ async def dr_peptide_feedback_chat(request: Dict):
         protocol_id = request.get("protocol_id", "")
         feedback_context = request.get("feedback_context", {})
         
+        # ✅ ENHANCED VALIDATION: Check message content
+        if not message or message.strip() == "":
+            raise HTTPException(status_code=400, detail="Message is required and cannot be empty")
+        
+        if len(message.strip()) < 3:
+            raise HTTPException(status_code=400, detail="Message must be at least 3 characters long")
+        
         # Enhanced prompt for feedback-focused chat
         feedback_chat_prompt = f"""
         User message: {message}
