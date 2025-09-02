@@ -1173,10 +1173,43 @@ async def upload_assessment_files(assessment_id: str, files: List[UploadFile] = 
 async def generate_functional_medicine_protocol_endpoint(assessment_id: str):
     """Generate comprehensive functional medicine protocol"""
     
-    # Get the assessment
-    assessment_data = await db.patient_assessments.find_one({"id": assessment_id})
+    # ✅ ENHANCED VALIDATION: Check assessment_id format
+    if not assessment_id or len(assessment_id.strip()) == 0:
+        raise HTTPException(status_code=400, detail="Assessment ID is required and cannot be empty")
+    
+    # ✅ ENHANCED VALIDATION: Check assessment_id is valid UUID format
+    try:
+        uuid.UUID(assessment_id)
+    except ValueError:
+        raise HTTPException(status_code=400, detail="Assessment ID must be a valid UUID format")
+    
+    # ✅ TIMEOUT HANDLING: Add timeout for database query
+    try:
+        assessment_data = await asyncio.wait_for(
+            db.patient_assessments.find_one({"id": assessment_id}),
+            timeout=10.0  # 10 second timeout
+        )
+    except asyncio.TimeoutError:
+        raise HTTPException(status_code=408, detail="Database query timeout - please try again")
+    except Exception as db_error:
+        logger.error(f"Database error for assessment {assessment_id}: {db_error}")
+        raise HTTPException(status_code=500, detail="Database connection error")
+    
     if not assessment_data:
-        raise HTTPException(status_code=404, detail="Patient assessment not found")
+        raise HTTPException(status_code=404, detail=f"Patient assessment with ID {assessment_id} not found")
+    
+    # ✅ ENHANCED VALIDATION: Validate assessment data completeness
+    required_fields = ["patient_name", "age", "gender"]
+    missing_fields = []
+    for field in required_fields:
+        if not assessment_data.get(field) or str(assessment_data.get(field)).strip() == "":
+            missing_fields.append(field)
+    
+    if missing_fields:
+        raise HTTPException(
+            status_code=422, 
+            detail=f"Assessment data incomplete. Missing required fields: {', '.join(missing_fields)}"
+        )
     
     # Remove MongoDB _id field if it exists
     if "_id" in assessment_data:
