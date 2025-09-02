@@ -1927,6 +1927,11 @@ async def track_patient_progress(request: Dict):
         if not patient_id or str(patient_id).strip() == "":
             raise HTTPException(status_code=400, detail="Patient ID is required and cannot be empty")
         
+        # ✅ ENHANCED VALIDATION: Check patient_id format (alphanumeric, spaces, hyphens only)
+        import re
+        if not re.match(r'^[a-zA-Z0-9\s\-_]+$', str(patient_id).strip()):
+            raise HTTPException(status_code=400, detail="Patient ID contains invalid characters. Only letters, numbers, spaces, hyphens and underscores allowed")
+        
         if not metric_updates or not isinstance(metric_updates, dict):
             raise HTTPException(status_code=400, detail="Metric updates must be provided as a valid dictionary")
         
