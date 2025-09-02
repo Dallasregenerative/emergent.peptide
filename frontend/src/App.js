@@ -3989,6 +3989,7 @@ const PeptideProtocolsApp = () => {
       {currentView === 'home' && <HomePage />}
       {currentView === 'assessment' && <AssessmentWizard />}
       {currentView === 'chat' && <DrPeptideChat />}
+      {currentView === 'progress' && <ProgressTracking patientId={assessment.patient_name} />}
       {currentView === 'protocols' && <ProtocolLibrary />}
       {currentView === 'peptides' && <PeptidesView />}
       {currentView === 'network' && <CollectiveIntelligenceNetwork />}
