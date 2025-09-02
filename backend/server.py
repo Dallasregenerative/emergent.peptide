@@ -1988,6 +1988,11 @@ async def get_patient_progress(patient_id: str):
         if not patient_id or patient_id.strip() == "":
             raise HTTPException(status_code=400, detail="Patient ID is required and cannot be empty")
         
+        # ✅ ENHANCED VALIDATION: Check patient_id format (alphanumeric, spaces, hyphens only)
+        import re
+        if not re.match(r'^[a-zA-Z0-9\s\-_]+$', str(patient_id).strip()):
+            raise HTTPException(status_code=400, detail="Patient ID contains invalid characters. Only letters, numbers, spaces, hyphens and underscores allowed")
+        
         # ✅ TIMEOUT HANDLING: Add timeout for progress data retrieval
         result = await asyncio.wait_for(
             asyncio.to_thread(
