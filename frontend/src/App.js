@@ -16,6 +16,7 @@ import { AlertCircle, Brain, FileText, User, Zap, Upload, Search, BookOpen, Down
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart, Bar, PieChart, Pie, Cell, AreaChart, Area, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from 'recharts';
 import { format, parseISO, subDays, startOfWeek, endOfWeek } from 'date-fns';
 import { Alert, AlertDescription } from "./components/ui/alert";
+import ProgressTracking from "./components/ProgressTracking";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
