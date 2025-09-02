@@ -1965,8 +1965,18 @@ async def track_patient_progress(request: Dict):
 async def get_patient_progress(patient_id: str):
     """Get patient progress data"""
     try:
-        # Use the actual progress_service.get_progress_data method
-        result = progress_service.get_progress_data(patient_id=patient_id)
+        # ✅ ENHANCED VALIDATION: Check patient_id
+        if not patient_id or patient_id.strip() == "":
+            raise HTTPException(status_code=400, detail="Patient ID is required and cannot be empty")
+        
+        # ✅ TIMEOUT HANDLING: Add timeout for progress data retrieval
+        result = await asyncio.wait_for(
+            asyncio.to_thread(
+                progress_service.get_progress_data,
+                patient_id=patient_id
+            ),
+            timeout=10.0  # 10 second timeout
+        )
         
         return {
             "success": result.get("success", False),
