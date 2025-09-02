@@ -3885,6 +3885,7 @@ const PeptideProtocolsApp = () => {
       { id: 'home', label: 'Home', icon: null },
       { id: 'assessment', label: 'Assessment', icon: null },
       { id: 'chat', label: 'Dr. Peptide', icon: MessageCircle },
+      { id: 'progress', label: 'Progress Tracking', icon: Activity },
       { id: 'protocols', label: 'Protocols', icon: BookOpen },
       { id: 'peptides', label: 'Peptides', icon: FlaskConical },
       { id: 'network', label: 'Network', icon: Network },
