@@ -1952,6 +1952,11 @@ async def track_patient_progress(request: Dict):
             "timestamp": datetime.utcnow()
         }
         
+    except asyncio.TimeoutError:
+        logger.error("Progress tracking timeout")
+        raise HTTPException(status_code=408, detail="Progress tracking timeout - please try again")
+    except HTTPException:
+        raise  # Re-raise HTTP exceptions
     except Exception as e:
         logger.error(f"Error tracking progress: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Failed to track progress: {str(e)}")
