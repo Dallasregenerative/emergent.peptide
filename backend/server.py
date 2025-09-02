@@ -1987,6 +1987,11 @@ async def get_patient_progress(patient_id: str):
             "timestamp": datetime.utcnow()
         }
         
+    except asyncio.TimeoutError:
+        logger.error(f"Progress data retrieval timeout for patient {patient_id}")
+        raise HTTPException(status_code=408, detail="Progress data retrieval timeout - please try again")
+    except HTTPException:
+        raise  # Re-raise HTTP exceptions
     except Exception as e:
         logger.error(f"Error getting progress data: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Failed to get progress data: {str(e)}")
