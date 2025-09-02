@@ -1923,11 +1923,25 @@ async def track_patient_progress(request: Dict):
         metric_updates = request.get("metric_updates", {})
         notes = request.get("notes", "")
         
-        # Use the actual progress_service.track_progress method
-        result = progress_service.track_progress(
-            patient_id=patient_id,
-            metric_updates=metric_updates,
-            notes=notes
+        # ✅ ENHANCED VALIDATION: Check required fields
+        if not patient_id or str(patient_id).strip() == "":
+            raise HTTPException(status_code=400, detail="Patient ID is required and cannot be empty")
+        
+        if not metric_updates or not isinstance(metric_updates, dict):
+            raise HTTPException(status_code=400, detail="Metric updates must be provided as a valid dictionary")
+        
+        if len(metric_updates) == 0:
+            raise HTTPException(status_code=400, detail="At least one metric update is required")
+        
+        # ✅ TIMEOUT HANDLING: Add timeout for progress tracking service
+        result = await asyncio.wait_for(
+            asyncio.to_thread(
+                progress_service.track_progress,
+                patient_id=patient_id,
+                metric_updates=metric_updates,
+                notes=notes
+            ),
+            timeout=15.0  # 15 second timeout for progress tracking
         )
         
         return {
