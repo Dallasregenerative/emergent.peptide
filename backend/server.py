@@ -974,6 +974,13 @@ async def root():
 async def chat_with_dr_peptide(chat_message: ChatMessage):
     """Chat with Dr. Peptide AI - Your Functional Medicine Expert"""
     
+    # ✅ ENHANCED VALIDATION: Check message content
+    if not chat_message.message or chat_message.message.strip() == "":
+        raise HTTPException(status_code=400, detail="Message is required and cannot be empty")
+    
+    if len(chat_message.message.strip()) < 3:
+        raise HTTPException(status_code=400, detail="Message must be at least 3 characters long")
+    
     try:
         response = await dr_peptide_ai.chat_with_dr_peptide(
             chat_message.message,
