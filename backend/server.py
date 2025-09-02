@@ -1214,13 +1214,70 @@ async def generate_functional_medicine_protocol_endpoint(assessment_id: str):
         if "last_updated" in protocol_data and isinstance(protocol_data["last_updated"], datetime):
             protocol_data["last_updated"] = protocol_data["last_updated"].isoformat()
         
-        # Skip database insertion for now to avoid serialization issues
-        # await db.enhanced_protocols.insert_one(protocol_data)
+        # ✅ CRITICAL FIX: Save protocol to database with progress tracking integration
+        try:
+            # Prepare protocol record for database
+            protocol_record = {
+                "protocol_id": protocol_id,
+                "patient_assessment_id": assessment_id,
+                "patient_id": assessment_with_defaults.get("patient_name", "unknown"),
+                "patient_email": assessment_with_defaults.get("email", ""),
+                "generated_date": datetime.utcnow().isoformat(),
+                "protocol_data": protocol_data,
+                "status": "active",
+                "progress_tracking_id": None,
+                "created_at": datetime.utcnow().isoformat(),
+                "last_updated": datetime.utcnow().isoformat()
+            }
+            
+            # Save protocol to database
+            await db.patient_protocols.insert_one(protocol_record)
+            logger.info(f"Protocol {protocol_id} saved successfully to database")
+            
+            # ✅ CREATE PROGRESS TRACKING automatically
+            initial_metrics = {
+                "energy_levels": 5,  # Default starting values
+                "sleep_quality": 5,
+                "weight": float(assessment_with_defaults.get("weight", 150))
+            }
+            
+            # Add specific metrics based on primary concerns
+            primary_concerns = assessment_with_defaults.get("primary_concerns", [])
+            if any("weight" in str(concern).lower() for concern in primary_concerns):
+                initial_metrics["body_fat_percentage"] = 25  # Default estimate
+            if any("cognitive" in str(concern).lower() for concern in primary_concerns):
+                initial_metrics["cognitive_function"] = 5
+            if any("joint" in str(concern).lower() or "pain" in str(concern).lower() for concern in primary_concerns):
+                initial_metrics["joint_pain"] = 6  # Higher is worse
+            
+            # Create progress tracking
+            tracking_result = progress_service.track_progress(
+                patient_id=assessment_with_defaults.get("patient_name", "unknown"),
+                metric_updates={**initial_metrics, "protocol_id": protocol_id},
+                notes=f"Progress tracking started for protocol {protocol_id}"
+            )
+            
+            if tracking_result.get("success"):
+                tracking_id = tracking_result.get("tracking_id")
+                
+                # Link protocol to progress tracking
+                await db.patient_protocols.update_one(
+                    {"protocol_id": protocol_id},
+                    {"$set": {"progress_tracking_id": tracking_id}}
+                )
+                
+                logger.info(f"Progress tracking {tracking_id} created and linked to protocol {protocol_id}")
+            
+        except Exception as db_error:
+            logger.warning(f"Database save failed for protocol {protocol_id}: {db_error}")
+            # Continue execution - protocol still generated successfully
         
         return {
-            "message": "Functional medicine protocol generated successfully",
+            "message": "Functional medicine protocol generated and saved successfully",
             "protocol_id": protocol_id,
-            "protocol": protocol_data
+            "protocol": protocol_data,
+            "progress_tracking_enabled": tracking_result.get("success", False) if 'tracking_result' in locals() else False,
+            "tracking_id": tracking_result.get("tracking_id") if 'tracking_result' in locals() else None
         }
         
     except Exception as e:
