@@ -1880,25 +1880,27 @@ async def get_email_service_status():
             "timestamp": datetime.utcnow()
         }
 
-# Progress Tracking Endpoints
+# ✅ PROGRESS TRACKING ENDPOINTS - FIXED TO MATCH SERVICE METHODS
 @api_router.post("/progress/track")
 async def track_patient_progress(request: Dict):
     """Track patient progress data"""
     try:
         patient_id = request.get("patient_id")
-        protocol_id = request.get("protocol_id")
-        progress_data = request.get("progress_data", {})
+        metric_updates = request.get("metric_updates", {})
+        notes = request.get("notes", "")
         
+        # Use the actual progress_service.track_progress method
         result = progress_service.track_progress(
             patient_id=patient_id,
-            protocol_id=protocol_id,
-            progress_data=progress_data
+            metric_updates=metric_updates,
+            notes=notes
         )
         
         return {
-            "success": True,
-            "message": "Progress tracked successfully",
-            "progress_id": result.get("progress_id"),
+            "success": result.get("success", False),
+            "message": result.get("message", "Progress update processed"),
+            "tracking_id": result.get("tracking_id"),
+            "metrics_updated": result.get("metrics_updated", 0),
             "timestamp": datetime.utcnow()
         }
         
@@ -1907,18 +1909,18 @@ async def track_patient_progress(request: Dict):
         raise HTTPException(status_code=500, detail=f"Failed to track progress: {str(e)}")
 
 @api_router.get("/progress/{patient_id}")
-async def get_patient_progress(patient_id: str, protocol_id: Optional[str] = None):
+async def get_patient_progress(patient_id: str):
     """Get patient progress data"""
     try:
-        progress_data = progress_service.get_progress_data(
-            patient_id=patient_id,
-            protocol_id=protocol_id
-        )
+        # Use the actual progress_service.get_progress_data method
+        result = progress_service.get_progress_data(patient_id=patient_id)
         
         return {
-            "success": True,
-            "progress_data": progress_data,
+            "success": result.get("success", False),
+            "progress_data": result.get("progress_data", {}),
             "patient_id": patient_id,
+            "tracking_id": result.get("tracking_id"),
+            "error": result.get("error"),
             "timestamp": datetime.utcnow()
         }
         
@@ -1927,19 +1929,21 @@ async def get_patient_progress(patient_id: str, protocol_id: Optional[str] = Non
         raise HTTPException(status_code=500, detail=f"Failed to get progress data: {str(e)}")
 
 @api_router.get("/progress/{patient_id}/analytics")
-async def get_progress_analytics(patient_id: str, timeframe: str = "3months"):
+async def get_progress_analytics(patient_id: str, time_period: str = "30d"):
     """Get progress analytics and insights"""
     try:
-        analytics = progress_service.generate_analytics(
+        # Use the actual progress_service.generate_analytics method
+        result = progress_service.generate_analytics(
             patient_id=patient_id,
-            timeframe=timeframe
+            time_period=time_period
         )
         
         return {
-            "success": True,
-            "analytics": analytics,
+            "success": result.get("success", False),
+            "analytics": result.get("analytics", {}),
+            "error": result.get("error"),
             "patient_id": patient_id,
-            "timeframe": timeframe,
+            "time_period": time_period,
             "timestamp": datetime.utcnow()
         }
         
@@ -1952,11 +1956,10 @@ async def track_milestone(patient_id: str, request: Dict):
     """Track patient milestone achievement"""
     try:
         milestone_data = request.get("milestone_data", {})
-        protocol_id = request.get("protocol_id")
         
+        # Use the actual progress_service.track_milestone method
         result = progress_service.track_milestone(
             patient_id=patient_id,
-            protocol_id=protocol_id,
             milestone_data=milestone_data
         )
         
