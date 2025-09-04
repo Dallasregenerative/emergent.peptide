@@ -285,6 +285,10 @@ Generate precise clinical protocols matching major medical center documentation 
             'nootropic': 'Cognitive Enhancement',
             'dementia': 'Cognitive Enhancement',
             'alzheimer': 'Cognitive Enhancement',
+            'brain fog': 'Cognitive Enhancement',
+            'executive function': 'Cognitive Enhancement',
+            'mental clarity': 'Cognitive Enhancement',
+            'learning': 'Cognitive Enhancement',
             
             # Growth hormone keywords
             'growth hormone': 'Growth Hormone Enhancement',
