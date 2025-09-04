@@ -337,6 +337,96 @@ COMPREHENSIVE_PEPTIDE_LIBRARY = [
     },
 
     {
+        "name": "Formula N-5550",
+        "category": "cognitive-enhancement",
+        "mechanism": "Triple-pathway cognitive enhancement: Dihexa promotes synaptogenesis (7 orders of magnitude more potent than BDNF), Tesofensine optimizes neurotransmitter balance (DAT/NET/SERT inhibition), Methylene Blue enhances mitochondrial ATP production and reduces oxidative stress",
+        "composition": "5mg Dihexa + 0.5mg Tesofensine + 50mg Methylene Blue",
+        "indications": [
+            "Comprehensive cognitive enhancement",
+            "Age-related cognitive decline", 
+            "Professional cognitive performance optimization",
+            "Weight management with cognitive benefits",
+            "Executive function improvement",
+            "Memory and learning enhancement"
+        ],
+        "standard_dosing": {
+            "standard_dose": "One serving daily (5mg Dihexa + 0.5mg Tesofensine + 50mg Methylene Blue)",
+            "timing": "Morning administration, with or without food",
+            "duration": "Continuous use under medical supervision or structured cycles",
+            "optimization": "Take consistently at same time daily, ensure adequate hydration"
+        },
+        "administration": "Oral administration, morning dosing preferred for optimal circadian alignment and sleep quality",
+        "stacking_options": [
+            "Cognitive training programs for enhanced neuroplasticity",
+            "NAD+ precursors for additional mitochondrial support", 
+            "Omega-3 fatty acids for neuroprotection",
+            "Magnesium glycinate for NMDA receptor optimization"
+        ],
+        "contraindications": [
+            "ABSOLUTE: Serotonergic medications (SSRIs, SNRIs, MAOIs, tricyclics)",
+            "ABSOLUTE: Pregnancy and lactation", 
+            "ABSOLUTE: G6PD deficiency (methylene blue component)",
+            "ABSOLUTE: Severe cardiovascular disease",
+            "RELATIVE: Severe liver or kidney impairment",
+            "RELATIVE: History of eating disorders",
+            "RELATIVE: Concurrent stimulant medications"
+        ],
+        "side_effects": [
+            "Mild appetite suppression (expected effect)",
+            "Initial sleep adjustment (first week)",
+            "Rare: Blue-green urine discoloration (methylene blue)",
+            "Rare: Mild headache during adaptation",
+            "Monitor: Cardiovascular parameters",
+            "Monitor: Neurological function"
+        ],
+        "monitoring": [
+            "Pre-treatment: Comprehensive medical history, cardiovascular evaluation, medication review",
+            "Initial 48 hours: Intensive vital signs and neurological monitoring", 
+            "Weekly (first month): Clinical assessment and safety evaluation",
+            "Monthly: Comprehensive evaluation and treatment optimization",
+            "Laboratory: Basic metabolic panel, liver function tests",
+            "Cognitive: Baseline and periodic cognitive assessments"
+        ],
+        "expected_timeline": {
+            "2_6_hours": "Mental clarity, reduced appetite, enhanced focus",
+            "1_3_days": "Sustained cognitive enhancement, improved energy",
+            "1_2_weeks": "Weight loss begins (3-5%), enhanced learning, better sleep",
+            "2_4_weeks": "Significant cognitive improvements, sustained metabolic benefits",
+            "1_3_months": "Optimized cognitive function, comprehensive brain health benefits"
+        },
+        "clinical_benefits": {
+            "cognitive": {
+                "memory_learning": "Spatial memory improvements, enhanced working memory capacity, accelerated learning speed",
+                "focus_clarity": "Sustained attention, reduced cognitive fatigue, faster processing speed, enhanced mental clarity",
+                "motivation_mood": "Enhanced drive and motivation, improved mood stability, increased stress resilience"
+            },
+            "metabolic": {
+                "weight_management": "Appetite suppression, 9.2% weight loss potential, enhanced fat oxidation",
+                "energy_metabolism": "Enhanced ATP production, consistent energy levels, improved metabolic flexibility"
+            },
+            "neuroplasticity": {
+                "structural": "Synaptogenesis, neural growth, enhanced network connectivity, increased neuroplasticity",
+                "long_term": "Cognitive reserve building, neuroprotection, sustained cognitive function"
+            }
+        },
+        "evidence_level": "HIGH - Individual components extensively studied in clinical trials with mechanistic understanding",
+        "safety_requirements": {
+            "medical_supervision": "REQUIRED - Sophisticated multi-target pharmacology requires experienced healthcare providers",
+            "screening": "Comprehensive pre-treatment assessment mandatory",
+            "monitoring_protocols": "Regular follow-up and safety assessments essential",
+            "emergency_preparedness": "Healthcare providers must be prepared for potential complications"
+        },
+        "references": [
+            "Wright, J.W., & Harding, J.W. (2015). Brain HGF/c-Met System for Alzheimer's Treatment. J Alzheimer's Dis, 45(4), 985-1000",
+            "Astrup, A., et al. (2008). Tesofensine bodyweight loss trial. The Lancet, 372(9653), 1906-1913", 
+            "Rodriguez, P., et al. (2016). Methylene blue modulates brain connectivity. Radiology, 281(2), 516-526",
+            "PMID: 25731073 (Dihexa neurotropic effects)",
+            "PMID: 18954897 (Tesofensine clinical trials)",
+            "PMID: 27789867 (Methylene blue cognitive enhancement)"
+        ]
+    },
+
+    {
         "name": "Selank",
         "category": "cognitive-neuroprotective", 
         "mechanism": "Synthetic tuftsin analog with anxiolytic, nootropic, and immunomodulatory effects without sedation or addiction potential",
