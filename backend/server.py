@@ -2434,6 +2434,397 @@ async def get_protocol_structured_data(protocol_id: str):
         logging.error(f"Structured data generation error: {e}")
         raise HTTPException(status_code=500, detail="Failed to generate structured data")
 
+# ✅ ENHANCED CLINICAL INTELLIGENCE ENDPOINTS - VERSION 4 ULTIMATE
+# Predictive Analytics & Risk Stratification (#2)
+@api_router.post("/analytics/predict-outcomes")
+async def predict_patient_outcomes(request: Dict):
+    """Generate AI-powered outcome predictions for patient and peptides"""
+    try:
+        patient_data = request.get("patient_data", {})
+        peptides = request.get("peptides", [])
+        
+        result = predictive_analytics_service.generate_outcome_prediction(
+            patient_data=patient_data,
+            peptides=peptides
+        )
+        
+        return {
+            "success": result.get("success", False),
+            "predictions": result.get("predictions", {}),
+            "timestamp": datetime.utcnow()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error predicting outcomes: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Failed to predict outcomes: {str(e)}")
+
+@api_router.post("/analytics/risk-stratification")
+async def calculate_risk_stratification(request: Dict):
+    """Calculate comprehensive risk stratification for patient"""
+    try:
+        patient_data = request.get("patient_data", {})
+        peptides = request.get("peptides", [])
+        
+        result = predictive_analytics_service.calculate_risk_stratification(
+            patient_data=patient_data,
+            peptides=peptides
+        )
+        
+        return {
+            "success": result.get("success", False),
+            "risk_assessment": result.get("risk_assessment", {}),
+            "recommendations": result.get("recommendations", []),
+            "timestamp": datetime.utcnow()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error calculating risk stratification: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Failed to calculate risk: {str(e)}")
+
+# Real-Time Clinical Decision Support (#3)
+@api_router.post("/clinical-support/smart-alerts")
+async def generate_smart_alerts(request: Dict):
+    """Generate intelligent alerts based on current patient metrics"""
+    try:
+        patient_data = request.get("patient_data", {})
+        current_metrics = request.get("current_metrics", {})
+        
+        result = clinical_decision_support.generate_smart_alerts(
+            patient_data=patient_data,
+            current_metrics=current_metrics
+        )
+        
+        return {
+            "success": result.get("success", False),
+            "alerts": result.get("alerts", {}),
+            "timestamp": datetime.utcnow()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error generating smart alerts: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Failed to generate alerts: {str(e)}")
+
+@api_router.post("/clinical-support/decision-tree")
+async def execute_decision_tree(request: Dict):
+    """Execute evidence-based decision tree for specific condition"""
+    try:
+        condition = request.get("condition")
+        patient_data = request.get("patient_data", {})
+        current_metrics = request.get("current_metrics", {})
+        
+        if not condition:
+            raise HTTPException(status_code=400, detail="Condition parameter is required")
+        
+        result = clinical_decision_support.execute_decision_tree(
+            condition=condition,
+            patient_data=patient_data,
+            current_metrics=current_metrics
+        )
+        
+        return {
+            "success": result.get("success", False),
+            "condition_met": result.get("condition_met", False),
+            "action_plan": result.get("action_plan", []),
+            "escalation_needed": result.get("escalation_needed", False),
+            "timestamp": datetime.utcnow()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error executing decision tree: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Failed to execute decision tree: {str(e)}")
+
+@api_router.get("/clinical-support/monitoring-dashboard/{patient_id}")
+async def get_monitoring_dashboard(patient_id: str, risk_level: str = "moderate"):
+    """Generate personalized monitoring dashboard"""
+    try:
+        # Get patient data (simplified - would normally fetch from database)
+        patient_data = {"patient_id": patient_id}  # Would fetch full patient data
+        
+        result = clinical_decision_support.generate_monitoring_dashboard(
+            patient_data=patient_data,
+            risk_level=risk_level
+        )
+        
+        return {
+            "success": result.get("success", False),
+            "dashboard": result.get("dashboard", {}),
+            "timestamp": datetime.utcnow()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error generating monitoring dashboard: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Failed to generate dashboard: {str(e)}")
+
+# Advanced Practitioner Tools (#5)
+@api_router.post("/practitioner-tools/clinical-reasoning")
+async def generate_clinical_reasoning(request: Dict):
+    """Generate comprehensive clinical reasoning and differential diagnosis"""
+    try:
+        patient_data = request.get("patient_data", {})
+        assessment_data = request.get("assessment_data", {})
+        
+        result = advanced_practitioner_tools.generate_clinical_reasoning(
+            patient_data=patient_data,
+            assessment_data=assessment_data
+        )
+        
+        return {
+            "success": result.get("success", False),
+            "clinical_reasoning": result.get("clinical_reasoning", {}),
+            "timestamp": datetime.utcnow()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error generating clinical reasoning: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Failed to generate clinical reasoning: {str(e)}")
+
+@api_router.post("/practitioner-tools/practice-integration")
+async def generate_practice_integration_data(request: Dict):
+    """Generate data for seamless practice integration"""
+    try:
+        patient_data = request.get("patient_data", {})
+        protocol_data = request.get("protocol_data", {})
+        
+        result = advanced_practitioner_tools.generate_practice_integration_data(
+            patient_data=patient_data,
+            protocol_data=protocol_data
+        )
+        
+        return {
+            "success": result.get("success", False),
+            "practice_integration": result.get("practice_integration", {}),
+            "timestamp": datetime.utcnow()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error generating practice integration data: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Failed to generate practice data: {str(e)}")
+
+@api_router.post("/practitioner-tools/patient-education")
+async def generate_patient_education_plan(request: Dict):
+    """Generate personalized patient education materials"""
+    try:
+        patient_data = request.get("patient_data", {})
+        protocol_data = request.get("protocol_data", {})
+        
+        result = advanced_practitioner_tools.generate_patient_education_plan(
+            patient_data=patient_data,
+            protocol_data=protocol_data
+        )
+        
+        return {
+            "success": result.get("success", False),
+            "patient_education": result.get("patient_education", {}),
+            "timestamp": datetime.utcnow()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error generating patient education plan: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Failed to generate education plan: {str(e)}")
+
+# Safety & Quality Assurance (#8)
+@api_router.post("/safety/multi-layer-check")
+async def execute_multi_layer_safety_check(request: Dict):
+    """Execute comprehensive multi-layer safety analysis"""
+    try:
+        patient_data = request.get("patient_data", {})
+        protocol_data = request.get("protocol_data", {})
+        
+        result = safety_quality_assurance.execute_multi_layer_safety_check(
+            patient_data=patient_data,
+            protocol_data=protocol_data
+        )
+        
+        return {
+            "success": result.get("success", False),
+            "safety_analysis": result.get("safety_analysis", {}),
+            "timestamp": datetime.utcnow()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error executing safety check: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Failed to execute safety check: {str(e)}")
+
+@api_router.post("/safety/quality-score")
+async def calculate_protocol_quality_score(request: Dict):
+    """Calculate comprehensive protocol quality score"""
+    try:
+        patient_data = request.get("patient_data", {})
+        protocol_data = request.get("protocol_data", {})
+        
+        result = safety_quality_assurance.calculate_protocol_quality_score(
+            patient_data=patient_data,
+            protocol_data=protocol_data
+        )
+        
+        return {
+            "success": result.get("success", False),
+            "quality_assessment": result.get("quality_assessment", {}),
+            "timestamp": datetime.utcnow()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error calculating quality score: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Failed to calculate quality score: {str(e)}")
+
+@api_router.post("/safety/continuous-monitoring")
+async def continuous_quality_monitoring(request: Dict):
+    """Implement continuous quality monitoring for deployed protocols"""
+    try:
+        protocol_id = request.get("protocol_id")
+        usage_data = request.get("usage_data", {})
+        
+        if not protocol_id:
+            raise HTTPException(status_code=400, detail="Protocol ID is required")
+        
+        result = safety_quality_assurance.continuous_quality_monitoring(
+            protocol_id=protocol_id,
+            usage_data=usage_data
+        )
+        
+        return {
+            "success": result.get("success", False),
+            "monitoring_results": result.get("monitoring_results", {}),
+            "timestamp": datetime.utcnow()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error in continuous monitoring: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Failed to execute continuous monitoring: {str(e)}")
+
+# Enhanced Protocol Generation with Clinical Intelligence
+@api_router.post("/generate-enhanced-protocol/{assessment_id}")
+async def generate_enhanced_protocol_with_intelligence(assessment_id: str):
+    """Generate protocol with full clinical intelligence suite"""
+    try:
+        # ✅ ENHANCED VALIDATION: Check assessment_id format
+        if not assessment_id or len(assessment_id.strip()) == 0:
+            raise HTTPException(status_code=400, detail="Assessment ID is required and cannot be empty")
+        
+        # ✅ ENHANCED VALIDATION: Check assessment_id is valid UUID format
+        try:
+            uuid.UUID(assessment_id)
+        except ValueError:
+            raise HTTPException(status_code=400, detail="Assessment ID must be a valid UUID format")
+        
+        # ✅ TIMEOUT HANDLING: Add timeout for database query
+        try:
+            assessment_data = await asyncio.wait_for(
+                db.patient_assessments.find_one({"id": assessment_id}),
+                timeout=10.0
+            )
+        except asyncio.TimeoutError:
+            raise HTTPException(status_code=408, detail="Database query timeout - please try again")
+        except Exception as db_error:
+            logger.error(f"Database error for assessment {assessment_id}: {db_error}")
+            raise HTTPException(status_code=500, detail="Database connection error")
+        
+        if not assessment_data:
+            raise HTTPException(status_code=404, detail=f"Patient assessment with ID {assessment_id} not found")
+        
+        # Generate base protocol first
+        base_protocol_response = await generate_functional_medicine_protocol_endpoint(assessment_id)
+        base_protocol = base_protocol_response.get("protocol", {})
+        
+        if not base_protocol:
+            raise HTTPException(status_code=500, detail="Failed to generate base protocol")
+        
+        # Enhance with clinical intelligence
+        intelligence_enhancements = {}
+        
+        # 1. Predictive Analytics
+        try:
+            prediction_result = predictive_analytics_service.generate_outcome_prediction(
+                patient_data=assessment_data,
+                peptides=base_protocol.get("recommended_peptides", [])
+            )
+            intelligence_enhancements["predictive_analytics"] = prediction_result
+        except Exception as e:
+            logger.warning(f"Predictive analytics failed: {e}")
+        
+        # 2. Risk Stratification  
+        try:
+            risk_result = predictive_analytics_service.calculate_risk_stratification(
+                patient_data=assessment_data,
+                peptides=base_protocol.get("recommended_peptides", [])
+            )
+            intelligence_enhancements["risk_stratification"] = risk_result
+        except Exception as e:
+            logger.warning(f"Risk stratification failed: {e}")
+        
+        # 3. Clinical Reasoning
+        try:
+            reasoning_result = advanced_practitioner_tools.generate_clinical_reasoning(
+                patient_data=assessment_data,
+                assessment_data=base_protocol
+            )
+            intelligence_enhancements["clinical_reasoning"] = reasoning_result
+        except Exception as e:
+            logger.warning(f"Clinical reasoning failed: {e}")
+        
+        # 4. Safety Analysis
+        try:
+            safety_result = safety_quality_assurance.execute_multi_layer_safety_check(
+                patient_data=assessment_data,
+                protocol_data=base_protocol
+            )
+            intelligence_enhancements["safety_analysis"] = safety_result
+        except Exception as e:
+            logger.warning(f"Safety analysis failed: {e}")
+        
+        # 5. Quality Score
+        try:
+            quality_result = safety_quality_assurance.calculate_protocol_quality_score(
+                patient_data=assessment_data,
+                protocol_data=base_protocol
+            )
+            intelligence_enhancements["quality_assessment"] = quality_result
+        except Exception as e:
+            logger.warning(f"Quality assessment failed: {e}")
+        
+        # 6. Practice Integration
+        try:
+            practice_result = advanced_practitioner_tools.generate_practice_integration_data(
+                patient_data=assessment_data,
+                protocol_data=base_protocol
+            )
+            intelligence_enhancements["practice_integration"] = practice_result
+        except Exception as e:
+            logger.warning(f"Practice integration failed: {e}")
+        
+        # 7. Patient Education
+        try:
+            education_result = advanced_practitioner_tools.generate_patient_education_plan(
+                patient_data=assessment_data,
+                protocol_data=base_protocol
+            )
+            intelligence_enhancements["patient_education"] = education_result
+        except Exception as e:
+            logger.warning(f"Patient education failed: {e}")
+        
+        return {
+            "message": "Enhanced protocol with clinical intelligence generated successfully",
+            "protocol_id": base_protocol.get("protocol_id"),
+            "base_protocol": base_protocol,
+            "clinical_intelligence": intelligence_enhancements,
+            "enhancement_summary": {
+                "predictive_success": "predictive_analytics" in intelligence_enhancements,
+                "risk_assessment_success": "risk_stratification" in intelligence_enhancements,
+                "clinical_reasoning_success": "clinical_reasoning" in intelligence_enhancements,
+                "safety_analysis_success": "safety_analysis" in intelligence_enhancements,
+                "quality_score_success": "quality_assessment" in intelligence_enhancements,
+                "practice_integration_success": "practice_integration" in intelligence_enhancements,
+                "patient_education_success": "patient_education" in intelligence_enhancements
+            },
+            "generated_at": datetime.utcnow().isoformat()
+        }
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error generating enhanced protocol: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Failed to generate enhanced protocol: {str(e)}")
+
 # Include the router in the main app
 app.include_router(api_router)
 
