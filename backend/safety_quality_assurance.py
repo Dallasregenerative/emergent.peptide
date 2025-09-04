@@ -85,6 +85,50 @@ class SafetyQualityAssurance:
                         'management': 'Monitor for bleeding, consider dose adjustment'
                     }
                 ]
+            },
+            'formula_n_5550': {
+                'critical_interactions': [
+                    {
+                        'drug': 'ssris',
+                        'severity': 'critical',
+                        'mechanism': 'Serotonin syndrome risk with tesofensine component',
+                        'management': 'ABSOLUTE CONTRAINDICATION - Do not combine'
+                    },
+                    {
+                        'drug': 'snris',
+                        'severity': 'critical',
+                        'mechanism': 'Serotonin syndrome risk with tesofensine component',
+                        'management': 'ABSOLUTE CONTRAINDICATION - Do not combine'
+                    },
+                    {
+                        'drug': 'maois',
+                        'severity': 'critical',
+                        'mechanism': 'Severe serotonin syndrome and hypertensive crisis risk',
+                        'management': 'ABSOLUTE CONTRAINDICATION - 14-day washout required'
+                    }
+                ],
+                'major_interactions': [
+                    {
+                        'drug': 'stimulants',
+                        'severity': 'major',
+                        'mechanism': 'Additive cardiovascular effects with tesofensine',
+                        'management': 'Enhanced cardiovascular monitoring, consider dose reduction'
+                    },
+                    {
+                        'drug': 'dextromethorphan',
+                        'severity': 'major',
+                        'mechanism': 'Methylene blue may cause serotonin syndrome',
+                        'management': 'Avoid combination or use with extreme caution'
+                    }
+                ],
+                'moderate_interactions': [
+                    {
+                        'drug': 'antihypertensives',
+                        'severity': 'moderate',
+                        'mechanism': 'Tesofensine may affect blood pressure',
+                        'management': 'Monitor blood pressure closely, adjust antihypertensive as needed'
+                    }
+                ]
             }
         }
         
