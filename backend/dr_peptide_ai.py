@@ -431,15 +431,30 @@ Provide detailed, evidence-based recommendations that are truly personalized for
                     'route': 'subcutaneous'
                 }
             
-            # COGNITIVE ENHANCEMENT - Selank/Cerebrolysin for brain health
-            elif any(keyword in all_concerns for keyword in ['memory', 'brain', 'cognitive', 'focus', 'concentration']):
-                primary_peptide = 'Selank'  # Match expected case
-                recommended_peptides = ['Selank', 'Cerebrolysin', 'BPC-157']
-                dosing_info = {
-                    'dose_mcg_kg': 0.3,  # Selank dosing
-                    'frequency': 'twice daily',
-                    'route': 'intranasal'
-                }
+            # COGNITIVE ENHANCEMENT - Advanced multi-target approach for comprehensive brain optimization
+            elif any(keyword in all_concerns for keyword in ['memory', 'brain', 'cognitive', 'focus', 'concentration', 'brain fog', 'executive function', 'mental clarity', 'learning']):
+                # Determine if advanced cognitive enhancement is appropriate
+                concerns_text = ' '.join(str(c).lower() for c in patient_data.get('primary_concerns', []))
+                
+                # Advanced cognitive enhancement for comprehensive needs
+                if any(advanced_keyword in concerns_text for advanced_keyword in ['executive function', 'professional performance', 'mental clarity', 'learning', 'memory enhancement']) or len([c for c in patient_data.get('primary_concerns', []) if any(cog in str(c).lower() for cog in ['memory', 'brain', 'cognitive', 'focus'])]) >= 2:
+                    primary_peptide = 'Formula N-5550'  # Advanced multi-target approach
+                    recommended_peptides = ['Formula N-5550', 'Selank', 'Cerebrolysin']
+                    dosing_info = {
+                        'dose_per_day': '5mg Dihexa + 0.5mg Tesofensine + 50mg Methylene Blue',
+                        'frequency': 'once daily',
+                        'timing': 'morning administration',
+                        'route': 'oral'
+                    }
+                else:
+                    # Standard cognitive enhancement
+                    primary_peptide = 'Selank'  # Match expected case
+                    recommended_peptides = ['Selank', 'Cerebrolysin', 'BPC-157']
+                    dosing_info = {
+                        'dose_mcg_kg': 0.3,  # Selank dosing
+                        'frequency': 'twice daily',
+                        'route': 'intranasal'
+                    }
             
             # ANTI-AGING/LONGEVITY - Growth hormone peptides
             elif any(keyword in all_concerns for keyword in ['aging', 'longevity', 'energy', 'sleep', 'hormone']):
