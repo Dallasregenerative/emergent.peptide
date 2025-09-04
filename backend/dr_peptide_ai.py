@@ -593,6 +593,7 @@ Provide detailed, evidence-based recommendations that are truly personalized for
             'BPC-157': ['VEGF pathway activation', 'Tissue repair acceleration', 'Anti-inflammatory effects'],
             'TB-500': ['Actin regulation', 'Cell migration enhancement', 'Tissue regeneration'],
             'Selank': ['Anxiolytic effects', 'Cognitive enhancement', 'Nootropic properties'],
+            'Formula N-5550': ['Triple-pathway cognitive enhancement', 'Dihexa synaptogenesis (7x > BDNF)', 'Tesofensine neurotransmitter optimization', 'Methylene blue mitochondrial ATP enhancement'],
             'CJC-1295': ['Growth hormone release', 'IGF-1 elevation', 'Anti-aging effects'],
         }
         return mechanisms.get(peptide, ['General peptide therapy effects'])
