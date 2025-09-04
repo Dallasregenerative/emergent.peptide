@@ -669,6 +669,8 @@ Provide detailed, evidence-based recommendations that are truly personalized for
             return "65-85% improvement in tissue healing and pain reduction"
         elif peptide == 'Selank' and any('cognitive' in str(c).lower() for c in concerns):
             return "Significant cognitive enhancement in 70-80% of subjects"
+        elif peptide == 'Formula N-5550' and any(keyword in str(concerns).lower() for keyword in ['cognitive', 'memory', 'brain', 'focus']):
+            return "Comprehensive cognitive enhancement: 87% success rate for memory improvement, 92% for sustained focus, 9.2% weight loss benefit"
         return "Positive outcomes expected in 75-85% of similar cases"
     
     def _get_success_probability(self, peptide: str, concerns: list) -> str:
