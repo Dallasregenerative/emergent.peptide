@@ -160,6 +160,27 @@ class SafetyQualityAssurance:
                     'Breastfeeding',
                     'Severe cardiovascular disease'
                 ]
+            },
+            'formula_n_5550': {
+                'absolute': [
+                    'Current use of SSRIs, SNRIs, MAOIs, or tricyclic antidepressants',
+                    'Pregnancy and lactation',
+                    'G6PD deficiency (methylene blue component)',
+                    'Severe cardiovascular disease (uncontrolled)',
+                    'History of serotonin syndrome',
+                    'Severe liver failure',
+                    'Severe kidney failure (eGFR <30)',
+                    'Active eating disorder'
+                ],
+                'relative': [
+                    'Hypertension (controlled)',
+                    'History of substance abuse',
+                    'Concurrent stimulant use',
+                    'Sleep disorders',
+                    'Mild to moderate liver impairment',
+                    'History of cardiac arrhythmias',
+                    'Age >70 years'
+                ]
             }
         }
         
