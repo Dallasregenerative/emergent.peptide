@@ -1849,13 +1849,13 @@ EXPANDED_PEPTIDE_CATEGORIES = [
     "Tissue Repair", 
     "Growth Hormone",
     "Cognitive Enhancement",
-    "Sleep & Recovery", 
+    "Anti-Aging",
+    "Immune Support", 
     "Sexual Health",
+    "Sleep",
     "Longevity",
-    "Immune Support",
-    "Hormone Optimization",
-    "Muscle Growth",
-    "Metabolic Support",
+    "Cardiovascular",
+    "Metabolic",
     "Detoxification",
     "Neuroprotection"
 ]
