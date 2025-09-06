@@ -276,6 +276,12 @@ Generate precise clinical protocols matching major medical center documentation 
             'glp-1': 'Weight Management',
             'ozempic': 'Weight Management',
             'wegovy': 'Weight Management',
+            'metabolism': 'Weight Management',
+            'metabolic': 'Weight Management',
+            'insulin': 'Weight Management',
+            'diabetes': 'Weight Management',
+            'glucose': 'Weight Management',
+            'energy': 'Weight Management',
             
             # Cognitive keywords
             'memory': 'Cognitive Enhancement',
