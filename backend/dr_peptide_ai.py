@@ -309,11 +309,23 @@ Generate precise clinical protocols matching major medical center documentation 
             'fat burning': 'Growth Hormone Enhancement',
             'endurance': 'Growth Hormone Enhancement',
             
-            # Healing keywords
+            # Tissue repair/healing keywords
             'healing': 'Tissue Repair',
+            'repair': 'Tissue Repair',
+            'recovery': 'Tissue Repair',
             'injury': 'Tissue Repair',
-            'pain': 'Tissue Repair',
             'inflammation': 'Tissue Repair',
+            'inflammatory': 'Tissue Repair',
+            'gut health': 'Tissue Repair',
+            'leaky gut': 'Tissue Repair',
+            'digestive': 'Tissue Repair',
+            'GI': 'Tissue Repair',
+            'IBD': 'Tissue Repair',
+            'IBS': 'Tissue Repair',
+            'post-surgical': 'Tissue Repair',
+            'chronic inflammation': 'Tissue Repair',
+            'autoimmune': 'Tissue Repair',
+            'pain': 'Tissue Repair',
             'gut': 'Tissue Repair'
         }
         
