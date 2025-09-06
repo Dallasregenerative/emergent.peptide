@@ -631,6 +631,7 @@ Provide detailed, evidence-based recommendations that are truly personalized for
             'TB-500': ['Actin regulation', 'Cell migration enhancement', 'Tissue regeneration'],
             'Selank': ['Anxiolytic effects', 'Cognitive enhancement', 'Nootropic properties'],
             'Formula N-5550': ['Triple-pathway cognitive enhancement', 'Dihexa synaptogenesis (7x > BDNF)', 'Tesofensine neurotransmitter optimization', 'Methylene blue mitochondrial ATP enhancement'],
+            'Formula M-51': ['Dual-pathway exercise mimicking', 'NNMT inhibition increases NAD+ and SAM', 'ERR activation triggers exercise-like gene programs', '40-60% strength gains with exercise synergy'],
             'CJC-1295': ['Growth hormone release', 'IGF-1 elevation', 'Anti-aging effects'],
         }
         return mechanisms.get(peptide, ['General peptide therapy effects'])
