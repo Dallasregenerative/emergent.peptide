@@ -659,6 +659,7 @@ Provide detailed, evidence-based recommendations that are truly personalized for
             'Selank': ['Anxiolytic effects', 'Cognitive enhancement', 'Nootropic properties'],
             'Formula N-5550': ['Triple-pathway cognitive enhancement', 'Dihexa synaptogenesis (7x > BDNF)', 'Tesofensine neurotransmitter optimization', 'Methylene blue mitochondrial ATP enhancement'],
             'Formula M-51': ['Dual-pathway exercise mimicking', 'NNMT inhibition increases NAD+ and SAM', 'ERR activation triggers exercise-like gene programs', '40-60% strength gains with exercise synergy'],
+            'Formula RG-5555': ['Quad-pathway comprehensive healing', 'BPC-157 nitric oxide synthesis and growth factors', 'TB-500 G-actin binding and angiogenesis', 'KPV anti-inflammatory cytokine suppression', 'Larazotide zonulin antagonism for barrier integrity'],
             'CJC-1295': ['Growth hormone release', 'IGF-1 elevation', 'Anti-aging effects'],
         }
         return mechanisms.get(peptide, ['General peptide therapy effects'])
