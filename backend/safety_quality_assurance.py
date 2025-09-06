@@ -129,6 +129,36 @@ class SafetyQualityAssurance:
                         'management': 'Monitor blood pressure closely, adjust antihypertensive as needed'
                     }
                 ]
+            },
+            'formula_m_51': {
+                'major_interactions': [
+                    {
+                        'drug': 'diabetes_medications',
+                        'severity': 'major',
+                        'mechanism': 'Enhanced insulin sensitivity may require medication dose reduction',
+                        'management': 'Monitor blood glucose closely, may require 10-30% medication dose reduction'
+                    },
+                    {
+                        'drug': 'nad_supplements',
+                        'severity': 'major',
+                        'mechanism': 'Additive NAD+ elevation may cause excessive levels',
+                        'management': 'Reduce NAD+ supplement doses by 50% to avoid excessive elevation'
+                    }
+                ],
+                'moderate_interactions': [
+                    {
+                        'drug': 'stimulants',
+                        'severity': 'moderate',
+                        'mechanism': 'Additive metabolic effects may cause overstimulation',
+                        'management': 'Use cautiously, monitor for excessive stimulation'
+                    },
+                    {
+                        'drug': 'thyroid_medications',
+                        'severity': 'moderate',
+                        'mechanism': 'May affect thyroid hormone requirements',
+                        'management': 'Monitor thyroid function, may require dose adjustments'
+                    }
+                ]
             }
         }
         
