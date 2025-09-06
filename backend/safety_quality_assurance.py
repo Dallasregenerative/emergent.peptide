@@ -211,6 +211,18 @@ class SafetyQualityAssurance:
                     'History of cardiac arrhythmias',
                     'Age >70 years'
                 ]
+            },
+            'formula_m_51': {
+                'absolute': [
+                    'Pregnancy and lactation',
+                    'Known hypersensitivity to 5-AMINO-1MQ or SLU-PP-332 components'
+                ],
+                'relative': [
+                    'Severe cardiovascular disease (requires monitoring)',
+                    'Severe liver disease (monitor liver function)',
+                    'Uncontrolled diabetes (may require medication adjustments)',
+                    'Severe thyroid disorders (may require medication monitoring)'
+                ]
             }
         }
         
