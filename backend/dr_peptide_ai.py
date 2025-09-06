@@ -296,6 +296,12 @@ Generate precise clinical protocols matching major medical center documentation 
             'longevity': 'Growth Hormone Enhancement',
             'muscle': 'Growth Hormone Enhancement',
             'recovery': 'Growth Hormone Enhancement',
+            'exercise': 'Growth Hormone Enhancement',
+            'performance': 'Growth Hormone Enhancement',
+            'strength': 'Growth Hormone Enhancement',
+            'sarcopenia': 'Growth Hormone Enhancement',
+            'fat burning': 'Growth Hormone Enhancement',
+            'endurance': 'Growth Hormone Enhancement',
             
             # Healing keywords
             'healing': 'Tissue Repair',
