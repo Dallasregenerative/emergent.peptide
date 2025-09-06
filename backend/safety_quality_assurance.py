@@ -253,6 +253,19 @@ class SafetyQualityAssurance:
                     'Uncontrolled diabetes (may require medication adjustments)',
                     'Severe thyroid disorders (may require medication monitoring)'
                 ]
+            },
+            'formula_rg_5555': {
+                'absolute': [
+                    'Pregnancy and lactation',
+                    'Active cancer or recent cancer history',
+                    'Severe liver or kidney dysfunction'
+                ],
+                'relative': [
+                    'Autoimmune disorders (may alter immune responses)',
+                    'Bleeding disorders (TB-500 angiogenic effects may increase bleeding risk)',
+                    'Severe cardiovascular disease (requires monitoring)',
+                    'Immunosuppressive medication use (potential interactions)'
+                ]
             }
         }
         
