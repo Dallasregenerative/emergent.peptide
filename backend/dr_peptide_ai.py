@@ -755,6 +755,8 @@ Provide detailed, evidence-based recommendations that are truly personalized for
             return "85-95% success rate for comprehensive cognitive and metabolic optimization"
         elif peptide == 'Formula M-51':
             return "85-95% success rate for metabolic enhancement and exercise performance optimization"
+        elif peptide == 'Formula RG-5555':
+            return "85-95% success rate for accelerated healing and comprehensive recovery optimization"
         return "80-90% success rate for health optimization"
 
     def _create_enhanced_fallback_protocol(self, patient_data: Dict[str, Any]) -> Dict[str, Any]:
