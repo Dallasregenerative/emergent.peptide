@@ -445,15 +445,30 @@ Provide detailed, evidence-based recommendations that are truly personalized for
                     'route': 'subcutaneous'
                 }
             
-            # JOINT PAIN/INJURY RECOVERY - BPC-157 + TB-500 for musculoskeletal healing
-            elif any(keyword in all_concerns for keyword in ['joint', 'pain', 'injury', 'arthritis', 'inflammation', 'recovery', 'muscle', 'tendon']):
-                primary_peptide = 'BPC-157'  # Already correct case
-                recommended_peptides = ['BPC-157', 'TB-500', 'GHK-Cu']
-                dosing_info = {
-                    'dose_mcg_kg': 3.5,  # Evidence-based dosing for tissue repair
-                    'frequency': 'twice daily',
-                    'route': 'subcutaneous'
-                }
+            # TISSUE REPAIR & HEALING - Advanced multi-peptide approach for comprehensive healing
+            elif any(keyword in all_concerns for keyword in ['joint', 'pain', 'injury', 'arthritis', 'inflammation', 'recovery', 'muscle', 'tendon', 'healing', 'repair', 'inflammatory', 'gut health', 'leaky gut', 'digestive', 'GI', 'IBD', 'IBS', 'post-surgical', 'chronic inflammation', 'autoimmune']):
+                # Determine if advanced multi-peptide healing is appropriate
+                concerns_text = ' '.join(str(c).lower() for c in patient_data.get('primary_concerns', []))
+                
+                # Advanced multi-peptide healing for comprehensive needs
+                if any(advanced_keyword in concerns_text for advanced_keyword in ['chronic inflammation', 'leaky gut', 'IBD', 'IBS', 'post-surgical', 'autoimmune', 'gut health', 'digestive']) or len([c for c in patient_data.get('primary_concerns', []) if any(heal in str(c).lower() for heal in ['inflammation', 'inflammatory', 'digestive', 'gut', 'recovery'])]) >= 2:
+                    primary_peptide = 'Formula RG-5555'  # Advanced multi-peptide approach
+                    recommended_peptides = ['Formula RG-5555', 'BPC-157', 'TB-500']
+                    dosing_info = {
+                        'dose_per_day': '500mg BPC-157 + 500mg TB-500 + 500mg KPV + 500mg Larazotide',
+                        'frequency': 'once daily',
+                        'timing': 'morning on empty stomach, 30 minutes before food',
+                        'route': 'oral (enteric-coated capsules)'
+                    }
+                else:
+                    # Standard tissue repair
+                    primary_peptide = 'BPC-157'  # Already correct case
+                    recommended_peptides = ['BPC-157', 'TB-500', 'GHK-Cu']
+                    dosing_info = {
+                        'dose_mcg_kg': 3.5,  # Evidence-based dosing for tissue repair
+                        'frequency': 'twice daily',
+                        'route': 'subcutaneous'
+                    }
             
             # COGNITIVE ENHANCEMENT - Advanced multi-target approach for comprehensive brain optimization
             elif any(keyword in all_concerns for keyword in ['memory', 'brain', 'cognitive', 'focus', 'concentration', 'brain fog', 'executive function', 'mental clarity', 'learning']):
