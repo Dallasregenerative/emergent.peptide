@@ -1035,9 +1035,21 @@ Provide detailed, evidence-based recommendations that are truly personalized for
             'pain': 'Tissue Repair',
             'injury': 'Tissue Repair',
             'inflammation': 'Tissue Repair',
+            'inflammatory': 'Tissue Repair',
             'healing': 'Tissue Repair',
+            'repair': 'Tissue Repair',
+            'recovery': 'Tissue Repair',
             'joint': 'Tissue Repair',
-            'gut': 'Tissue Repair'
+            'gut': 'Tissue Repair',
+            'gut health': 'Tissue Repair',
+            'leaky gut': 'Tissue Repair',
+            'digestive': 'Tissue Repair',
+            'GI': 'Tissue Repair',
+            'IBD': 'Tissue Repair',
+            'IBS': 'Tissue Repair',
+            'post-surgical': 'Tissue Repair',
+            'chronic inflammation': 'Tissue Repair',
+            'autoimmune': 'Tissue Repair'
         }
         
         # Find relevant categories
