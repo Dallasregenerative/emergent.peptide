@@ -468,13 +468,38 @@ Provide detailed, evidence-based recommendations that are truly personalized for
                         'route': 'intranasal'
                     }
             
-            # ANTI-AGING/LONGEVITY - Growth hormone peptides
+            # METABOLIC HEALTH & EXERCISE PERFORMANCE - Advanced exercise mimetic approach
+            elif any(keyword in all_concerns for keyword in ['metabolism', 'metabolic', 'exercise', 'performance', 'strength', 'muscle', 'sarcopenia', 'fat burning', 'endurance']):
+                # Determine if advanced exercise mimetic is appropriate
+                concerns_text = ' '.join(str(c).lower() for c in patient_data.get('primary_concerns', []))
+                
+                # Advanced exercise mimetic for comprehensive metabolic needs
+                if any(advanced_keyword in concerns_text for advanced_keyword in ['exercise performance', 'muscle strength', 'fat burning', 'metabolic syndrome', 'sarcopenia']) or len([c for c in patient_data.get('primary_concerns', []) if any(met in str(c).lower() for met in ['metabolism', 'metabolic', 'exercise', 'performance', 'strength'])]) >= 2:
+                    primary_peptide = 'Formula M-51'  # Advanced exercise mimetic approach
+                    recommended_peptides = ['Formula M-51', 'CJC-1295', 'Ipamorelin']
+                    dosing_info = {
+                        'dose_per_day': '50mg 5-AMINO-1MQ + 1mg SLU-PP-332',
+                        'frequency': 'once daily',
+                        'timing': 'morning, 2-3 hours before exercise',
+                        'route': 'oral'
+                    }
+                else:
+                    # Standard metabolic enhancement
+                    primary_peptide = 'CJC-1295'  # Standard approach
+                    recommended_peptides = ['CJC-1295', 'Ipamorelin', 'BPC-157']
+                    dosing_info = {
+                        'dose_mcg_kg': 2.0,
+                        'frequency': 'once daily at bedtime',
+                        'route': 'subcutaneous'
+                    }
+            
+            # ANTI-AGING & LONGEVITY - CJC-1295/Ipamorelin for growth hormone enhancement
             elif any(keyword in all_concerns for keyword in ['aging', 'longevity', 'energy', 'sleep', 'hormone']):
-                primary_peptide = 'CJC-1295'  # Match dosing calculator case
-                recommended_peptides = ['CJC-1295', 'Ipamorelin', 'Epithalon']
+                primary_peptide = 'CJC-1295'  # Match expected case
+                recommended_peptides = ['CJC-1295', 'Ipamorelin', 'BPC-157']
                 dosing_info = {
-                    'dose_mcg_kg': 2.0,  # Growth hormone peptide dosing
-                    'frequency': 'once daily at bedtime',
+                    'dose_mcg': 100,
+                    'frequency': 'at bedtime',
                     'route': 'subcutaneous'
                 }
             
