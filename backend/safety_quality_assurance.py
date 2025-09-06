@@ -159,6 +159,36 @@ class SafetyQualityAssurance:
                         'management': 'Monitor thyroid function, may require dose adjustments'
                     }
                 ]
+            },
+            'formula_rg_5555': {
+                'major_interactions': [
+                    {
+                        'drug': 'immunosuppressive_drugs',
+                        'severity': 'major',
+                        'mechanism': 'Competing effects on immune function and healing response',
+                        'management': 'Monitor for enhanced or competing immune effects, coordinate with prescribing physician'
+                    },
+                    {
+                        'drug': 'anticoagulants',
+                        'severity': 'major',
+                        'mechanism': 'TB-500 angiogenic effects may increase bleeding risk',
+                        'management': 'Enhanced bleeding monitoring required, consider dose adjustments'
+                    }
+                ],
+                'moderate_interactions': [
+                    {
+                        'drug': 'anti_inflammatory_medications',
+                        'severity': 'moderate',
+                        'mechanism': 'Additive anti-inflammatory effects with KPV component',
+                        'management': 'Monitor for enhanced anti-inflammatory effects'
+                    },
+                    {
+                        'drug': 'gi_medications',
+                        'severity': 'moderate',
+                        'mechanism': 'May alter GI medication absorption or effectiveness',
+                        'management': 'Separate timing of administration if possible, monitor effectiveness'
+                    }
+                ]
             }
         }
         
