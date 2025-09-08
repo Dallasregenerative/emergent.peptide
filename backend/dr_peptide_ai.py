@@ -742,6 +742,8 @@ Provide detailed, evidence-based recommendations that are truly personalized for
         
         if peptide in ['Semaglutide', 'Tirzepatide']:
             return standard_labs + ['HbA1c', 'Lipid panel', 'Pancreatic enzymes']
+        elif peptide == 'Formula M-51':
+            return standard_labs + ['HbA1c', 'Lipid panel', 'Liver function', 'NAD+ levels']
         elif peptide == 'BPC-157':
             return standard_labs + ['ESR', 'Vitamin D']
         elif peptide in ['CJC-1295', 'Ipamorelin']:
