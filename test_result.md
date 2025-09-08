@@ -767,8 +767,8 @@ metadata:
 
 test_plan:
   current_focus:
-    - "RG-5555 Backend Integration Testing"
-    - "Formula M-51 Integration"
+    - "Frontend Display Issues Investigation"
+    - "Living Protocol Frontend UI Development"
   stuck_tasks:
     - "Frontend Display Issues"
   test_all: false
