@@ -435,9 +435,34 @@ Provide detailed, evidence-based recommendations that are truly personalized for
             # Convert concerns and goals to lowercase for matching
             all_concerns = ' '.join([str(c).lower() for c in patient_concerns + patient_goals])
             
-            # WEIGHT LOSS OPTIMIZATION - Semaglutide for metabolic conditions
-            if any(keyword in all_concerns for keyword in ['weight', 'fat', 'obese', 'metabolic', 'diabetes', 'glucose']):
-                primary_peptide = 'Semaglutide'  # Use Semaglutide for all weight loss cases
+            # METABOLIC ENHANCEMENT & EXERCISE MIMETIC - Formula M-51 for comprehensive metabolic optimization
+            if any(keyword in all_concerns for keyword in ['metabolism', 'metabolic', 'exercise', 'performance', 'strength', 'sarcopenia', 'muscle decline', 'energy', 'fat burning', 'mitochondrial', 'exercise capacity', 'athletic performance', 'training', 'muscle strength', 'endurance', 'recovery enhancement']):
+                # Determine if advanced exercise mimetic is appropriate
+                concerns_text = ' '.join(str(c).lower() for c in patient_data.get('primary_concerns', []))
+                
+                # Advanced exercise mimetic for comprehensive metabolic needs
+                if any(advanced_keyword in concerns_text for advanced_keyword in ['metabolism', 'metabolic', 'exercise', 'performance', 'strength', 'sarcopenia', 'muscle decline', 'energy', 'fat burning', 'athletic', 'training', 'endurance', 'muscle strength']) or len([c for c in patient_data.get('primary_concerns', []) if any(meta in str(c).lower() for meta in ['metabolism', 'metabolic', 'exercise', 'performance', 'strength', 'energy'])]) >= 1:
+                    primary_peptide = 'Formula M-51'  # Advanced exercise mimetic approach
+                    recommended_peptides = ['Formula M-51', 'BPC-157']
+                    dosing_info = {
+                        'dose_mcg_kg': 1.0,  # Exercise mimetic dosing
+                        'frequency': 'once daily',
+                        'timing': 'morning, with or without food, 2-3 hours before exercise for maximum synergy',
+                        'route': 'oral'
+                    }
+                else:
+                    # Standard weight loss with Semaglutide
+                    primary_peptide = 'Semaglutide'
+                    recommended_peptides = ['Semaglutide', 'BPC-157']
+                    dosing_info = {
+                        'dose_mcg_kg': 0.25,  # Starting dose for Semaglutide
+                        'frequency': 'once weekly', 
+                        'route': 'subcutaneous'
+                    }
+            
+            # WEIGHT LOSS OPTIMIZATION - Semaglutide for weight-specific conditions
+            elif any(keyword in all_concerns for keyword in ['weight', 'fat', 'obese', 'obesity', 'diabetes', 'glucose', 'weight loss']):
+                primary_peptide = 'Semaglutide'  # Use Semaglutide for weight loss cases
                 recommended_peptides = ['Semaglutide', 'BPC-157']
                 dosing_info = {
                     'dose_mcg_kg': 0.25,  # Starting dose for Semaglutide
