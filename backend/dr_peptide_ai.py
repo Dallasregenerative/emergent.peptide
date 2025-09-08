@@ -704,7 +704,9 @@ Provide detailed, evidence-based recommendations that are truly personalized for
     
     def _get_synergy_for_peptides(self, peptides: list, concerns: list) -> list:
         """Get synergistic benefits for peptide combinations"""
-        if 'Semaglutide' in peptides and 'BPC-157' in peptides:
+        if 'Formula M-51' in peptides and 'BPC-157' in peptides:
+            return ['Enhanced metabolic optimization with tissue repair', 'Accelerated exercise recovery', 'Comprehensive performance enhancement']
+        elif 'Semaglutide' in peptides and 'BPC-157' in peptides:
             return ['Enhanced metabolic optimization', 'Improved gut health during weight loss', 'Reduced inflammation']
         elif 'BPC-157' in peptides and 'TB-500' in peptides:
             return ['Superior tissue healing', 'Accelerated recovery', 'Enhanced anti-inflammatory effects']
