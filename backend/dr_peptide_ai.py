@@ -722,6 +722,10 @@ Provide detailed, evidence-based recommendations that are truly personalized for
         if peptide in ['Semaglutide', 'Tirzepatide']:
             warnings.append('Monitor for nausea and GI side effects during titration')
             warnings.append('Regular glucose monitoring required')
+        elif peptide == 'Formula M-51':
+            warnings.append('Monitor glucose levels closely if diabetic - may require medication adjustment')
+            warnings.append('Take with healthy fats for enhanced absorption')
+            warnings.append('Ensure adequate hydration and B-vitamin intake')
         elif peptide == 'BPC-157':
             warnings.append('Rotate injection sites to prevent tissue irritation')
         elif peptide == 'Selank':
