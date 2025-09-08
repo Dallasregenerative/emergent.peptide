@@ -450,12 +450,12 @@ Provide detailed, evidence-based recommendations that are truly personalized for
                 # Determine if advanced multi-peptide healing is appropriate
                 concerns_text = ' '.join(str(c).lower() for c in patient_data.get('primary_concerns', []))
                 
-                # Advanced multi-peptide healing for comprehensive needs
-                if any(advanced_keyword in concerns_text for advanced_keyword in ['chronic inflammation', 'leaky gut', 'IBD', 'IBS', 'post-surgical', 'autoimmune', 'gut health', 'digestive']) or len([c for c in patient_data.get('primary_concerns', []) if any(heal in str(c).lower() for heal in ['inflammation', 'inflammatory', 'digestive', 'gut', 'recovery'])]) >= 2:
+                # Advanced multi-peptide healing for comprehensive needs - broadened targeting
+                if any(advanced_keyword in concerns_text for advanced_keyword in ['healing', 'recovery', 'inflammation', 'inflammatory', 'digestive', 'gut', 'chronic inflammation', 'leaky gut', 'IBD', 'IBS', 'post-surgical', 'autoimmune', 'gut health', 'wound', 'tissue repair', 'joint pain', 'arthritis', 'injury']) or len([c for c in patient_data.get('primary_concerns', []) if any(heal in str(c).lower() for heal in ['inflammation', 'inflammatory', 'digestive', 'gut', 'recovery', 'healing', 'pain', 'injury'])]) >= 1:
                     primary_peptide = 'Formula RG-5555'  # Advanced multi-peptide approach
                     recommended_peptides = ['Formula RG-5555', 'BPC-157', 'TB-500']
                     dosing_info = {
-                        'dose_per_day': '500mg BPC-157 + 500mg TB-500 + 500mg KPV + 500mg Larazotide',
+                        'dose_mcg_kg': 5.0,  # Combined peptide approach
                         'frequency': 'once daily',
                         'timing': 'morning on empty stomach, 30 minutes before food',
                         'route': 'oral (enteric-coated capsules)'
