@@ -756,6 +756,7 @@ Provide detailed, evidence-based recommendations that are truly personalized for
         studies = {
             'Semaglutide': ['STEP trials showing 15% weight loss', 'Cardiovascular outcome trials'],
             'Tirzepatide': ['SURPASS trials - superior efficacy vs semaglutide', 'SURMOUNT weight loss studies'],
+            'Formula M-51': ['NNMT inhibition + exercise synergy studies', 'ERR agonist metabolic syndrome research', 'Exercise mimetic pathway validation'],
             'BPC-157': ['Tissue healing studies in animal models', 'Gastric protection research'],
             'TB-500': ['Wound healing acceleration studies', 'Cardiac protection research'],
         }
