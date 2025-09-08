@@ -2395,7 +2395,7 @@ async def get_protocol_structured_data(protocol_id: str):
             "@type": "MedicalGuidelineRecommendation",
             "name": f"{protocol['name']} Protocol",
             "description": protocol.get('description', ''),
-            "url": f"https://peptide-protocols-4.preview.emergentagent.com/protocol/{protocol['id']}",
+            "url": f"https://peptide-wizard-3.preview.emergentagent.com/protocol/{protocol['id']}",
             "medicalSpecialty": "Functional Medicine",
             "guidelineSubject": {
                 "@type": "MedicalCondition",

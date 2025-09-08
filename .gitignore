@@ -29,4 +29,7 @@ tests/
 
 # Temporary files
 *.tmp
-*.temp
+*.temp-e 
+# Environment files
+*.env
+*.env.*

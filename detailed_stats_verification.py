@@ -11,7 +11,7 @@ from datetime import datetime
 
 class DetailedStatsVerifier:
     def __init__(self):
-        self.base_url = "https://peptide-protocols-4.preview.emergentagent.com"
+        self.base_url = "https://peptide-wizard-3.preview.emergentagent.com"
         self.api_url = f"{self.base_url}/api"
         
     def verify_protocol_sources(self):
