@@ -1,0 +1,93 @@
+{
+  "report_timestamp": "2025-01-27",
+  "platform_name": "PeptideProtocols.ai",
+  "analysis_type": "Backend Statistics for Dashboard",
+  "scientific_studies": {
+    "total_scientific_references": 297,
+    "unique_pmid_numbers": 104,
+    "unique_doi_references": 12,
+    "evidence_quality_score": "High - Peer-reviewed sources",
+    "sample_pmids": [
+      "8435016",
+      "24769001",
+      "30374063",
+      "18834505",
+      "26166955"
+    ]
+  },
+  "ai_services": {
+    "total_ai_services": 16,
+    "ai_services_list": [
+      "Clinical Decision Support AI",
+      "AI Protocol Generation Engine",
+      "Collective Intelligence System",
+      "AI Service: dr_peptide_ai",
+      "AI Service: email_service",
+      "Adaptive Assessment AI Engine",
+      "Dr. Peptide AI Core Engine",
+      "Adaptive Assessment Engine",
+      "AI Safety & Quality Assurance",
+      "Predictive Analytics Service",
+      "AI Patient Case Analysis",
+      "Dr. Peptide AI Chat System",
+      "AI Lab Results Interpretation",
+      "AI Dosing Calculator",
+      "AI Service: openai",
+      "Safety & Quality Assurance AI"
+    ],
+    "core_capabilities": [
+      "Natural Language Processing for Medical Queries",
+      "Evidence-Based Protocol Generation",
+      "Personalized Dosing Calculations",
+      "Risk Assessment and Safety Analysis",
+      "Lab Results Interpretation",
+      "Adaptive Patient Assessment",
+      "Collective Intelligence Learning"
+    ]
+  },
+  "database_depth": {
+    "unique_peptides_with_clinical_data": 88,
+    "medical_conditions_covered": 390,
+    "administration_routes_documented": 45,
+    "safety_profiles_documented": 151,
+    "total_comprehensive_protocols": 151
+  },
+  "technical_capabilities": {
+    "operational_api_endpoints": 3,
+    "protocol_generation_types": 48,
+    "assessment_categories": 17,
+    "technical_features": [
+      "Multi-step Assessment Wizard",
+      "File Upload & Analysis (PDF, Images, Labs)",
+      "Real-time Protocol Generation",
+      "Personalized Dosing Calculations",
+      "Safety Screening & Contraindication Checking",
+      "Progress Tracking & Analytics",
+      "PDF Report Generation",
+      "Email Integration System"
+    ]
+  },
+  "evidence_based_content": {
+    "entries_with_evidence_levels": 122,
+    "entries_with_mechanisms": 151,
+    "comprehensive_dosing_schedules": 151,
+    "content_completeness_percentage": 100.0
+  },
+  "system_health": {
+    "api_endpoint_success_rate": 100.0,
+    "working_endpoints": 7,
+    "system_status": "Operational"
+  },
+  "dashboard_statistics": {
+    "scientific_studies_referenced": 116,
+    "ai_services_running": 16,
+    "unique_peptides_database": 88,
+    "medical_conditions_covered": 390,
+    "administration_routes": 45,
+    "safety_profiles": 151,
+    "api_endpoints_operational": 3,
+    "protocol_types_available": 48,
+    "evidence_based_entries": 151,
+    "comprehensive_dosing_protocols": 151
+  }
+}
