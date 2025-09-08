@@ -697,6 +697,7 @@ Provide detailed, evidence-based recommendations that are truly personalized for
             'BPC-157': ['VEGF/angiogenesis pathway', 'NF-κB modulation', 'Growth factor signaling'],
             'TB-500': ['Actin polymerization', 'Wound healing cascade', 'Anti-inflammatory pathways'],
             'Selank': ['GABA receptor modulation', 'Neurotransmitter balance', 'Stress response regulation'],
+            'Formula M-51': ['NNMT inhibition pathway', 'ERR receptor activation', 'NAD+ and SAM enhancement', 'Exercise-like gene programs'],
             'CJC-1295': ['GHRH receptor activation', 'Growth hormone axis', 'IGF-1 cascade'],
         }
         return pathways.get(peptide, ['Standard peptide pathways'])
