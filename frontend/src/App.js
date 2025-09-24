@@ -189,21 +189,21 @@ const PeptideProtocolsApp = () => {
     });
   }, []);
 
-  const addToListField = (field, value) => {
+  const addToListField = useCallback((field, value) => {
     if (value.trim()) {
       setAssessment(prev => ({
         ...prev,
         [field]: [...prev[field], value.trim()]
       }));
     }
-  };
+  }, []);
 
-  const removeFromListField = (field, index) => {
+  const removeFromListField = useCallback((field, index) => {
     setAssessment(prev => ({
       ...prev,
       [field]: prev[field].filter((_, i) => i !== index)
     }));
-  };
+  }, []);
 
   const saveAssessmentStep = async (step, data) => {
     try {
