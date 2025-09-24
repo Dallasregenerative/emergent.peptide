@@ -153,6 +153,25 @@ const PeptideProtocolsApp = () => {
     }));
   }, []);
 
+  // Auto-save effect - separate from input handling
+  useEffect(() => {
+    if (autoSaveTimeoutRef.current) {
+      clearTimeout(autoSaveTimeoutRef.current);
+    }
+    autoSaveTimeoutRef.current = setTimeout(() => {
+      if (assessment && currentStep && assessmentId) {
+        autoSave(assessment, currentStep, assessmentId);
+      }
+    }, 2000); // Auto-save 2 seconds after any assessment change
+
+    // Cleanup timeout on unmount
+    return () => {
+      if (autoSaveTimeoutRef.current) {
+        clearTimeout(autoSaveTimeoutRef.current);
+      }
+    };
+  }, [assessment, currentStep, assessmentId]);
+
   const handleLifestyleFactorChange = (factor, value) => {
     const updatedAssessment = {
       ...assessment,
