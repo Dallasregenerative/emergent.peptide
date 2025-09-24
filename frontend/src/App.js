@@ -202,43 +202,40 @@ const PeptideProtocolsApp = () => {
     }, 1000); // Wait 1 second after user stops typing
   }, [currentStep, assessmentId]);
 
-  const handleLifestyleFactorChange = useCallback((factor, value) => {
-    setAssessment(prev => {
-      const updatedAssessment = {
-        ...prev,
-        lifestyle_factors: {
-          ...prev.lifestyle_factors,
-          [factor]: value
-        }
-      };
-      
-      // Debounced auto-save
-      if (autoSaveTimeoutRef.current) {
-        clearTimeout(autoSaveTimeoutRef.current);
+  const handleLifestyleFactorChange = (factor, value) => {
+    const updatedAssessment = {
+      ...assessment,
+      lifestyle_factors: {
+        ...assessment.lifestyle_factors,
+        [factor]: value
       }
-      autoSaveTimeoutRef.current = setTimeout(() => {
-        autoSave(updatedAssessment, currentStep, assessmentId);
-      }, 1000);
-      
-      return updatedAssessment;
-    });
-  }, []);
+    };
+    setAssessment(updatedAssessment);
+    
+    // Debounced auto-save
+    if (autoSaveTimeoutRef.current) {
+      clearTimeout(autoSaveTimeoutRef.current);
+    }
+    autoSaveTimeoutRef.current = setTimeout(() => {
+      autoSave(updatedAssessment, currentStep, assessmentId);
+    }, 1000);
+  };
 
-  const addToListField = useCallback((field, value) => {
+  const addToListField = (field, value) => {
     if (value.trim()) {
       setAssessment(prev => ({
         ...prev,
         [field]: [...prev[field], value.trim()]
       }));
     }
-  }, []);
+  };
 
-  const removeFromListField = useCallback((field, index) => {
+  const removeFromListField = (field, index) => {
     setAssessment(prev => ({
       ...prev,
       [field]: prev[field].filter((_, i) => i !== index)
     }));
-  }, []);
+  };
 
   const saveAssessmentStep = async (step, data) => {
     try {
