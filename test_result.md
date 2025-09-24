@@ -770,12 +770,12 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Frontend Display Issues Investigation"
-    - "Living Protocol Frontend UI Development"
+    - "CursorPreservingInput Component Critical Bug Fix"
+    - "Assessment Form Input Functionality Restoration"
   stuck_tasks:
-    - "Frontend Display Issues"
+    - "Advanced Assessment Wizard - CursorPreservingInput Component"
   test_all: false
-  test_priority: "high_first"
+  test_priority: "critical_first"
 
 agent_communication:
     -agent: "main"
