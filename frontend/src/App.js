@@ -866,7 +866,7 @@ const PeptideProtocolsApp = () => {
 
                 <div className="space-y-2">
                   <Label>Weight (lbs) *</Label>
-                  <Input
+                  <CursorPreservingInput
                     type="number"
                     placeholder="Weight in pounds"
                     onChange={(e) => handleAssessmentChange('weight', e.target.value)}
