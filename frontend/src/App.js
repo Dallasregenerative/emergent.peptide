@@ -151,22 +151,7 @@ const PeptideProtocolsApp = () => {
       ...prev,
       [field]: value
     }));
-    
-    // Increased debounced auto-save - wait longer to reduce interference
-    if (autoSaveTimeoutRef.current) {
-      clearTimeout(autoSaveTimeoutRef.current);
-    }
-    autoSaveTimeoutRef.current = setTimeout(() => {
-      setAssessment(currentAssessment => {
-        const updatedAssessment = {
-          ...currentAssessment,
-          [field]: value
-        };
-        autoSave(updatedAssessment, currentStep, assessmentId);
-        return currentAssessment; // Don't update state again
-      });
-    }, 2500); // Increased from 1000ms to 2500ms to reduce cursor jumping
-  }, [currentStep, assessmentId]);
+  }, []);
 
   const handleLifestyleFactorChange = (factor, value) => {
     const updatedAssessment = {
