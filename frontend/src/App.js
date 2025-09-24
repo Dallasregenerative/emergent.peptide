@@ -866,7 +866,7 @@ const PeptideProtocolsApp = () => {
 
                 <div className="space-y-2">
                   <Label htmlFor="email">Email Address *</Label>
-                  <CursorPreservingInput
+                  <Input
                     id="email"
                     type="email"
                     placeholder="your@email.com"
