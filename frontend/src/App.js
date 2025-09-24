@@ -13,26 +13,21 @@ import { Badge } from "./components/ui/badge";
 // Custom input component that preserves cursor position
 const CursorPreservingInput = ({ value, onChange, ...props }) => {
   const inputRef = useRef(null);
-  const cursorPositionRef = useRef(0);
 
   const handleChange = (event) => {
-    // Save cursor position before state update
-    cursorPositionRef.current = event.target.selectionStart;
-    // Call the parent onChange handler
+    // Get cursor position BEFORE value change
+    const cursorPosition = event.target.selectionStart;
+    
+    // Call the parent onChange handler immediately 
     onChange(event);
+    
+    // Restore cursor position after React re-renders
+    requestAnimationFrame(() => {
+      if (inputRef.current && document.activeElement === inputRef.current) {
+        inputRef.current.setSelectionRange(cursorPosition, cursorPosition);
+      }
+    });
   };
-
-  useEffect(() => {
-    // Restore cursor position after re-render
-    if (inputRef.current && document.activeElement === inputRef.current) {
-      const position = cursorPositionRef.current;
-      requestAnimationFrame(() => {
-        if (inputRef.current) {
-          inputRef.current.setSelectionRange(position, position);
-        }
-      });
-    }
-  }, [value]);
 
   return (
     <Input
