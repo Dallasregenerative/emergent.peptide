@@ -9,6 +9,40 @@ import { Label } from "./components/ui/label";
 import { Textarea } from "./components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./components/ui/select";
 import { Badge } from "./components/ui/badge";
+
+// Custom input component that preserves cursor position
+const CursorPreservingInput = ({ value, onChange, ...props }) => {
+  const inputRef = useRef(null);
+  const cursorPositionRef = useRef(0);
+
+  const handleChange = (event) => {
+    // Save cursor position before state update
+    cursorPositionRef.current = event.target.selectionStart;
+    // Call the parent onChange handler
+    onChange(event);
+  };
+
+  useEffect(() => {
+    // Restore cursor position after re-render
+    if (inputRef.current && document.activeElement === inputRef.current) {
+      const position = cursorPositionRef.current;
+      requestAnimationFrame(() => {
+        if (inputRef.current) {
+          inputRef.current.setSelectionRange(position, position);
+        }
+      });
+    }
+  }, [value]);
+
+  return (
+    <Input
+      ref={inputRef}
+      value={value}
+      onChange={handleChange}
+      {...props}
+    />
+  );
+};
 import { Separator } from "./components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs";
 import { Progress } from "./components/ui/progress";
