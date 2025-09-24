@@ -618,23 +618,27 @@ const PeptideProtocolsApp = () => {
             </Button>
           </div>
 
-          {/* Statistics */}
+          {/* Statistics - Option 2: Ambitious & Justified */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mb-12 md:mb-16 px-4">
             <div className="text-center">
-              <div className="text-2xl md:text-4xl font-bold text-white">40+</div>
-              <div className="text-sm md:text-base text-blue-200">Clinical Protocols</div>
+              <div className="text-2xl md:text-4xl font-bold text-white">2,800+</div>
+              <div className="text-sm md:text-base text-blue-200">Studies Analyzed</div>
+              <div className="text-xs text-blue-300 mt-1">AI synthesis of global peptide research literature</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl md:text-4xl font-bold text-white">500+</div>
-              <div className="text-sm md:text-base text-blue-200">Expert Practitioners</div>
+              <div className="text-2xl md:text-4xl font-bold text-white">390+</div>
+              <div className="text-sm md:text-base text-blue-200">Medical Conditions</div>
+              <div className="text-xs text-blue-300 mt-1">Comprehensive coverage across all health areas</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl md:text-4xl font-bold text-white">95%</div>
-              <div className="text-sm md:text-base text-blue-200">Success Rate</div>
+              <div className="text-2xl md:text-4xl font-bold text-white">16</div>
+              <div className="text-sm md:text-base text-blue-200">AI Agents Collaborating</div>
+              <div className="text-xs text-blue-300 mt-1">Revolutionary multi-intelligence platform</div>
             </div>
             <div className="text-center">
               <div className="text-2xl md:text-4xl font-bold text-white">24/7</div>
-              <div className="text-sm md:text-base text-blue-200">AI Support</div>
+              <div className="text-sm md:text-base text-blue-200">Clinical Intelligence</div>
+              <div className="text-xs text-blue-300 mt-1">World's first AI-powered peptide medicine platform</div>
             </div>
           </div>
         </div>
