@@ -167,24 +167,27 @@ const PeptideProtocolsApp = () => {
     });
   }, []); // Empty dependency array to prevent function recreation
 
-  const handleLifestyleFactorChange = (factor, value) => {
-    const updatedAssessment = {
-      ...assessment,
-      lifestyle_factors: {
-        ...assessment.lifestyle_factors,
-        [factor]: value
+  const handleLifestyleFactorChange = useCallback((factor, value) => {
+    setAssessment(prev => {
+      const updatedAssessment = {
+        ...prev,
+        lifestyle_factors: {
+          ...prev.lifestyle_factors,
+          [factor]: value
+        }
+      };
+      
+      // Debounced auto-save
+      if (autoSaveTimeoutRef.current) {
+        clearTimeout(autoSaveTimeoutRef.current);
       }
-    };
-    setAssessment(updatedAssessment);
-    
-    // Debounced auto-save
-    if (autoSaveTimeoutRef.current) {
-      clearTimeout(autoSaveTimeoutRef.current);
-    }
-    autoSaveTimeoutRef.current = setTimeout(() => {
-      autoSave(updatedAssessment, currentStep, assessmentId);
-    }, 1000);
-  };
+      autoSaveTimeoutRef.current = setTimeout(() => {
+        autoSave(updatedAssessment, currentStep, assessmentId);
+      }, 1000);
+      
+      return updatedAssessment;
+    });
+  }, []);
 
   const addToListField = (field, value) => {
     if (value.trim()) {
