@@ -822,7 +822,7 @@ const PeptideProtocolsApp = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="patient_name">Full Name *</Label>
-                  <Input
+                  <CursorPreservingInput
                     id="patient_name"
                     placeholder="Enter your full name"
                     autoComplete="off"
@@ -833,7 +833,7 @@ const PeptideProtocolsApp = () => {
                 
                 <div className="space-y-2">
                   <Label htmlFor="age">Age *</Label>
-                  <Input
+                  <CursorPreservingInput
                     id="age"
                     type="number"
                     placeholder="Your age"
