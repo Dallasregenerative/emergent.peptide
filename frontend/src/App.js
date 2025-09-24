@@ -152,7 +152,7 @@ const PeptideProtocolsApp = () => {
       [field]: value
     }));
     
-    // Debounced auto-save - only save after user stops typing
+    // Increased debounced auto-save - wait longer to reduce interference
     if (autoSaveTimeoutRef.current) {
       clearTimeout(autoSaveTimeoutRef.current);
     }
@@ -165,7 +165,7 @@ const PeptideProtocolsApp = () => {
         autoSave(updatedAssessment, currentStep, assessmentId);
         return currentAssessment; // Don't update state again
       });
-    }, 1000); // Wait 1 second after user stops typing
+    }, 2500); // Increased from 1000ms to 2500ms to reduce cursor jumping
   }, [currentStep, assessmentId]);
 
   const handleLifestyleFactorChange = (factor, value) => {
