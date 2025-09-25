@@ -788,11 +788,11 @@ metadata:
 
 test_plan:
   current_focus:
-    - "CursorPreservingInput Component Critical Bug Fix"
-    - "Assessment Form Input Functionality Restoration"
+    - "Cursor Character Fix Implementation - CRITICAL FAILURE CONFIRMED"
+    - "Assessment Form Input Functionality - REQUIRES IMMEDIATE ATTENTION"
   stuck_tasks:
-    - "Advanced Assessment Wizard - CursorPreservingInput Component"
-    - "CursorPreservingInput Component Critical Bug Fix"
+    - "Advanced Assessment Wizard - Cursor Character Bug"
+    - "Cursor Character Fix Implementation - Multiple Failed Attempts"
   test_all: false
   test_priority: "critical_first"
 
