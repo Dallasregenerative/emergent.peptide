@@ -157,24 +157,25 @@ const PeptideProtocolsApp = () => {
     }));
   }, []);
 
-  // Auto-save effect - separate from input handling
-  useEffect(() => {
+  // Debounced auto-save function to prevent re-renders
+  const debouncedAutoSave = useCallback(() => {
     if (autoSaveTimeoutRef.current) {
       clearTimeout(autoSaveTimeoutRef.current);
     }
     autoSaveTimeoutRef.current = setTimeout(() => {
-      if (assessment && currentStep && assessmentId) {
-        autoSave(assessment, currentStep, assessmentId);
+      // Get current form values from refs instead of state
+      const formData = {
+        patient_name: fullNameRef.current?.value || '',
+        age: ageRef.current?.value || '',
+        weight: weightRef.current?.value || '',
+        email: emailRef.current?.value || '',
+        ...assessment // Keep other assessment data
+      };
+      if (formData && currentStep && assessmentId) {
+        autoSave(formData, currentStep, assessmentId);
       }
-    }, 2000); // Auto-save 2 seconds after any assessment change
-
-    // Cleanup timeout on unmount
-    return () => {
-      if (autoSaveTimeoutRef.current) {
-        clearTimeout(autoSaveTimeoutRef.current);
-      }
-    };
-  }, [assessment, currentStep, assessmentId]);
+    }, 2000);
+  }, [currentStep, assessmentId, assessment]);
 
   const handleLifestyleFactorChange = (factor, value) => {
     const updatedAssessment = {
