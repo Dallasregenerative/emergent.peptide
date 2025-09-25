@@ -150,12 +150,6 @@ const PeptideProtocolsApp = () => {
     }
   };
 
-  // Refs for uncontrolled inputs to fix cursor issues
-  const patientNameRef = useRef(null);
-  const ageRef = useRef(null);
-  const weightRef = useRef(null);
-  const emailRef = useRef(null);
-
   const handleAssessmentChange = useCallback((field, value) => {
     setAssessment(prev => ({
       ...prev,
