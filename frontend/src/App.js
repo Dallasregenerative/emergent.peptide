@@ -60,6 +60,10 @@ const PeptideProtocolsApp = () => {
   const fullNameRef = useRef(null);
   const weightRef = useRef(null);
   const autoSaveTimeoutRef = useRef(null);
+  
+  // Additional refs for uncontrolled inputs to fix cursor issues
+  const ageRef = useRef(null);
+  const emailRef = useRef(null);
 
   // Feedback System State
   const [showFeedbackChat, setShowFeedbackChat] = useState(false);
