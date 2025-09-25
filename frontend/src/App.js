@@ -3905,7 +3905,9 @@ const PeptideProtocolsApp = () => {
     ];
 
     const handleNavClick = (viewId) => {
+      console.log('🧭 Navigation clicked:', viewId);
       setCurrentView(viewId);
+      console.log('🧭 Current view should now be:', viewId);
       setIsMobileMenuOpen(false); // Close mobile menu after navigation
     };
 
