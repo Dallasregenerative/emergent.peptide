@@ -1266,6 +1266,7 @@ const PeptideProtocolsApp = () => {
     }, [protocols, searchQuery, selectedCategory, selectedTags, sortBy]);
 
     const loadProtocolLibrary = async () => {
+      console.log('📡 Loading protocol library data...');
       try {
         setLoading(true);
         
@@ -1277,6 +1278,7 @@ const PeptideProtocolsApp = () => {
           axios.get(`${API}/protocols/library/stats`)
         ]);
         
+        console.log('✅ Protocol data loaded:', protocolsRes.data.protocols?.length || 0, 'protocols');
         setProtocols(protocolsRes.data.protocols || []);
         setFilteredProtocols(protocolsRes.data.protocols || []);
         setAvailableCategories(categoriesRes.data.categories || []);
@@ -1284,7 +1286,7 @@ const PeptideProtocolsApp = () => {
         setLibraryStats(statsRes.data.library_stats || null);
         
       } catch (error) {
-        console.error('Error loading protocol library:', error);
+        console.error('❌ Error loading protocol library:', error);
       } finally {
         setLoading(false);
       }
