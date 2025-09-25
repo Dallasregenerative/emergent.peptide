@@ -832,10 +832,11 @@ const PeptideProtocolsApp = () => {
                 <div className="space-y-2">
                   <Label>Weight (lbs) *</Label>
                   <Input
+                    ref={weightRef}
                     type="number"
                     placeholder="Weight in pounds"
-                    onChange={(e) => handleAssessmentChange('weight', e.target.value)}
-                    value={assessment.weight || ''}
+                    onBlur={(e) => handleAssessmentChange('weight', e.target.value)}
+                    defaultValue={assessment.weight || ''}
                     autoComplete="off"
                   />
                 </div>
@@ -869,11 +870,12 @@ const PeptideProtocolsApp = () => {
                 <div className="space-y-2">
                   <Label htmlFor="email">Email Address *</Label>
                   <Input
+                    ref={emailRef}
                     id="email"
                     type="email"
                     placeholder="your@email.com"
-                    value={assessment.email}
-                    onChange={(e) => handleAssessmentChange('email', e.target.value)}
+                    defaultValue={assessment.email}
+                    onBlur={(e) => handleAssessmentChange('email', e.target.value)}
                   />
                 </div>
               </div>
