@@ -786,22 +786,24 @@ const PeptideProtocolsApp = () => {
                 <div className="space-y-2">
                   <Label htmlFor="patient_name">Full Name *</Label>
                   <Input
+                    ref={fullNameRef}
                     id="patient_name"
                     placeholder="Enter your full name"
                     autoComplete="off"
-                    onChange={(e) => handleAssessmentChange('patient_name', e.target.value)}
-                    value={assessment.patient_name || ''}
+                    onBlur={(e) => handleAssessmentChange('patient_name', e.target.value)}
+                    defaultValue={assessment.patient_name || ''}
                   />
                 </div>
                 
                 <div className="space-y-2">
                   <Label htmlFor="age">Age *</Label>
                   <Input
+                    ref={ageRef}
                     id="age"
                     type="number"
                     placeholder="Your age"
-                    value={assessment.age}
-                    onChange={(e) => handleAssessmentChange('age', e.target.value)}
+                    defaultValue={assessment.age}
+                    onBlur={(e) => handleAssessmentChange('age', e.target.value)}
                     aria-label="Enter your age in years"
                     aria-describedby="age-description"
                   />
