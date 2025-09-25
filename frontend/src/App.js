@@ -396,7 +396,7 @@ const PeptideProtocolsApp = () => {
 
   useEffect(() => {
     if (currentView === 'protocols' || currentView === 'library') {
-      loadEnhancedProtocolLibrary();
+      loadProtocolLibrary(); // Fixed: Use correct protocol loading function
     }
     if (currentView === 'peptides') {
       loadPeptidesDatabase();
