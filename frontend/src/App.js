@@ -151,11 +151,14 @@ const PeptideProtocolsApp = () => {
   };
 
   const handleAssessmentChange = useCallback((field, value) => {
+    // Only update state, don't trigger auto-save here to prevent re-renders during typing
     setAssessment(prev => ({
       ...prev,
       [field]: value
     }));
-  }, []);
+    // Trigger debounced auto-save
+    debouncedAutoSave();
+  }, [debouncedAutoSave]);
 
   // Debounced auto-save function to prevent re-renders
   const debouncedAutoSave = useCallback(() => {
