@@ -181,14 +181,6 @@ const PeptideProtocolsApp = () => {
       }
     };
     setAssessment(updatedAssessment);
-    
-    // Debounced auto-save
-    if (autoSaveTimeoutRef.current) {
-      clearTimeout(autoSaveTimeoutRef.current);
-    }
-    autoSaveTimeoutRef.current = setTimeout(() => {
-      autoSave(updatedAssessment, currentStep, assessmentId);
-    }, 1000);
   };
 
   const addToListField = (field, value) => {
