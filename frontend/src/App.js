@@ -1241,6 +1241,7 @@ const PeptideProtocolsApp = () => {
   );
 
   const ProtocolLibrary = () => {
+    console.log('🔬 ProtocolLibrary component rendering');
     const [protocols, setProtocols] = useState([]);
     const [filteredProtocols, setFilteredProtocols] = useState([]);
     const [loading, setLoading] = useState(true);
