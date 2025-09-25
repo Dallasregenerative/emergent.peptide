@@ -593,11 +593,11 @@ frontend:
 
   - task: "Dr. Peptide Chat Interface"
     implemented: true
-    working: false
+    working: true
     file: "/app/frontend/src/App.js"
     stuck_count: 1
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: true
         agent: "main"
